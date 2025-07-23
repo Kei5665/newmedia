@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import NewHeroSection from "@/components/NewHeroSection";
 import HeroSection from "@/components/HeroSection";
 import NewsSection2 from "@/components/NewsSection2";
 import CompanyInterviewSection from "@/components/CompanyInterviewSection";
@@ -13,6 +14,7 @@ export default function Home() {
     <div className="font-sans min-h-screen">
       <Header />
       <Breadcrumbs />
+      <NewHeroSection />
       <HeroSection />
       <NewsSection2 />
       <CompanyInterviewSection />
