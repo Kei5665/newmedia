@@ -6,6 +6,7 @@ import CompanyInterviewSection from "@/components/CompanyInterviewSection";
 import CategorySection from "@/components/CategorySection";
 import JobSection from "@/components/JobSection";
 import InterviewSection4 from "@/components/InterviewSection4";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <CategorySection />
       <JobSection />
       <InterviewSection4 />
+      <Footer />
     </div>
   );
 }

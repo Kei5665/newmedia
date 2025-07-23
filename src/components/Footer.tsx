@@ -1,0 +1,318 @@
+export default function Footer() {
+  return (
+    <div
+      className="bg-[#ffffff] box-border content-stretch flex flex-col items-center justify-start pb-[72px] pt-12 px-0 relative w-full"
+      data-name="Footer"
+      id="node-2064_13"
+    >
+      <div
+        className="box-border content-stretch flex flex-col gap-8 items-start justify-start p-0 relative shrink-0 w-full max-w-[1100px] px-4"
+        data-name="Container"
+        id="node-2064_14"
+      >
+        <div
+          className="box-border content-stretch flex flex-row gap-4 items-start justify-between p-0 relative shrink-0 w-full"
+          data-name="Container"
+          id="node-2064_15"
+        >
+          <div
+            className="box-border content-stretch flex flex-row items-center justify-start p-0 relative shrink-0"
+            data-name="Container"
+            id="node-2064_16"
+          >
+            <div
+              className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0"
+              data-name="Container"
+              id="node-2064_17"
+            >
+              <div
+                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0"
+                data-name="Link"
+                id="node-2064_18"
+              >
+                <div
+                  className="box-border content-stretch flex flex-col items-center justify-center p-0 relative shrink-0 w-full"
+                  data-name="Container"
+                  id="node-2064_19"
+                >
+                  <div
+                    className="bg-center bg-cover bg-no-repeat h-[33px] shrink-0 w-[101px]"
+                    data-name="RIDE JOB"
+                    id="node-2064_20"
+                    style={{ backgroundImage: `url('/figma/ride-job-logo.png')` }}
+                  />
+                  <div
+                    className="box-border content-stretch flex flex-col h-[18px] items-center justify-start p-0 relative shrink-0 w-[101px]"
+                    data-name="Container"
+                    id="node-2064_21"
+                  >
+                    <div
+                      className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#155dfc] text-[12px] text-center w-full"
+                      id="node-2064_22"
+                    >
+                      <p className="block leading-[16px]">
+                        ライドジョブ
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+          data-name="Container"
+          id="node-2064_23"
+        >
+          <div
+            className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[22.75px] relative shrink-0 text-[14px] text-gray-600 text-justify w-full"
+            id="node-2064_24"
+          >
+            <p className="block">
+              ドライバーの求人をお探しならライドジョブ。あなたにぴったりの求人が見つかります。ドライバー運転・整備・現場に関わる多様な職種を掲載しています。ライドジョブは運転・整備・現場職に携わる方々の、転職・就職を支援する求人サイトです。全国000件の事業所の正社員
+              アルバイト
+              パート募集情報を掲載しています（2025年7月31日現在）。求人の応募から入職まで専任のキャリアが転職をサポートします。転職・就職なら「ライドジョブ」にお任せください。
+            </p>
+          </div>
+        </div>
+        <div
+          className="box-border content-stretch flex flex-row gap-8 items-start justify-center p-0 relative shrink-0 w-full"
+          data-name="Container"
+          id="node-2064_25"
+        >
+          <div
+            className="basis-0 box-border content-stretch flex flex-col gap-4 grow items-start justify-start min-h-px min-w-px p-0 relative self-stretch shrink-0"
+            data-name="Container"
+            id="node-2064_26"
+          >
+            <div
+              className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0"
+              data-name="Heading 3"
+              id="node-2064_27"
+            >
+              <div
+                className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-semibold justify-center leading-[24px] relative shrink-0 text-[16px] text-gray-800 text-left w-full"
+                id="node-2064_28"
+              >
+                <p className="block">ライドジョブについて</p>
+              </div>
+            </div>
+            <div
+              className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full"
+              data-name="Container"
+              id="node-2064_29"
+            >
+              <div
+                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Link"
+                id="node-2064_30"
+              >
+                <div
+                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
+                  id="node-2064_31"
+                >
+                  <p className="block">ご利用規約</p>
+                </div>
+              </div>
+              <div
+                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Link"
+                id="node-2064_32"
+              >
+                <div
+                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
+                  id="node-2064_33"
+                >
+                  <p className="block">ミッション</p>
+                </div>
+              </div>
+              <div
+                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Link"
+                id="node-2064_34"
+              >
+                <div
+                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
+                  id="node-2064_35"
+                >
+                  <p className="block">転職体験談</p>
+                </div>
+              </div>
+              <div
+                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Link"
+                id="node-2064_36"
+              >
+                <div
+                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
+                  id="node-2064_37"
+                >
+                  <p className="block">プライバシーポリシー</p>
+                </div>
+              </div>
+              <div
+                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Link"
+                id="node-2064_38"
+              >
+                <div
+                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
+                  id="node-2064_39"
+                >
+                  <p className="block">
+                    運営会社情報
+                  </p>
+                </div>
+              </div>
+              <div
+                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Link"
+                id="node-2064_40"
+              >
+                <div
+                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
+                  id="node-2064_41"
+                >
+                  <p className="block">
+                    お問い合わせ
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="basis-0 box-border content-stretch flex flex-col gap-10 grow items-start justify-start min-h-px min-w-px p-0 relative self-stretch shrink-0"
+            data-name="Container"
+            id="node-2064_42"
+          >
+            <div
+              className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0 w-full"
+              id="node-2064_43"
+            >
+              <div
+                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Heading 3"
+                id="node-2064_44"
+              >
+                <div
+                  className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-semibold justify-center leading-[24px] relative shrink-0 text-[16px] text-gray-800 text-left w-full"
+                  id="node-2064_45"
+                >
+                  <p className="block">採用担当者様へ</p>
+                </div>
+              </div>
+              <div
+                className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Container"
+                id="node-2064_46"
+              >
+                <div
+                  className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                  data-name="Link"
+                  id="node-2064_47"
+                >
+                  <div
+                    className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
+                    id="node-2064_48"
+                  >
+                    <p className="block">
+                      求人掲載をお考えの企業様
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0 w-full"
+              id="node-2064_49"
+            >
+              <div
+                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Heading 4"
+                id="node-2064_50"
+              >
+                <div
+                  className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-semibold justify-center leading-[24px] relative shrink-0 text-[16px] text-gray-800 text-left w-full"
+                  id="node-2064_51"
+                >
+                  <p className="block">運営メディア</p>
+                </div>
+              </div>
+              <div
+                className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Container"
+                id="node-2064_52"
+              >
+                <div
+                  className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                  data-name="Link"
+                  id="node-2064_53"
+                >
+                  <div
+                    className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
+                    id="node-2064_54"
+                  >
+                    <p className="block">
+                      ライドジョブ
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="basis-0 box-border content-stretch flex flex-col gap-4 grow items-start justify-start min-h-px min-w-px p-0 relative self-stretch shrink-0"
+            data-name="Container"
+            id="node-2064_55"
+          >
+            <div
+              className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+              data-name="Heading 3"
+              id="node-2064_56"
+            >
+              <div
+                className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-semibold justify-center leading-[24px] relative shrink-0 text-[16px] text-gray-800 text-left w-full"
+                id="node-2064_57"
+              >
+                <p className="block">お困りの方はこちら</p>
+              </div>
+            </div>
+            <div
+              className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+              data-name="Link"
+              id="node-2064_58"
+            >
+              <div
+                className="box-border content-stretch flex flex-col h-10 items-start justify-start p-0 relative shrink-0"
+                data-name="Button:margin"
+                id="node-2064_59"
+              >
+                <div
+                  className="bg-[#2204db] box-border content-stretch flex flex-row h-10 items-center justify-center px-4 py-px relative rounded-lg shrink-0"
+                  data-name="Button"
+                  id="node-2064_60"
+                >
+                  <div
+                    className="box-border content-stretch flex flex-col items-center justify-start p-0 relative shrink-0"
+                    data-name="Container"
+                    id="node-2064_61"
+                  >
+                    <div
+                      className="flex flex-col font-['Inter:Semi_Bold',_'Noto_Sans_JP:Bold',_sans-serif] font-semibold justify-center leading-[21px] not-italic relative shrink-0 text-[#ffffff] text-[14px] text-center text-nowrap"
+                      id="node-2064_62"
+                    >
+                      <p className="block whitespace-pre">
+                        各種ご相談 お問い合わせ窓口
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
