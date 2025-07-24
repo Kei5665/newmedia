@@ -1,17 +1,17 @@
-const imgHero = "http://localhost:3845/assets/d9eec8b789d9485b0dbe7a65d99b129a924c2768.png";
-const imgRectangle119 = "http://localhost:3845/assets/5c42e1a7e90a396c05d4c01c3300398e84be1f1c.png";
-const imgCardBoxTopMain = "http://localhost:3845/assets/3cdc307a07710934a37a84c715cd05b1bdf84b68.png";
-const img1 = "http://localhost:3845/assets/63633fff2dcafea8e385efea23056a66ed31a877.png";
-const img2 = "http://localhost:3845/assets/93aaed91f02ca13f835566300cb1ac749d046b1b.png";
-const img3 = "http://localhost:3845/assets/b06ac78c9bf108d60fa572e4d006bd8af779aaca.png";
-const img4 = "http://localhost:3845/assets/d7f85ef6be52ad459d67d52875ed96b275e52a1f.png";
-const img5 = "http://localhost:3845/assets/a5e965a0b0fa94da234759e0ceaa86248762dec4.png";
-const img6 = "http://localhost:3845/assets/4685db1c09497b8f7d67e1da4126b98c818f2ca4.png";
-const imgTopH11 = "http://localhost:3845/assets/a1764feca684ea2f9d4083510d13a20ea775f309.png";
-const imgGroup1911 = "http://localhost:3845/assets/ef1531bf1b11a07375f7a8b1878cd62eba237da4.png";
-const imgImage96 = "http://localhost:3845/assets/087451e01f73ed4153c1c29b5199b2627d8c1c73.svg";
-const imgSubtract = "http://localhost:3845/assets/c9aa3d59b1e869ab3e9b899a2a60a6a51f3f1efb.svg";
-const imgGuidanceDownArrow = "http://localhost:3845/assets/4580cc35045d9fd3335764ac8a07a1000d56241b.svg";
+const imgHero = "/figma/hero-background.png";
+const imgRectangle119 = "/figma/interview-staff.png";
+const imgCardBoxTopMain = "/figma/pickup-card-bg.png";
+const img1 = "/figma/article-1.png";
+const img2 = "/figma/article-2.png";
+const img3 = "/figma/article-3.png";
+const img4 = "/figma/article-4.png";
+const img5 = "/figma/article-5.png";
+const img6 = "/figma/article-6.png";
+const imgTopH11 = "/figma/main-title.png";
+const imgGroup1911 = "/figma/center-illustration.png";
+const imgImage96 = "/figma/mask-shape.svg";
+const imgSubtract = "/figma/subtract-shape.svg";
+const imgGuidanceDownArrow = "/figma/down-arrow.svg";
 
 export default function NewHeroSection() {
   return (

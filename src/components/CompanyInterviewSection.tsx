@@ -265,8 +265,8 @@ export default function CompanyInterviewSection() {
               </div>
 
               {/* Button */}
-              <div className="flex flex-col gap-12 items-center justify-center shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)]">
-                <div className="bg-[#04acdb] flex flex-row gap-4 items-center justify-center pl-6 pr-4 py-4 rounded-[58px] border-[#333333] border-[1.5px]">
+              <div className="flex flex-col gap-12 items-center justify-center">
+                <div className="bg-[#04acdb] flex flex-row gap-4 items-center justify-center pl-6 pr-4 py-4 rounded-[58px] border-[#333333] shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)] border-[1.5px]">
                   <span
                     className="text-white font-medium text-center text-nowrap tracking-[0.36px]"
                     style={{
@@ -306,30 +306,23 @@ export default function CompanyInterviewSection() {
             <div className="absolute left-[-38px] top-[358px]">
               <div className="flex h-[180.083px] items-center justify-center w-[257.109px]">
                 <div className="rotate-[350.794deg]">
-                  <div className="bg-[#ffc422] flex items-center justify-center p-6 rounded-[32px]">
+                  <div className="relative">
+                    <img
+                      src="/figma/hukidasi.png"
+                      alt="働くイメージガンガン見せる！"
+                      className="block max-w-none"
+                    />
                     <div
-                      className="text-white text-center text-nowrap whitespace-pre leading-none"
+                      className="absolute inset-0 flex items-center justify-center text-white text-center text-nowrap whitespace-pre leading-none"
                       style={{
                         fontSize: '32px',
                         fontFamily: 'Dela Gothic One, sans-serif',
                         textShadow: 'rgba(51,51,51,0.45) 2px 2px 0px'
                       }}
                     >
-                      <p className="block mb-0">働くイメージ</p>
-                      <p className="block mb-0">ガンガン</p>
-                      <p className="block">見せる！</p>
+                      <div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute flex h-[23.902px] items-center justify-center left-[103px] top-[160px] w-[28.865px]">
-                <div className="rotate-[350.794deg]">
-                  <div className="h-5 relative w-[26px]">
-                    <img
-                      alt=""
-                      className="block max-w-none size-full"
-                      src={imgVector2}
-                    />
                   </div>
                 </div>
               </div>

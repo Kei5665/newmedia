@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import NewHeroSection from "@/components/NewHeroSection";
-import HeroSection from "@/components/HeroSection";
 import NewsSection2 from "@/components/NewsSection2";
 import CompanyInterviewSection from "@/components/CompanyInterviewSection";
 import CategorySection from "@/components/CategorySection";
@@ -15,8 +14,6 @@ export default function Home() {
       <Header />
       <Breadcrumbs />
       <NewHeroSection />
-      <HeroSection />
-      <NewsSection2 />
       <CompanyInterviewSection />
       <CategorySection />
       <JobSection />
