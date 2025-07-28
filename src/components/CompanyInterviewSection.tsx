@@ -1,6 +1,7 @@
 import React from 'react';
-import { getBlogsByCategory, getLatestBlogs } from '@/lib/microcms';
 import { Blog } from '@/types/microcms';
+import { fetchBlogsWithFallback } from '@/lib/blogHelpers';
+import { CATEGORY_IDS } from '@/constants/categories';
 
 const imgSection2CompanyInterview = "/figma/company-interview-bg.png";
 const imgHeading021 = "/figma/heading-02.png";
@@ -190,46 +191,23 @@ function SmallInterviewCard({ blog }: { blog: Blog }) {
 }
 
 /**
- * データ読み込み中プレースホルダー
+ * データがない場合のプレースホルダー
  */
-function LoadingPlaceholder() {
+function EmptyState() {
   return (
     <div className="flex flex-col gap-6 items-start justify-start w-full">
       <div className="flex flex-row gap-6 items-start justify-start w-full">
-        <div className="flex-1 bg-gray-200 rounded-[20px] border-[#333333] border-[1.2px] p-4 animate-pulse">
-          <div className="h-[235px] bg-gray-300 rounded-[10px] mb-4"></div>
-          <div className="space-y-3">
-            <div className="h-4 bg-gray-300 rounded w-1/4"></div>
-            <div className="h-6 bg-gray-300 rounded w-3/4"></div>
-            <div className="space-y-2">
-              <div className="h-3 bg-gray-300 rounded"></div>
-              <div className="h-3 bg-gray-300 rounded"></div>
-            </div>
+        {Array.from({ length: 2 }).map((_, index) => (
+          <div key={index} className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-50">
+            <div className="h-[235px] bg-gray-200 rounded-[10px] mb-4"></div>
+            <div className="text-center text-gray-500">記事を準備中...</div>
           </div>
-        </div>
-        <div className="flex-1 bg-gray-200 rounded-[20px] border-[#333333] border-[1.2px] p-4 animate-pulse">
-          <div className="h-[235px] bg-gray-300 rounded-[10px] mb-4"></div>
-          <div className="space-y-3">
-            <div className="h-4 bg-gray-300 rounded w-1/4"></div>
-            <div className="h-6 bg-gray-300 rounded w-3/4"></div>
-            <div className="space-y-2">
-              <div className="h-3 bg-gray-300 rounded"></div>
-              <div className="h-3 bg-gray-300 rounded"></div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
       <div className="flex flex-row gap-6 items-start justify-start w-full">
         {Array.from({ length: 4 }).map((_, index) => (
-          <div key={index} className="flex-1 bg-gray-200 rounded-[20px] border-[#333333] border-[1.2px] p-4 animate-pulse">
-            <div className="space-y-3">
-              <div className="h-4 bg-gray-300 rounded w-1/4"></div>
-              <div className="h-5 bg-gray-300 rounded w-2/3"></div>
-              <div className="space-y-2">
-                <div className="h-3 bg-gray-300 rounded"></div>
-                <div className="h-3 bg-gray-300 rounded w-3/4"></div>
-              </div>
-            </div>
+          <div key={index} className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-30">
+            <div className="text-center text-gray-500 text-sm">記事を準備中...</div>
           </div>
         ))}
       </div>
@@ -238,60 +216,13 @@ function LoadingPlaceholder() {
 }
 
 /**
- * 企業インタビューセクション
+ * 企業インタビューセクション - 企業取材記事を動的表示
  */
 export default async function CompanyInterviewSection() {
-  let blogs: Blog[] = [];
-
-  try {
-    console.log('🏢 CompanyInterviewSection: 企業取材データ取得開始');
-    
-    // デバッグ用：全ブログを取得してカテゴリ情報を確認
-    console.log('🔍 デバッグ: 全ブログのカテゴリ情報を確認中...');
-    const allBlogsResponse = await getLatestBlogs(10);
-    console.log('📋 全ブログ数:', allBlogsResponse.contents?.length || 0);
-    allBlogsResponse.contents?.forEach((blog, index) => {
-      console.log(`📝 ブログ ${index + 1}:`, {
-        id: blog.id,
-        title: blog.title,
-        category: blog.category,
-        categorySlug: blog.category?.slug,
-        hasCategory: !!blog.category
-      });
-    });
-
-    // 企業取材カテゴリのブログを取得
-    const response = await getBlogsByCategory('company-interview', 6);
-    blogs = response.contents || [];
-    
-    // 一時的対処：カテゴリフィルタが効かない場合は全ブログを表示
-    if (blogs.length === 0) {
-      console.log('⚠️ 企業取材カテゴリで0件のため、全ブログを取得します');
-      const fallbackResponse = await getLatestBlogs(6);
-      blogs = fallbackResponse.contents || [];
-      console.log('🔄 フォールバック: 全ブログから', blogs.length, '件を表示');
-    }
-    
-    console.log('✅ 企業取材データ取得完了:', blogs.length, '件');
-    console.log('📄 取得した記事:', blogs.map(blog => ({
-      id: blog.id,
-      title: blog.title,
-      category: blog.category?.name,
-      categorySlug: blog.category?.slug
-    })));
-  } catch (error) {
-    console.error('❌ 企業インタビューデータの取得に失敗しました:', error);
-  }
-
-  // 上段用（大カード2枚）と下段用（小カード4枚）に分割
+  const blogs = await fetchBlogsWithFallback(CATEGORY_IDS.COMPANY_INTERVIEW, 6);
+  
   const largeCardBlogs = blogs.slice(0, 2);
   const smallCardBlogs = blogs.slice(2, 6);
-
-  console.log('📊 CompanyInterviewSection 表示データ:', {
-    total: blogs.length,
-    largeCards: largeCardBlogs.length,
-    smallCards: smallCardBlogs.length,
-  });
 
   return (
     <div
@@ -310,52 +241,34 @@ export default async function CompanyInterviewSection() {
             {/* 記事カード一覧 */}
             <div className="flex flex-col gap-10 items-end justify-end flex-1">
               {blogs.length === 0 ? (
-                <>
-                  <LoadingPlaceholder />
-                  {/* デバッグ情報表示 */}
-                  <div className="absolute top-4 right-4 bg-red-500 text-white p-2 rounded text-sm z-50 max-w-xs">
-                    <div>⚠️ 企業取材記事が見つかりません</div>
-                    <div className="text-xs mt-1">
-                      取得件数: {blogs.length}件<br/>
-                      ブラウザのConsoleを確認してください
-                    </div>
-                  </div>
-                </>
+                <EmptyState />
               ) : (
-                <>
-                  <div className="flex flex-col gap-6 items-start justify-start w-full">
-                    {/* 上段 - 大カード2枚 */}
-                    <div className="flex flex-row gap-6 items-start justify-start w-full">
-                      {largeCardBlogs.map((blog) => (
-                        <LargeInterviewCard key={blog.id} blog={blog} />
-                      ))}
-                      {/* 大カードが1枚しかない場合のプレースホルダー */}
-                      {largeCardBlogs.length === 1 && (
-                        <div className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-50">
-                          <div className="h-[235px] bg-gray-200 rounded-[10px] mb-4"></div>
-                          <div className="text-center text-gray-500">記事を読み込み中...</div>
-                        </div>
-                      )}
-                    </div>
+                <div className="flex flex-col gap-6 items-start justify-start w-full">
+                  {/* 上段 - 大カード2枚 */}
+                  <div className="flex flex-row gap-6 items-start justify-start w-full">
+                    {largeCardBlogs.map((blog) => (
+                      <LargeInterviewCard key={blog.id} blog={blog} />
+                    ))}
+                    {largeCardBlogs.length === 1 && (
+                      <div className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-50">
+                        <div className="h-[235px] bg-gray-200 rounded-[10px] mb-4"></div>
+                        <div className="text-center text-gray-500">記事を準備中...</div>
+                      </div>
+                    )}
+                  </div>
 
-                    {/* 下段 - 小カード4枚 */}
-                    <div className="flex flex-row gap-6 items-start justify-start w-full">
-                      {smallCardBlogs.map((blog) => (
-                        <SmallInterviewCard key={blog.id} blog={blog} />
-                      ))}
-                      {/* 小カードが不足している場合のプレースホルダー */}
-                      {Array.from({ length: Math.max(0, 4 - smallCardBlogs.length) }).map((_, index) => (
-                        <div key={`placeholder-${index}`} className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-30">
-                          <div className="text-center text-gray-500 text-sm">記事を読み込み中...</div>
-                        </div>
-                      ))}
-                    </div>
+                  {/* 下段 - 小カード4枚 */}
+                  <div className="flex flex-row gap-6 items-start justify-start w-full">
+                    {smallCardBlogs.map((blog) => (
+                      <SmallInterviewCard key={blog.id} blog={blog} />
+                    ))}
+                    {Array.from({ length: Math.max(0, 4 - smallCardBlogs.length) }).map((_, index) => (
+                      <div key={`placeholder-${index}`} className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-30">
+                        <div className="text-center text-gray-500 text-sm">記事を準備中...</div>
+                      </div>
+                    ))}
                   </div>
-                  {/* 成功時のデバッグ情報 */}
-                  <div className="absolute top-4 right-4 bg-green-500 text-white p-2 rounded text-sm z-50">
-                    ✅ 企業取材記事: {blogs.length}件取得
-                  </div>
-                </>
+                </div>
               )}
 
               {/* もっと見るボタン */}

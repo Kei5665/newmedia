@@ -28,20 +28,16 @@ export async function getLatestBlogs(limit: number = 6): Promise<BlogsResponse> 
 
 /**
  * 特定カテゴリのブログを取得
- * @param categorySlug カテゴリのスラッグ
+ * @param categoryId カテゴリのコンテンツID（例: "2"）
  * @param limit 取得件数（デフォルト: 6）
  * @returns BlogsResponse
  */
 export async function getBlogsByCategory(
-  categorySlug: string,
+  categoryId: string,
   limit: number = 6
 ): Promise<BlogsResponse> {
-  const url = `${BASE_URL}/blogs?filters=category.slug[equals]${categorySlug}&limit=${limit}&orders=-publishedAt`;
-
-  console.log(`🔍 Fetching blogs by category: ${categorySlug}`);
-  console.log(`🌐 URL: ${url}`);
-  console.log(`🔑 API Key exists: ${!!API_KEY}`);
-  console.log(`🌍 Service Domain: ${SERVICE_DOMAIN}`);
+  const filters = encodeURIComponent(`category[equals]${categoryId}`);
+  const url = `${BASE_URL}/blogs?filters=${filters}&limit=${limit}&orders=-publishedAt`;
 
   const res = await fetch(url, {
     headers: {
@@ -50,30 +46,9 @@ export async function getBlogsByCategory(
     cache: "no-store",
   });
 
-  console.log(`📡 Response status: ${res.status}`);
-  console.log(`📡 Response ok: ${res.ok}`);
-
   if (!res.ok) {
-    const errorText = await res.text();
-    console.error(`❌ API Error for category ${categorySlug}:`, errorText);
-    throw new Error(`Failed to fetch blogs by category: ${res.status} - ${errorText}`);
+    throw new Error(`Failed to fetch blogs by category: ${res.status}`);
   }
 
-  const data = await res.json();
-  console.log(`📦 Received data for category ${categorySlug}:`, data);
-  console.log(`📊 Number of blogs found: ${data.contents?.length || 0}`);
-  
-  // 各ブログの詳細をログ出力
-  data.contents?.forEach((blog: any, index: number) => {
-    console.log(`📝 Blog ${index + 1} (${categorySlug}):`, {
-      id: blog.id,
-      title: blog.title,
-      category: blog.category,
-      categorySlug: blog.category?.slug,
-      hasEyecatch: !!blog.eyecatch,
-      publishedAt: blog.publishedAt
-    });
-  });
-
-  return data;
+  return res.json();
 } 

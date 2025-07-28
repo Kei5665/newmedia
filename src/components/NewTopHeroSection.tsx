@@ -1,5 +1,6 @@
-import { getLatestBlogs } from "@/lib/microcms";
 import { Blog } from "@/types/microcms";
+import { fetchBlogsWithFallback } from "@/lib/blogHelpers";
+import { CATEGORY_IDS } from "@/constants/categories";
 
 const imgHero = "/figma/hero-bg.png";
 const imgTopH11 = "/figma/title-logo.png";
@@ -75,15 +76,8 @@ function EmptyPlaceholder() {
  * ヒーローセクション - トップページのメインビジュアル
  */
 export default async function NewTopHeroSection() {
-  let blogs: Blog[] = [];
-
-  try {
-    const response = await getLatestBlogs(6);
-    blogs = response.contents || [];
-  } catch (error) {
-    console.error("ブログデータの取得に失敗しました:", error);
-  }
-
+  const blogs = await fetchBlogsWithFallback(CATEGORY_IDS.PICKUP, 6);
+  
   const leftColumn = blogs.slice(0, 3);
   const rightColumn = blogs.slice(3, 6);
 
