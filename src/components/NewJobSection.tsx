@@ -129,7 +129,7 @@ export default async function NewJobSection() {
 
   return (
     <div
-      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-0 py-20 relative size-full"
+      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-0 py-20 relative size-full"
       data-name="section4 job"
       id="node-2161_192"
       style={{ backgroundImage: `url('${imgSection4Job}')` }}
@@ -139,25 +139,25 @@ export default async function NewJobSection() {
         id="node-2161_343"
       >
         <div
-          className="box-border content-stretch flex flex-col gap-2.5 items-start justify-start p-0 relative shrink-0"
+          className="box-border content-stretch flex flex-col gap-2.5 items-center justify-start p-0 relative shrink-0"
           data-name="heading04"
           id="node-2161_312"
         >
           <div
-            className="bg-center bg-cover bg-no-repeat h-[162px] shrink-0 w-[383px]"
+            className="bg-center bg-cover bg-no-repeat h-[120px] md:h-[162px] shrink-0 w-[280px] md:w-[383px]"
             data-name="heading04 2"
             id="node-2161_347"
             style={{ backgroundImage: `url('${imgHeading042}')` }}
           />
         </div>
         <div
-          className="box-border content-stretch flex flex-col gap-10 items-center justify-center px-10 py-0 relative shrink-0 w-full"
+          className="box-border content-stretch flex flex-col gap-10 items-center justify-center px-4 md:px-10 py-0 relative shrink-0 w-full"
           data-name="cardA"
           id="node-2161_193"
         >
           {jobs.length > 0 ? (
             <div className="w-full max-w-7xl">
-              <div className="flex flex-row gap-6 w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
                 {jobs.slice(0, 4).map((job) => (
                   <JobCard key={job.id} job={job} />
                 ))}
@@ -177,13 +177,13 @@ export default async function NewJobSection() {
           id="node-2161_306"
         >
           <div
-            className="shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)] bg-[#04acdb] box-border content-stretch flex flex-row gap-4 items-center justify-center pl-6 pr-4 py-4 relative rounded-[58px] shrink-0"
+            className="shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)] bg-[#04acdb] box-border content-stretch flex flex-row gap-4 items-center justify-center pl-4 md:pl-6 pr-3 md:pr-4 py-3 md:py-4 relative rounded-[58px] shrink-0"
             data-name="Button"
             id="node-2161_307"
           >
             <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[58px]" />
             <div
-              className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#ffffff] text-[18px] text-center text-nowrap tracking-[0.36px]"
+              className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#ffffff] text-[16px] md:text-[18px] text-center text-nowrap tracking-[0.36px]"
               id="node-2161_308"
             >
               <p className="adjustLetterSpacing block leading-[normal] whitespace-pre">

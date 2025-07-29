@@ -27,7 +27,7 @@ function ClickableMemberIcon({
 }) {
   return (
     <div
-      className={`bg-center bg-cover bg-no-repeat h-[117px] shrink-0 w-[93px] rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ${
+      className={`bg-center bg-cover bg-no-repeat h-[70px] md:h-[90px] flex-1 max-w-[70px] md:max-w-[90px] rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ${
         isSelected ? 'ring-4 ring-blue-500 scale-105' : 'hover:scale-105 hover:ring-2 hover:ring-blue-300'
       }`}
       style={{
@@ -44,48 +44,51 @@ function ClickableMemberIcon({
  */
 function MemberDetail({ member }: { member: Member }) {
   return (
-    <div className="box-border content-stretch flex flex-row gap-10 items-start justify-center p-0 relative shrink-0">
+    <div className="box-border content-stretch flex flex-col gap-4 items-center justify-start p-0 relative shrink-0 w-full max-w-full overflow-hidden">
       {/* メンバー画像 */}
       <div
-        className="bg-center bg-cover bg-no-repeat h-[316px] shrink-0 w-[265px] rounded-lg overflow-hidden"
+        className="bg-center bg-cover bg-no-repeat h-[200px] md:h-[260px] shrink-0 w-[200px] md:w-[260px] rounded-lg overflow-hidden"
         style={{ 
           backgroundImage: `url('${member.icon?.url || imgGroup2071}')` 
         }}
       />
       
       {/* メンバー情報 */}
-      <div className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0">
-        <div className="box-border content-stretch flex flex-col items-start justify-start leading-[0] p-0 relative shrink-0 text-left text-nowrap">
-          <div className="flex flex-col font-['Dela_Gothic_One:Regular',_sans-serif] justify-center not-italic relative shrink-0 text-[#101828] text-[32px]">
-            <p className="block leading-[normal] text-nowrap whitespace-pre">
+      <div className="box-border content-stretch flex flex-col gap-3 items-center justify-start p-0 relative shrink-0 w-full max-w-full">
+        {/* 名前部分 */}
+        <div className="box-border content-stretch flex flex-col items-center justify-start leading-[0] p-0 relative shrink-0 text-center w-full">
+          <div className="flex flex-col font-['Dela_Gothic_One:Regular',_sans-serif] justify-center not-italic relative shrink-0 text-[#101828] text-[20px] md:text-[24px]">
+            <p className="block leading-[normal] break-words">
               {member.name || 'Unknown Member'}
             </p>
           </div>
-          <div className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center relative shrink-0 text-[#2204db] text-[24px]">
-            <p className="block leading-[normal] text-nowrap whitespace-pre">
+          <div className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center relative shrink-0 text-[#2204db] text-[16px] md:text-[18px]">
+            <p className="block leading-[normal] break-words">
               {member.name || '名前未設定'}
             </p>
           </div>
         </div>
         
-        <div className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0 w-full">
-          <div className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium h-[271px] justify-start leading-[1.8] relative shrink-0 text-[16px] text-justify text-neutral-950 w-[250px] overflow-y-auto">
-            <p className="block">
+        {/* テキスト部分 */}
+        <div className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0 w-full max-w-full">
+          <div className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-start leading-[1.6] relative shrink-0 text-[12px] md:text-[14px] text-left text-neutral-950 w-full max-w-full px-2">
+            <p className="block break-words">
               {member.text || 'メンバーの説明文が設定されていません。'}
             </p>
           </div>
         </div>
         
-        <div className="bg-[#06bef1] box-border content-stretch flex flex-row gap-2 items-center justify-center pl-6 pr-2 py-2 relative rounded-[3.35544e+07px] shrink-0 cursor-pointer hover:bg-[#05a5d6] transition-colors">
-          <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[3.35544e+07px] shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)]" />
-          <div className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#ffffff] text-[16px] text-center text-nowrap">
+        {/* ボタン部分 */}
+        <div className="bg-[#06bef1] box-border content-stretch flex flex-row gap-2 items-center justify-center pl-4 pr-2 py-2 relative rounded-[40px] shrink-0 cursor-pointer hover:bg-[#05a5d6] transition-colors">
+          <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[40px] shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)]" />
+          <div className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#ffffff] text-[14px] text-center text-nowrap">
             <p className="block leading-[normal] whitespace-pre">
               記事を読む
             </p>
           </div>
-          <div className="flex h-[31.984px] items-center justify-center relative shrink-0 w-[32px]">
+          <div className="flex h-[28px] items-center justify-center relative shrink-0 w-[28px]">
             <div className="flex-none rotate-[270deg]">
-              <div className="relative size-8">
+              <div className="relative size-6">
                 <img
                   alt="Arrow icon"
                   className="block max-w-none size-full"
@@ -127,9 +130,9 @@ export default function MemberInteractiveSection({ members }: MemberInteractiveS
   );
 
   return (
-    <>
+    <div className="w-full">
       {/* メンバーアイコン一覧 */}
-      <div className="box-border content-stretch flex flex-row gap-8 items-start justify-start p-0 relative shrink-0">
+      <div className="box-border content-stretch flex flex-row gap-2 md:gap-4 items-start justify-center p-0 relative shrink-0 mb-6 md:mb-8 w-full">
         {displayMembers.map((member, index) => (
           <ClickableMemberIcon 
             key={member.id} 
@@ -143,6 +146,6 @@ export default function MemberInteractiveSection({ members }: MemberInteractiveS
 
       {/* 選択されたメンバーの詳細表示 */}
       <MemberDetail member={selectedMember} />
-    </>
+    </div>
   );
 } 

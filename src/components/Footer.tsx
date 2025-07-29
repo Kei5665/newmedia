@@ -271,44 +271,12 @@ export default function Footer() {
               data-name="Heading 3"
               id="node-2064_56"
             >
-              <div
-                className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-semibold justify-center leading-[24px] relative shrink-0 text-[16px] text-gray-800 text-left w-full"
-                id="node-2064_57"
-              >
-                <p className="block">お困りの方はこちら</p>
-              </div>
             </div>
             <div
               className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
               data-name="Link"
               id="node-2064_58"
             >
-              <div
-                className="box-border content-stretch flex flex-col h-10 items-start justify-start p-0 relative shrink-0"
-                data-name="Button:margin"
-                id="node-2064_59"
-              >
-                <div
-                  className="bg-[#2204db] box-border content-stretch flex flex-row h-10 items-center justify-center px-4 py-px relative rounded-lg shrink-0"
-                  data-name="Button"
-                  id="node-2064_60"
-                >
-                  <div
-                    className="box-border content-stretch flex flex-col items-center justify-start p-0 relative shrink-0"
-                    data-name="Container"
-                    id="node-2064_61"
-                  >
-                    <div
-                      className="flex flex-col font-['Inter:Semi_Bold',_'Noto_Sans_JP:Bold',_sans-serif] font-semibold justify-center leading-[21px] not-italic relative shrink-0 text-[#ffffff] text-[14px] text-center text-nowrap"
-                      id="node-2064_62"
-                    >
-                      <p className="block whitespace-pre">
-                        各種ご相談 お問い合わせ窓口
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -11,7 +11,6 @@ const imgImage111 = "/figma/video-thumbnail-1.png";
 const imgImage112 = "/figma/video-thumbnail-2.png";
 const imgImage113 = "/figma/video-thumbnail-3.png";
 const imgHeading051 = "/figma/troubled-you-heading.png";
-const imgGroup4 = "/figma/interview-arrow-icon.svg";
 const imgGroup171 = "/figma/window-icon.svg";
 const imgGroup3 = "/figma/arrow-icon.svg";
 
@@ -27,19 +26,19 @@ export default async function NewInterviewSection() {
 
   return (
     <div
-      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-9 py-[29px] relative size-full"
+      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-9 py-[29px] relative size-full"
       data-name="面談セクション"
       id="node-2163_546"
       style={{ backgroundImage: `url('${img}')` }}
     >
       <div
-        className="box-border content-stretch flex flex-col gap-2.5 items-center justify-center px-[432px] py-0 relative rounded-tl-[80px] shrink-0 w-full"
+        className="box-border content-stretch flex flex-col gap-2.5 items-center justify-center px-4 md:px-8 lg:px-[432px] py-0 relative rounded-tl-[80px] shrink-0 w-full"
         data-name="icon bg_pc"
         id="node-2163_847"
       >
         {/* Section 1: 面談担当者 (Interview Staff) */}
         <div
-          className="bg-[#fdeab1] box-border content-stretch flex flex-col gap-6 items-center justify-start px-12 py-14 relative rounded-[60px] shrink-0 w-[700px]"
+          className="bg-[#fdeab1] box-border content-stretch flex flex-col gap-6 items-center justify-start px-6 md:px-12 py-8 md:py-14 relative rounded-[60px] shrink-0 w-full max-w-[700px]"
           id="node-2163_886"
         >
           <div
@@ -48,32 +47,34 @@ export default async function NewInterviewSection() {
             id="node-2163_887"
           >
             <div
-              className="bg-center bg-cover bg-no-repeat h-[308px] shrink-0 w-[408px]"
+              className="bg-center bg-cover bg-no-repeat h-[200px] md:h-[308px] shrink-0 w-[280px] md:w-[408px]"
               data-name="Frame 224 1"
               id="node-2163_888"
               style={{ backgroundImage: `url('${imgFrame2241}')` }}
             />
           </div>
           <div
-            className="bg-[#ffffff] box-border content-stretch flex flex-row gap-4 items-center justify-start px-6 py-10 relative rounded-[30px] shrink-0 w-full"
+            className="bg-[#ffffff] box-border content-stretch flex flex-row gap-4 items-center justify-start px-4 md:px-6 py-6 md:py-10 relative rounded-[30px] shrink-0 w-full"
             id="node-2163_889"
           >
             <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[30px]" />
             <div
-              className="box-border content-stretch flex flex-col gap-[71px] items-center justify-center p-0 relative shrink-0"
+              className="box-border content-stretch flex flex-col gap-8 md:gap-[71px] items-center justify-center p-0 relative shrink-0 w-full"
               id="node-2163_892"
             >
               <div
-                className="box-border content-stretch flex flex-col gap-8 items-center justify-start p-0 relative shrink-0"
+                className="box-border content-stretch flex flex-col gap-6 md:gap-8 items-center justify-start p-0 relative shrink-0 w-full"
                 id="node-2163_893"
               >
                 <div
-                  className="bg-center bg-cover bg-no-repeat h-[45px] shrink-0 w-[197px]"
+                  className="bg-center bg-cover bg-no-repeat h-[35px] md:h-[45px] shrink-0 w-[150px] md:w-[197px]"
                   data-name="Frame 215 1"
                   id="node-2163_894"
                   style={{ backgroundImage: `url('${imgFrame2151}')` }}
                 />
-                <MemberInteractiveSection members={members} />
+                <div className="w-full">
+                  <MemberInteractiveSection members={members} />
+                </div>
               </div>
 
             </div>
@@ -82,11 +83,11 @@ export default async function NewInterviewSection() {
 
         {/* Section 2: 面談者の動画 (Interview Videos) */}
         <div
-          className="bg-[#fdeab1] box-border content-stretch flex flex-col gap-6 items-center justify-start px-12 py-14 relative rounded-[60px] shrink-0 w-[700px]"
+          className="bg-[#fdeab1] box-border content-stretch flex flex-col gap-6 items-center justify-start px-6 md:px-12 py-8 md:py-14 relative rounded-[60px] shrink-0 w-full max-w-[700px]"
           id="node-2166_996"
         >
           <div
-            className="bg-[#ffffff] box-border content-stretch flex flex-row gap-4 items-center justify-center px-6 py-10 relative rounded-[30px] shrink-0 w-full"
+            className="bg-[#ffffff] box-border content-stretch flex flex-row gap-4 items-center justify-center px-4 md:px-6 py-6 md:py-10 relative rounded-[30px] shrink-0 w-full"
             id="node-2166_999"
           >
             <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[30px]" />
@@ -95,7 +96,7 @@ export default async function NewInterviewSection() {
               id="node-2166_1000"
             >
               <div
-                className="bg-center bg-cover bg-no-repeat h-11 shrink-0 w-[229px]"
+                className="bg-center bg-cover bg-no-repeat h-8 md:h-11 shrink-0 w-[180px] md:w-[229px]"
                 data-name="Frame 214 1"
                 id="node-2163_513"
                 style={{ backgroundImage: `url('${imgFrame2141}')` }}
@@ -105,10 +106,10 @@ export default async function NewInterviewSection() {
                 id="node-2163_515"
               >
                 <div
-                  className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[16px] text-center text-gray-800 text-nowrap tracking-[0.32px]"
+                  className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] md:text-[16px] text-center text-gray-800 tracking-[0.32px]"
                   id="node-2163_516"
                 >
-                  <p className="adjustLetterSpacing block leading-[1.6] whitespace-pre">
+                  <p className="adjustLetterSpacing block leading-[1.6] whitespace-pre-line">
                     あなたのお仕事探し
                     <br />
                     貴方に1番に寄り添う転職エージェント✨
@@ -118,36 +119,36 @@ export default async function NewInterviewSection() {
                 </div>
               </div>
               <div
-                className="box-border content-stretch flex flex-row gap-2 h-64 items-center justify-start p-0 relative shrink-0 w-[448px]"
+                className="box-border content-stretch flex flex-row gap-1 md:gap-2 h-32 md:h-64 items-center justify-center p-0 relative shrink-0 w-full"
                 id="node-2163_518"
               >
                 <div
-                  className="aspect-[405/720] basis-0 bg-center bg-cover bg-no-repeat grow min-h-px min-w-px relative rounded-[10px] shrink-0"
+                  className="flex-1 bg-center bg-cover bg-no-repeat h-full relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]"
                   data-name="image 111"
                   id="node-2163_519"
                   style={{ backgroundImage: `url('${imgImage111}')` }}
                 >
-                  <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[10px]" />
+                  <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[8px] md:rounded-[10px]" />
                 </div>
                 <div
-                  className="aspect-[405/720] basis-0 bg-center bg-cover bg-no-repeat grow min-h-px min-w-px relative rounded-[10px] shrink-0"
+                  className="flex-1 bg-center bg-cover bg-no-repeat h-full relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]"
                   data-name="image 112"
                   id="node-2163_520"
                   style={{ backgroundImage: `url('${imgImage112}')` }}
                 >
-                  <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[10px]" />
+                  <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[8px] md:rounded-[10px]" />
                 </div>
                 <div
-                  className="aspect-[405/720] basis-0 bg-center bg-cover bg-no-repeat grow min-h-px min-w-px relative rounded-[10px] shrink-0"
+                  className="flex-1 bg-center bg-cover bg-no-repeat h-full relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]"
                   data-name="image 113"
                   id="node-2163_521"
                   style={{ backgroundImage: `url('${imgImage113}')` }}
                 >
-                  <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[10px]" />
+                  <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[8px] md:rounded-[10px]" />
                 </div>
               </div>
               <div
-                className="bg-[#19bbfb] box-border content-stretch flex flex-col gap-3.5 items-center justify-center pb-10 pt-8 px-8 relative rounded-[20px] shrink-0 w-[464px]"
+                className="bg-[#19bbfb] box-border content-stretch flex flex-col gap-3.5 items-center justify-center pb-6 md:pb-10 pt-6 md:pt-8 px-4 md:px-8 relative rounded-[20px] shrink-0 w-full"
                 data-name="Button"
                 id="node-2163_522"
               >
@@ -157,40 +158,18 @@ export default async function NewInterviewSection() {
                   id="node-2163_523"
                 >
                   <div
-                    className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[0px] text-center text-nowrap"
+                    className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[0px] text-center"
                     id="node-2163_524"
                   >
-                    <p className="leading-none whitespace-pre">
-                      <span className="text-[34px]">{`RIDE JOB `}</span>
-                      <span className="text-[32px]">チャンネル</span>
+                    <p className="leading-none">
+                      <span className="text-[24px] md:text-[34px]">{`RIDE JOB `}</span>
+                      <span className="text-[22px] md:text-[32px]">チャンネル</span>
                     </p>
                   </div>
                   <div
                     className="box-border content-stretch flex flex-row gap-4 items-center justify-center p-0 relative shrink-0"
                     id="node-2163_525"
                   >
-                    <div
-                      className="bg-gray-800 box-border content-stretch flex flex-row items-center justify-between p-[10px] relative rounded-[23.5px] shrink-0 size-10"
-                      id="node-2163_526"
-                    >
-                      <div
-                        className="overflow-clip relative shrink-0 size-4"
-                        data-name="qlementine-icons:windows-unmaximize-16"
-                        id="node-2163_527"
-                      >
-                        <div
-                          className="absolute bottom-0 left-0 right-[-0.031%] top-0"
-                          id="node-2163_528"
-                        >
-                          <img
-                            alt="Window icon"
-                            className="block max-w-none size-full"
-                            loading="lazy"
-                            src={imgGroup171}
-                          />
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -200,11 +179,11 @@ export default async function NewInterviewSection() {
 
         {/* Section 3: 困ったあなたへ (For Those in Need) */}
         <div
-          className="bg-[#fdeab1] box-border content-stretch flex flex-col gap-6 items-center justify-start px-12 py-14 relative rounded-[60px] shrink-0 w-[700px]"
+          className="bg-[#fdeab1] box-border content-stretch flex flex-col gap-6 items-center justify-start px-6 md:px-12 py-8 md:py-14 relative rounded-[60px] shrink-0 w-full max-w-[700px]"
           id="node-2166_1042"
         >
           <div
-            className="bg-center bg-cover bg-no-repeat h-[187px] shrink-0 w-[346px]"
+            className="bg-center bg-cover bg-no-repeat h-[140px] md:h-[187px] shrink-0 w-[260px] md:w-[346px]"
             data-name="heading05 1"
             id="node-2163_412"
             style={{ backgroundImage: `url('${imgHeading051}')` }}
@@ -230,7 +209,7 @@ export default async function NewInterviewSection() {
                     id="node-2163_419"
                   >
                     <div
-                      className="flex flex-col font-['Dela_Gothic_One:Regular',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[32px] text-gray-800 text-left text-nowrap tracking-[0.64px]"
+                      className="flex flex-col font-['Dela_Gothic_One:Regular',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[24px] md:text-[32px] text-gray-800 text-center tracking-[0.64px]"
                       id="node-2163_420"
                     >
                       <p className="adjustLetterSpacing block leading-[1.1] whitespace-pre">
@@ -246,10 +225,10 @@ export default async function NewInterviewSection() {
                         id="node-2163_422"
                       >
                         <div
-                          className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[16px] text-center text-nowrap"
+                          className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[14px] md:text-[16px] text-center"
                           id="node-2163_423"
                         >
-                          <p className="block leading-[1.6] whitespace-pre">
+                          <p className="block leading-[1.6] whitespace-pre-line">
                             未経験でも安心。面接対策や
                             <br />
                             {` 働き方の相談まで丁寧に対応します。`}
@@ -261,7 +240,7 @@ export default async function NewInterviewSection() {
                 </div>
               </div>
               <div
-                className="bg-[#19bbfb] box-border content-stretch flex flex-col gap-3.5 items-center justify-center order-1 pb-[30px] pt-6 px-12 relative rounded-2xl shrink-0 w-full"
+                className="bg-[#19bbfb] box-border content-stretch flex flex-col gap-3.5 items-center justify-center order-1 pb-6 md:pb-[30px] pt-4 md:pt-6 px-6 md:px-12 relative rounded-2xl shrink-0 w-full"
                 data-name="Button"
                 id="node-2163_424"
               >
@@ -271,7 +250,7 @@ export default async function NewInterviewSection() {
                   id="node-2163_425"
                 >
                   <div
-                    className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[32px] text-center text-nowrap"
+                    className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[24px] md:text-[32px] text-center text-nowrap"
                     id="node-2163_426"
                   >
                     <p className="block leading-none whitespace-pre">
@@ -316,7 +295,7 @@ export default async function NewInterviewSection() {
                     id="node-2163_434"
                   >
                     <div
-                      className="flex flex-col font-['Dela_Gothic_One:Regular',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[32px] text-center text-gray-800 text-nowrap tracking-[0.64px]"
+                      className="flex flex-col font-['Dela_Gothic_One:Regular',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[24px] md:text-[32px] text-center text-gray-800 text-nowrap tracking-[0.64px]"
                       id="node-2163_435"
                     >
                       <p className="adjustLetterSpacing block leading-[1.1] whitespace-pre">
@@ -332,7 +311,7 @@ export default async function NewInterviewSection() {
                         id="node-2163_437"
                       >
                         <div
-                          className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[1.6] relative shrink-0 text-[#333333] text-[16px] text-center text-nowrap whitespace-pre"
+                          className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[1.6] relative shrink-0 text-[#333333] text-[14px] md:text-[16px] text-center whitespace-pre-line"
                           id="node-2163_438"
                         >
                           <p className="block mb-0">
@@ -348,7 +327,7 @@ export default async function NewInterviewSection() {
                 </div>
               </div>
               <div
-                className="bg-[#2204db] box-border content-stretch flex flex-col gap-3.5 items-center justify-center order-1 pb-[30px] pt-6 px-12 relative rounded-2xl shrink-0 w-full"
+                className="bg-[#2204db] box-border content-stretch flex flex-col gap-3.5 items-center justify-center order-1 pb-6 md:pb-[30px] pt-4 md:pt-6 px-6 md:px-12 relative rounded-2xl shrink-0 w-full"
                 data-name="Button"
                 id="node-2163_439"
               >
@@ -358,7 +337,7 @@ export default async function NewInterviewSection() {
                   id="node-2163_440"
                 >
                   <div
-                    className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[32px] text-center text-nowrap"
+                    className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[24px] md:text-[32px] text-center text-nowrap"
                     id="node-2163_441"
                   >
                     <p className="block leading-none whitespace-pre">

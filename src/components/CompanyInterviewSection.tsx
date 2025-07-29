@@ -230,40 +230,42 @@ export default async function CompanyInterviewSection() {
       style={{ backgroundImage: `url('${imgSection2CompanyInterview}')` }}
     >
       <div className="flex flex-row items-center justify-center relative w-full min-h-screen">
-        <div className="box-border flex flex-row items-center justify-center pb-24 pt-[140px] px-[170px] relative w-full">
-          <div className="flex flex-row gap-10 items-start justify-center w-full relative">
+        <div className="box-border flex flex-col lg:flex-row items-center justify-center pb-24 pt-[140px] px-4 md:px-8 lg:px-[170px] relative w-full">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-center lg:items-start justify-center w-full relative">
             {/* セクションタイトル */}
-            <div
-              className="bg-center bg-cover bg-no-repeat h-[292px] shrink-0 w-[284px]"
-              style={{ backgroundImage: `url('${imgHeading021}')` }}
-            />
+            <div className="flex flex-col items-center lg:items-start">
+              <div
+                className="bg-center bg-cover bg-no-repeat h-[200px] md:h-[292px] shrink-0 w-[200px] md:w-[284px]"
+                style={{ backgroundImage: `url('${imgHeading021}')` }}
+              />
+            </div>
             
             {/* 記事カード一覧 */}
-            <div className="flex flex-col gap-10 items-end justify-end flex-1">
+            <div className="flex flex-col gap-6 lg:gap-10 items-center lg:items-end justify-center lg:justify-end flex-1 w-full">
               {blogs.length === 0 ? (
                 <EmptyState />
               ) : (
                 <div className="flex flex-col gap-6 items-start justify-start w-full">
-                  {/* 上段 - 大カード2枚 */}
-                  <div className="flex flex-row gap-6 items-start justify-start w-full">
+                  {/* 上段 - 大カード2枚 → モバイルでは縦並び */}
+                  <div className="flex flex-col md:flex-row gap-6 items-start justify-start w-full">
                     {largeCardBlogs.map((blog) => (
                       <LargeInterviewCard key={blog.id} blog={blog} />
                     ))}
                     {largeCardBlogs.length === 1 && (
-                      <div className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-50">
+                      <div className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-50 hidden md:block">
                         <div className="h-[235px] bg-gray-200 rounded-[10px] mb-4"></div>
                         <div className="text-center text-gray-500">記事を準備中...</div>
                       </div>
                     )}
                   </div>
 
-                  {/* 下段 - 小カード4枚 */}
-                  <div className="flex flex-row gap-6 items-start justify-start w-full">
+                  {/* 下段 - 小カード4枚 → モバイルでは2×2グリッド */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row gap-6 items-start justify-start w-full">
                     {smallCardBlogs.map((blog) => (
                       <SmallInterviewCard key={blog.id} blog={blog} />
                     ))}
                     {Array.from({ length: Math.max(0, 4 - smallCardBlogs.length) }).map((_, index) => (
-                      <div key={`placeholder-${index}`} className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-30">
+                      <div key={`placeholder-${index}`} className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-30 hidden lg:block">
                         <div className="text-center text-gray-500 text-sm">記事を準備中...</div>
                       </div>
                     ))}
@@ -273,11 +275,11 @@ export default async function CompanyInterviewSection() {
 
               {/* もっと見るボタン */}
               <div className="flex flex-col gap-12 items-center justify-center">
-                <div className="bg-[#04acdb] flex flex-row gap-4 items-center justify-center pl-6 pr-4 py-4 rounded-[58px] border-[#333333] shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)] border-[1.5px] cursor-pointer hover:shadow-[2px_2px_0px_0px_rgba(19,19,19,0.3)] transition-shadow">
+                <div className="bg-[#04acdb] flex flex-row gap-4 items-center justify-center pl-4 md:pl-6 pr-3 md:pr-4 py-3 md:py-4 rounded-[58px] border-[#333333] shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)] border-[1.5px] cursor-pointer hover:shadow-[2px_2px_0px_0px_rgba(19,19,19,0.3)] transition-shadow">
                   <span
                     className="text-white font-medium text-center text-nowrap tracking-[0.36px]"
                     style={{
-                      fontSize: '18px',
+                      fontSize: '16px',
                       fontFamily: 'Noto Sans JP, sans-serif'
                     }}
                   >
@@ -296,8 +298,8 @@ export default async function CompanyInterviewSection() {
               </div>
             </div>
 
-            {/* キャラクターと吹き出し */}
-            <div className="absolute flex h-[500px] items-center justify-center left-[-48px] top-[514px] w-[338px]">
+            {/* キャラクターと吹き出し - モバイルでは非表示 */}
+            <div className="absolute hidden lg:flex h-[500px] items-center justify-center left-[-48px] top-[514px] w-[338px]">
               <div className="rotate-[180deg] scale-y-[-100%]">
                 <div
                   className="h-[500px] w-[338px] bg-no-repeat"
@@ -310,7 +312,7 @@ export default async function CompanyInterviewSection() {
               </div>
             </div>
             
-            <div className="absolute left-[-38px] top-[358px]">
+            <div className="absolute hidden lg:block left-[-38px] top-[358px]">
               <div className="flex h-[180.083px] items-center justify-center w-[257.109px]">
                 <div className="rotate-[350.794deg]">
                   <div className="relative">
