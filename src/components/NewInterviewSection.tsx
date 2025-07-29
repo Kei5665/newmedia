@@ -1,8 +1,11 @@
+import { getAllMembers } from "@/lib/microcms";
+import { Member } from "@/types/microcms";
+import MemberInteractiveSection from "./MemberInteractiveSection";
+
 const img = "/figma/interview-section-background.png";
 const imgFrame2241 = "/figma/interview-section-heading.png";
 const imgFrame2151 = "/figma/interview-staff-title.png";
-const imgGroup2091 = "/figma/interview-staff-photos.png";
-const imgGroup2071 = "/figma/interview-featured-staff.png";
+// これらの画像はMemberInteractiveSectionで使用されるため削除
 const imgFrame2141 = "/figma/interview-video-title.png";
 const imgImage111 = "/figma/video-thumbnail-1.png";
 const imgImage112 = "/figma/video-thumbnail-2.png";
@@ -12,7 +15,16 @@ const imgGroup4 = "/figma/interview-arrow-icon.svg";
 const imgGroup171 = "/figma/window-icon.svg";
 const imgGroup3 = "/figma/arrow-icon.svg";
 
-export default function NewInterviewSection() {
+export default async function NewInterviewSection() {
+  // メンバーデータを取得
+  let members: Member[] = [];
+  try {
+    const response = await getAllMembers(10);
+    members = response.contents || [];
+  } catch (error) {
+    console.error('メンバーデータ取得エラー:', error);
+  }
+
   return (
     <div
       className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-9 py-[29px] relative size-full"
@@ -61,117 +73,9 @@ export default function NewInterviewSection() {
                   id="node-2163_894"
                   style={{ backgroundImage: `url('${imgFrame2151}')` }}
                 />
-                <div
-                  className="box-border content-stretch flex flex-row gap-8 items-start justify-start p-0 relative shrink-0"
-                  id="node-2163_895"
-                >
-                  <div
-                    className="bg-center bg-cover bg-no-repeat h-[117px] shrink-0 w-[93px]"
-                    data-name="Group 209 1"
-                    id="node-2163_980"
-                    style={{ backgroundImage: `url('${imgGroup2091}')` }}
-                  />
-                  <div
-                    className="bg-center bg-cover bg-no-repeat h-[117px] shrink-0 w-[93px]"
-                    data-name="Group 209 2"
-                    id="node-2163_990"
-                    style={{ backgroundImage: `url('${imgGroup2091}')` }}
-                  />
-                  <div
-                    className="bg-center bg-cover bg-no-repeat h-[117px] shrink-0 w-[93px]"
-                    data-name="Group 209 3"
-                    id="node-2163_992"
-                    style={{ backgroundImage: `url('${imgGroup2091}')` }}
-                  />
-                  <div
-                    className="bg-center bg-cover bg-no-repeat h-[117px] shrink-0 w-[93px]"
-                    data-name="Group 209 4"
-                    id="node-2163_994"
-                    style={{ backgroundImage: `url('${imgGroup2091}')` }}
-                  />
-                </div>
+                <MemberInteractiveSection members={members} />
               </div>
-              <div
-                className="box-border content-stretch flex flex-row gap-10 items-start justify-center p-0 relative shrink-0"
-                id="node-2163_924"
-              >
-                <div
-                  className="bg-center bg-cover bg-no-repeat h-[316px] shrink-0 w-[265px]"
-                  data-name="Group 207 1"
-                  id="node-2163_976"
-                  style={{ backgroundImage: `url('${imgGroup2071}')` }}
-                />
-                <div
-                  className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0"
-                  id="node-2163_931"
-                >
-                  <div
-                    className="box-border content-stretch flex flex-col items-start justify-start leading-[0] p-0 relative shrink-0 text-left text-nowrap"
-                    id="node-2163_932"
-                  >
-                    <div
-                      className="flex flex-col font-['Dela_Gothic_One:Regular',_sans-serif] justify-center not-italic relative shrink-0 text-[#101828] text-[32px]"
-                      id="node-2163_934"
-                    >
-                      <p className="block leading-[normal] text-nowrap whitespace-pre">
-                        Mitsuru Yano
-                      </p>
-                    </div>
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center relative shrink-0 text-[#2204db] text-[24px]"
-                      id="node-2163_936"
-                    >
-                      <p className="block leading-[normal] text-nowrap whitespace-pre">
-                        矢野 みつる
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0 w-full"
-                    data-name="Container"
-                    id="node-2163_937"
-                  >
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium h-[271px] justify-center leading-[1.8] relative shrink-0 text-[16px] text-justify text-neutral-950 w-[250px]"
-                      id="node-2163_939"
-                    >
-                      <p className="block mb-2.5">
-                        営業職で培ったコミュニケーション力と「聞き上手」の強みを活かし、面談ではお一人おひとりに寄り添う姿勢を大切にしています。希望や課題に耳を傾け、具体的なサポートにつなげていきます。
-                      </p>
-                      <p className="block">
-                        趣味の筋トレで心身を整え、常にベストな状態で皆さまを支えますので、安心してお話しください。
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    className="bg-[#06bef1] box-border content-stretch flex flex-row gap-2 items-center justify-center pl-6 pr-2 py-2 relative rounded-[3.35544e+07px] shrink-0"
-                    data-name="Button"
-                    id="node-2163_940"
-                  >
-                    <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[3.35544e+07px] shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)]" />
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#ffffff] text-[16px] text-center text-nowrap"
-                      id="node-2163_941"
-                    >
-                      <p className="block leading-[normal] whitespace-pre">
-                        記事を読む
-                      </p>
-                    </div>
-                    <div className="flex h-[31.984px] items-center justify-center relative shrink-0 w-[32px]">
-                      <div className="flex-none rotate-[270deg]">
-                        <div className="relative size-8" id="node-2163_942">
-                          <img
-                            alt="Arrow icon"
-                            className="block max-w-none size-full"
-                            loading="lazy"
-                            src={imgGroup4}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

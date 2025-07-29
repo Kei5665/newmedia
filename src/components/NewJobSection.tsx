@@ -1,15 +1,132 @@
+import { getLatestJobs } from "@/lib/microcms";
+import { Job } from "@/types/microcms";
+
 const imgSection4Job = "/figma/section4-job-bg.png";
 const imgHeading042 = "/figma/heading04-2.png";
-const imgImage82 = "/figma/job-image-82.png";
-const imgImage83 = "/figma/job-image-83.png";
-const imgImage84 = "/figma/job-image-84.png";
-const imgImage85 = "/figma/job-image-85.png";
 const imgBxsMap = "/figma/bxs-map.svg";
 const imgLucideJapaneseYen = "/figma/lucide-japanese-yen.svg";
 const imgMaterialSymbolsWork = "/figma/material-symbols-work.svg";
 const imgFrame3 = "/figma/frame-3-arrow.svg";
 
-export default function NewJobSection() {
+// デフォルト画像
+const defaultJobImage = "/figma/job-image-82.png";
+
+// 給与をフォーマットする関数
+function formatSalary(min?: number, max?: number, wageType?: string): string {
+  if (!min && !max) return "応相談";
+  
+  const prefix = wageType === "hourly" ? "時給" : "月給";
+  
+  if (min && max) {
+    return `${prefix} ${min.toLocaleString()}〜${max.toLocaleString()}円`;
+  } else if (min) {
+    return `${prefix} ${min.toLocaleString()}円〜`;
+  } else if (max) {
+    return `${prefix} 〜${max.toLocaleString()}円`;
+  }
+  
+  return "応相談";
+}
+
+// 勤務地をフォーマットする関数
+function formatLocation(municipality?: { name: string; prefecture?: { region: string } }, addressPrefMuni?: string): string {
+  if (municipality?.name && municipality?.prefecture?.region) {
+    return `${municipality.name} ${municipality.prefecture.region}`;
+  }
+  if (addressPrefMuni) {
+    return addressPrefMuni;
+  }
+  return "勤務地未設定";
+}
+
+// 求人カードコンポーネント
+function JobCard({ job }: { job: Job }) {
+  const jobImage = job.images?.[0]?.url || defaultJobImage;
+  const jobTitle = job.jobName || job.title || "求人情報";
+  const companyName = job.companyName || "会社名未設定";
+  const location = formatLocation(job.municipality, job.addressPrefMuni);
+  const salary = formatSalary(job.salaryMin, job.salaryMax, job.wageType);
+  const employmentType = job.employmentType || "雇用形態未設定";
+  const tags = job.tags?.slice(0, 3) || [];
+
+  return (
+    <div className="flex-1 min-w-0">
+      <div className="bg-[#ffffff] border-[#333333] border-[1.2px] border-solid rounded-[20px] p-4 h-full flex flex-col">
+        <div
+          className="bg-center bg-cover bg-no-repeat h-[193px] rounded-[10px] shrink-0 w-full mb-4"
+          style={{ backgroundImage: `url('${jobImage}')` }}
+        />
+        <div className="flex flex-col gap-2 flex-1">
+          <div className="font-['Noto_Sans_JP:Bold',_sans-serif] font-bold text-[#101828] text-[16px] leading-[1.5] break-words">
+            {jobTitle}
+          </div>
+          <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-neutral-500 text-[12px] leading-normal pb-1 break-words">
+            {companyName}
+          </div>
+          <div className="flex items-center gap-2 pb-1 border-b border-[#cccccc]">
+            <div className="shrink-0 size-4">
+              <img
+                alt="Map icon"
+                className="block max-w-none size-full"
+                src={imgBxsMap}
+              />
+            </div>
+            <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-neutral-500 text-[14px] leading-normal break-words flex-1 min-w-0">
+              {location}
+            </div>
+          </div>
+          <div className="flex items-center gap-2 pb-1 border-b border-[#cccccc]">
+            <div className="shrink-0 size-4">
+              <img
+                alt="Yen icon"
+                className="block max-w-none size-full"
+                loading="lazy"
+                src={imgLucideJapaneseYen}
+              />
+            </div>
+            <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-neutral-500 text-[14px] leading-normal break-words flex-1 min-w-0">
+              {salary}
+            </div>
+          </div>
+          <div className="flex items-center gap-2 pb-1">
+            <div className="shrink-0 size-4">
+              <img
+                alt="Work icon"
+                className="block max-w-none size-full"
+                loading="lazy"
+                src={imgMaterialSymbolsWork}
+              />
+            </div>
+            <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-neutral-500 text-[14px] leading-normal break-words flex-1 min-w-0">
+              {employmentType}
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2 mt-2">
+            {tags.map((tag, tagIndex) => (
+              <div key={tagIndex} className="border border-[#333333] border-solid rounded-md px-2 py-1 shrink-0">
+                <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-[#333333] text-[12px] leading-4">
+                  {tag.name}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default async function NewJobSection() {
+  let jobs: Job[] = [];
+  
+  try {
+    const jobsResponse = await getLatestJobs(4);
+    jobs = jobsResponse.contents;
+  } catch (error) {
+    console.error("Failed to fetch jobs:", error);
+    // エラーが発生した場合は空配列のまま
+  }
+
   return (
     <div
       className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-0 py-20 relative size-full"
@@ -38,709 +155,21 @@ export default function NewJobSection() {
           data-name="cardA"
           id="node-2161_193"
         >
-          <div
-            className="box-border content-stretch flex flex-row gap-6 items-center justify-start p-0 relative shrink-0 w-full"
-            id="node-2161_194"
-          >
-            <div className="basis-0 flex flex-row grow items-center self-stretch shrink-0">
-              <div
-                className="basis-0 box-border content-stretch flex flex-col gap-6 grow h-full items-center justify-start min-h-px min-w-px p-0 relative shrink-0"
-                id="node-2161_195"
-              >
-                <div
-                  className="basis-0 bg-[#ffffff] box-border content-stretch flex flex-col gap-4 grow items-start justify-start min-h-px min-w-px p-[16px] relative rounded-[20px] shrink-0 w-full"
-                  data-name="Link"
-                  id="node-2161_196"
-                >
-                  <div className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px]" />
-                  <div
-                    className="bg-center bg-cover bg-no-repeat h-[193px] rounded-[10px] shrink-0 w-full"
-                    data-name="image 82"
-                    id="node-2161_197"
-                    style={{ backgroundImage: `url('${imgImage82}')` }}
-                  />
-                  <div
-                    className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full"
-                    data-name="Heading 3"
-                    id="node-2161_198"
-                  >
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center leading-[0] min-w-full relative shrink-0 text-[#101828] text-[16px] text-left"
-                      id="node-2161_199"
-                      style={{ width: "min-content" }}
-                    >
-                      <p className="block leading-[1.5]">
-                        アプリ配車タクシードライバー
-                      </p>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_200"
-                    >
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[12px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_201"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          newmoグループ 株式会社未来都 門真営業所
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_202"
-                    >
-                      <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
-                      <div
-                        className="relative shrink-0 size-4"
-                        data-name="bxs:map"
-                        id="node-2161_203"
-                      >
-                        <img
-                          alt="Map icon"
-                          className="block max-w-none size-full"
-                          src={imgBxsMap}
-                        />
-                      </div>
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_205"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          門真市 大阪府
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_206"
-                    >
-                      <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
-                      <div
-                        className="relative shrink-0 size-4"
-                        data-name="lucide:japanese-yen"
-                        id="node-2161_207"
-                      >
-                        <img
-                          alt="Yen icon"
-                          className="block max-w-none size-full"
-                          loading="lazy"
-                          src={imgLucideJapaneseYen}
-                        />
-                      </div>
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_209"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          月給 350,000〜800,000円
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_210"
-                    >
-                      <div
-                        className="relative shrink-0 size-4"
-                        data-name="material-symbols:work"
-                        id="node-2161_211"
-                      >
-                        <img
-                          alt="Work icon"
-                          className="block max-w-none size-full"
-                          loading="lazy"
-                          src={imgMaterialSymbolsWork}
-                        />
-                      </div>
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_213"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          正社員
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-start justify-start p-0 relative shrink-0"
-                      id="node-2161_214"
-                    >
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_215"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_216"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              保証給あり
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_217"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_218"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              駅徒歩10分以内
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_219"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_220"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              社員寮あり
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          {jobs.length > 0 ? (
+            <div className="w-full max-w-7xl">
+              <div className="flex flex-row gap-6 w-full">
+                {jobs.slice(0, 4).map((job) => (
+                  <JobCard key={job.id} job={job} />
+                ))}
               </div>
             </div>
-            <div className="basis-0 flex flex-row grow items-center self-stretch shrink-0">
-              <div
-                className="basis-0 box-border content-stretch flex flex-col gap-6 grow h-full items-center justify-start min-h-px min-w-px p-0 relative shrink-0"
-                id="node-2161_223"
-              >
-                <div
-                  className="basis-0 bg-[#ffffff] box-border content-stretch flex flex-col gap-4 grow items-start justify-start min-h-px min-w-px p-[16px] relative rounded-[20px] shrink-0 w-full"
-                  data-name="Link"
-                  id="node-2161_224"
-                >
-                  <div className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px]" />
-                  <div
-                    className="bg-center bg-cover bg-no-repeat h-[189px] rounded-[10px] shrink-0 w-full"
-                    data-name="image 82"
-                    id="node-2161_225"
-                    style={{ backgroundImage: `url('${imgImage83}')` }}
-                  />
-                  <div
-                    className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full"
-                    data-name="Heading 3"
-                    id="node-2161_226"
-                  >
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center leading-[0] min-w-full relative shrink-0 text-[#101828] text-[16px] text-left"
-                      id="node-2161_227"
-                      style={{ width: "min-content" }}
-                    >
-                      <p className="block leading-[1.5]">
-                        【整備士資格2級 or 3級】自動車整備士
-                      </p>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_228"
-                    >
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[12px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_229"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          日本交通株式会社 千住工場
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_230"
-                    >
-                      <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
-                      <div
-                        className="relative shrink-0 size-4"
-                        data-name="bxs:map"
-                        id="node-2161_231"
-                      >
-                        <img
-                          alt="Map icon"
-                          className="block max-w-none size-full"
-                          src={imgBxsMap}
-                        />
-                      </div>
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_233"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          足立区 東京都
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_234"
-                    >
-                      <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
-                      <div
-                        className="relative shrink-0 size-4"
-                        data-name="lucide:japanese-yen"
-                        id="node-2161_235"
-                      >
-                        <img
-                          alt="Yen icon"
-                          className="block max-w-none size-full"
-                          loading="lazy"
-                          src={imgLucideJapaneseYen}
-                        />
-                      </div>
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_237"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          月給 270,000円 ~ 500,000円
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_238"
-                    >
-                      <div
-                        className="relative shrink-0 size-4"
-                        data-name="material-symbols:work"
-                        id="node-2161_239"
-                      >
-                        <img
-                          alt="Work icon"
-                          className="block max-w-none size-full"
-                          loading="lazy"
-                          src={imgMaterialSymbolsWork}
-                        />
-                      </div>
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_241"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          正社員
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-start justify-start p-0 relative shrink-0"
-                      id="node-2161_242"
-                    >
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_243"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_244"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              特定技能採用あり
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_245"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_246"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              日勤OK
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_247"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_248"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              外国人採用あり
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          ) : (
+            <div className="box-border content-stretch flex flex-col gap-4 items-center justify-center p-8 relative shrink-0 w-full">
+              <p className="text-[#666666] text-[16px] font-medium">
+                求人情報を取得できませんでした
+              </p>
             </div>
-            <div
-              className="basis-0 box-border content-stretch flex flex-col gap-6 grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0"
-              id="node-2161_251"
-            >
-              <div
-                className="bg-[#ffffff] box-border content-stretch flex flex-col gap-4 items-start justify-start p-[16px] relative rounded-[20px] shrink-0 w-full"
-                data-name="Link"
-                id="node-2161_252"
-              >
-                <div className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px]" />
-                <div
-                  className="bg-center bg-cover bg-no-repeat h-[189px] rounded-[10px] shrink-0 w-full"
-                  data-name="image 82"
-                  id="node-2161_253"
-                  style={{ backgroundImage: `url('${imgImage84}')` }}
-                />
-                <div
-                  className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full"
-                  data-name="Heading 3"
-                  id="node-2161_256"
-                >
-                  <div
-                    className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center leading-[0] min-w-full relative shrink-0 text-[#101828] text-[16px] text-left"
-                    id="node-2161_257"
-                    style={{ width: "min-content" }}
-                  >
-                    <p className="block leading-[20px]">
-                      アプリ配車タクシードライバー
-                    </p>
-                  </div>
-                  <div
-                    className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                    id="node-2161_258"
-                  >
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[normal] relative shrink-0 text-[12px] text-left text-neutral-500 text-nowrap whitespace-pre"
-                      id="node-2161_259"
-                    >
-                      <p className="block mb-0">
-                        第一交通産業グループ 南大阪第一交通株式会社
-                      </p>
-                      <p className="block">堺営業所</p>
-                    </div>
-                  </div>
-                  <div
-                    className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                    id="node-2161_260"
-                  >
-                    <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
-                    <div
-                      className="relative shrink-0 size-4"
-                      data-name="bxs:map"
-                      id="node-2161_261"
-                    >
-                      <img
-                        className="block max-w-none size-full"
-                        src={imgBxsMap}
-                      />
-                    </div>
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                      id="node-2161_263"
-                    >
-                      <p className="block leading-[normal] whitespace-pre">
-                        堺市西区 大阪府
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                    id="node-2161_264"
-                  >
-                    <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
-                    <div
-                      className="relative shrink-0 size-4"
-                      data-name="lucide:japanese-yen"
-                      id="node-2161_265"
-                    >
-                      <img
-                        className="block max-w-none size-full"
-                        loading="lazy"
-                        src={imgLucideJapaneseYen}
-                      />
-                    </div>
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                      id="node-2161_267"
-                    >
-                      <p className="block leading-[normal] whitespace-pre">{`月給  400,000円 ~ 800,000円`}</p>
-                    </div>
-                  </div>
-                  <div
-                    className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                    id="node-2161_268"
-                  >
-                    <div
-                      className="relative shrink-0 size-4"
-                      data-name="material-symbols:work"
-                      id="node-2161_269"
-                    >
-                      <img
-                        className="block max-w-none size-full"
-                        loading="lazy"
-                        src={imgMaterialSymbolsWork}
-                      />
-                    </div>
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                      id="node-2161_271"
-                    >
-                      <p className="block leading-[normal] whitespace-pre">
-                        正社員
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    className="box-border content-stretch flex flex-row gap-2 items-start justify-start p-0 relative shrink-0"
-                    id="node-2161_272"
-                  >
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-start justify-start p-0 relative shrink-0"
-                      id="node-2161_273"
-                    >
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_274"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_275"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              夜勤OK
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_276"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_277"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              隔日勤務
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_278"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_279"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              賞与あり
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="basis-0 flex flex-row grow items-center self-stretch shrink-0">
-              <div
-                className="basis-0 box-border content-stretch flex flex-col gap-6 grow h-full items-center justify-start min-h-px min-w-px p-0 relative shrink-0"
-                id="node-2161_280"
-              >
-                <div
-                  className="basis-0 bg-[#ffffff] box-border content-stretch flex flex-col gap-4 grow items-start justify-start min-h-px min-w-px p-[16px] relative rounded-[20px] shrink-0 w-full"
-                  data-name="Link"
-                  id="node-2161_281"
-                >
-                  <div className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px]" />
-                  <div
-                    className="bg-center bg-cover bg-no-repeat h-[189px] rounded-[10px] shrink-0 w-full"
-                    data-name="image 82"
-                    id="node-2161_282"
-                    style={{ backgroundImage: `url('${imgImage85}')` }}
-                  />
-                  <div
-                    className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full"
-                    data-name="Heading 3"
-                    id="node-2161_283"
-                  >
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center leading-[0] min-w-full relative shrink-0 text-[#101828] text-[16px] text-left"
-                      id="node-2161_284"
-                      style={{ width: "min-content" }}
-                    >
-                      <p className="block leading-[20px]">タクシー乗務員</p>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_285"
-                    >
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[12px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_286"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          新星タクシー株式会社 太田営業所
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_287"
-                    >
-                      <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
-                      <div
-                        className="relative shrink-0 size-4"
-                        data-name="bxs:map"
-                        id="node-2161_288"
-                      >
-                        <img
-                          alt="Map icon"
-                          className="block max-w-none size-full"
-                          src={imgBxsMap}
-                        />
-                      </div>
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_290"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          常陸太田市 茨城県
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_291"
-                    >
-                      <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
-                      <div
-                        className="relative shrink-0 size-4"
-                        data-name="lucide:japanese-yen"
-                        id="node-2161_292"
-                      >
-                        <img
-                          alt="Yen icon"
-                          className="block max-w-none size-full"
-                          loading="lazy"
-                          src={imgLucideJapaneseYen}
-                        />
-                      </div>
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_294"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">{`月給  200,000円 ~ 600,000円`}</p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full"
-                      id="node-2161_295"
-                    >
-                      <div
-                        className="relative shrink-0 size-4"
-                        data-name="material-symbols:work"
-                        id="node-2161_296"
-                      >
-                        <img
-                          alt="Work icon"
-                          className="block max-w-none size-full"
-                          loading="lazy"
-                          src={imgMaterialSymbolsWork}
-                        />
-                      </div>
-                      <div
-                        className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap"
-                        id="node-2161_298"
-                      >
-                        <p className="block leading-[normal] whitespace-pre">
-                          正社員
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="box-border content-stretch flex flex-row gap-2 items-start justify-start p-0 relative shrink-0"
-                      id="node-2161_299"
-                    >
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_300"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_301"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              賞与あり
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                      <div
-                        className="h-8 relative rounded-md shrink-0"
-                        data-name="Background"
-                        id="node-2161_302"
-                      >
-                        <div className="box-border content-stretch flex flex-row h-8 items-center justify-center overflow-clip p-[8px] relative">
-                          <div
-                            className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#333333] text-[12px] text-center text-nowrap"
-                            id="node-2161_303"
-                          >
-                            <p className="block leading-[16px] whitespace-pre">
-                              日勤OK
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-md" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
         <div
           className="box-border content-stretch flex flex-col gap-12 items-center justify-center p-0 relative shrink-0"
