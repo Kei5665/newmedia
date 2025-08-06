@@ -1,10 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 
-export default function Breadcrumbs() {
+interface BreadcrumbsProps {
+  pageName?: string;
+}
+
+export default function Breadcrumbs({ pageName = "メディアトップページ" }: BreadcrumbsProps) {
   return (
     <div className="bg-white w-full">
-      <div className="px-10 py-2">
+      <div className="px-4 sm:px-10 py-2">
         <div className="flex items-center">
           <div className="flex items-center justify-center w-5 h-4 pr-1">
             <div className="relative w-4 h-4">
@@ -36,7 +40,7 @@ export default function Breadcrumbs() {
           </div>
           
           <div className="text-[#4b5563] text-sm font-normal leading-5">
-            メディアトップページ
+            {pageName}
           </div>
         </div>
       </div>

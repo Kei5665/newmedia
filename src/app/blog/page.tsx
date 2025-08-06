@@ -1,0 +1,88 @@
+import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Footer from '@/components/Footer';
+import BlogClientPage from '@/components/BlogClientPage';
+import BlogCTASection from '@/components/BlogCTASection';
+import { Blog, Category } from '@/types/microcms';
+import { getLatestBlogs, getAllCategories, getBlogsByCategory } from '@/lib/microcms';
+import { CATEGORY_IDS } from '@/constants/categories';
+
+export default async function BlogPage() {
+  // サーバーサイドでデータ取得
+  let blogs: Blog[] = [];
+  let categories: Category[] = [];
+  let pickupArticles: Blog[] = [];
+  let error: string | null = null;
+
+  try {
+    // ブログを取得
+    try {
+      const blogsResponse = await getLatestBlogs(50);
+      blogs = blogsResponse.contents || [];
+      console.log('Blogs loaded successfully:', blogs.length);
+    } catch (blogError) {
+      console.error('ブログの取得に失敗しました:', blogError);
+    }
+
+    // カテゴリを取得
+    try {
+      categories = await getAllCategories();
+      console.log('Categories loaded successfully:', categories.length);
+    } catch (categoryError) {
+      console.error('カテゴリの取得に失敗しました:', categoryError);
+    }
+
+    // ピックアップ記事を取得
+    try {
+      const pickupResponse = await getBlogsByCategory(CATEGORY_IDS.PICKUP, 3);
+      pickupArticles = pickupResponse.contents || [];
+      console.log('Pickup articles loaded successfully:', pickupArticles.length);
+    } catch (pickupError) {
+      console.error('ピックアップ記事の取得に失敗しました:', pickupError);
+    }
+  } catch (err) {
+    console.error('データの取得に失敗しました:', err);
+    error = 'データの取得に失敗しました。';
+  }
+
+  if (error) {
+    return (
+      <div className="font-sans min-h-screen bg-gray-50">
+        <Header />
+        <Breadcrumbs />
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-red-600 mb-4">エラーが発生しました</h1>
+            <p className="text-gray-600">{error}</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  return (
+    <div className="font-sans min-h-screen">
+      <Header />
+      <Breadcrumbs pageName="ブログ一覧" />
+      
+      {/* メインコンテンツ - 背景画像付きセクション */}
+      <main 
+        className="min-h-screen bg-repeat"
+        style={{ backgroundImage: "url('/figma/blue-bg.png')" }}
+      >
+        {/* 白い背景のコンテナ */}
+        <div className="container mx-auto px-4 py-8">
+          <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+            <BlogClientPage blogs={blogs} categories={categories} pickupArticles={pickupArticles} />
+          </div>
+        </div>
+      </main>
+      
+      {/* CTAセクション */}
+      <BlogCTASection />
+      
+      <Footer />
+    </div>
+  );
+}

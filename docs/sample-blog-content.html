@@ -1,0 +1,134 @@
+<p>この記事では、Next.jsとmicroCMSを使用したモダンなブログサイトの構築方法について詳しく解説します。</p>
+
+<h2>プロジェクトの概要</h2>
+
+<p>Next.js 13のApp Routerと<strong>microCMS</strong>を組み合わせることで、高性能で保守性の高いブログサイトを構築できます。この組み合わせには以下のような利点があります：</p>
+
+<ul>
+<li>高速なサイト表示</li>
+<li>SEO対応</li>
+<li><em>TypeScript</em>による型安全性</li>
+<li>レスポンシブデザイン</li>
+</ul>
+
+<h2>技術スタック</h2>
+
+<p>今回使用する主要な技術は以下の通りです：</p>
+
+<h3>フロントエンド</h3>
+<ul>
+<li><strong>Next.js 13</strong> (App Router)</li>
+<li><strong>React 18</strong></li>
+<li><strong>TypeScript</strong></li>
+<li><strong>TailwindCSS</strong></li>
+</ul>
+
+<h3>バックエンド・API</h3>
+<ul>
+<li><strong>microCMS</strong> (ヘッドレスCMS)</li>
+<li><strong>REST API</strong></li>
+</ul>
+
+<h3>その他のツール</h3>
+<ol>
+<li>ESLint（コード品質）</li>
+<li>Prettier（コード整形）</li>
+<li>Vercel（デプロイ）</li>
+</ol>
+
+<h2>セットアップ手順</h2>
+
+<h3>1. プロジェクトの初期化</h3>
+
+<p>まず、Next.jsプロジェクトを作成します：</p>
+
+<pre><code>npx create-next-app@latest my-blog --typescript --tailwind --eslint --app
+cd my-blog</code></pre>
+
+<h3>2. 必要なパッケージのインストール</h3>
+
+<pre><code>npm install @types/node dotenv</code></pre>
+
+<h3>3. 環境変数の設定</h3>
+
+<p><code>.env.local</code>ファイルを作成し、microCMSの設定を追加します：</p>
+
+<pre><code>MICROCMS_API_KEY=your_api_key_here
+MICROCMS_SERVICE_DOMAIN=your_service_domain</code></pre>
+
+<h2>microCMSの設定</h2>
+
+<p>microCMSでブログ用のAPIを設定します。以下のフィールドを持つ「blogs」APIを作成してください：</p>
+
+<table>
+<thead>
+<tr>
+<th>フィールド名</th>
+<th>タイプ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>テキスト</td>
+<td>記事タイトル</td>
+</tr>
+<tr>
+<td>content</td>
+<td>リッチエディタ</td>
+<td>記事本文</td>
+</tr>
+<tr>
+<td>eyecatch</td>
+<td>画像</td>
+<td>アイキャッチ画像</td>
+</tr>
+<tr>
+<td>category</td>
+<td>参照</td>
+<td>カテゴリ</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>テキスト</td>
+<td>URL用スラッグ</td>
+</tr>
+</tbody>
+</table>
+
+<h2>実装のポイント</h2>
+
+<h3>パフォーマンス最適化</h3>
+
+<blockquote>
+<p>Next.jsのImage Optimizationを活用することで、画像の読み込み速度を大幅に改善できます。特にモバイル環境での表示速度向上に効果的です。</p>
+</blockquote>
+
+<h3>SEO対策</h3>
+
+<p>記事詳細ページでは、以下のメタデータを動的に生成します：</p>
+
+<ul>
+<li>タイトルタグ</li>
+<li>ディスクリプション</li>
+<li>OGP画像</li>
+<li>構造化データ</li>
+</ul>
+
+<h2>まとめ</h2>
+
+<p>このガイドでは、Next.jsとmicroCMSを使用したブログサイトの構築方法を紹介しました。この組み合わせにより、以下を実現できます：</p>
+
+<ul>
+<li><strong>高速な表示速度</strong></li>
+<li><strong>優れたSEO性能</strong></li>
+<li><strong>開発者体験の向上</strong></li>
+<li><strong>コンテンツ管理の効率化</strong></li>
+</ul>
+
+<p>詳細な実装については、<a href="https://nextjs.org/">公式ドキュメント</a>を参照してください。</p>
+
+<hr>
+
+<p><em>この記事が役に立った場合は、ぜひシェアしてください！</em></p>
