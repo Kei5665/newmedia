@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
@@ -74,7 +75,9 @@ export default async function BlogPage() {
         {/* 白い背景のコンテナ */}
         <div className="container mx-auto px-4 py-8">
           <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
-            <BlogClientPage blogs={blogs} categories={categories} pickupArticles={pickupArticles} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <BlogClientPage blogs={blogs} categories={categories} pickupArticles={pickupArticles} />
+            </Suspense>
           </div>
         </div>
       </main>
