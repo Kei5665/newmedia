@@ -105,3 +105,151 @@ body {
 .article-content img {
   @apply w-full h-auto rounded-lg shadow-sm mb-6;
 }
+
+/* HTML入力用スタイル（インタビュー・対話形式記事向け） */
+.article-content-html {
+  line-height: 1.6;
+}
+
+.article-content-html h2 {
+  position: relative;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 80px;
+  font-weight: bold;
+  color: #333;
+}
+
+.article-content-html h2:before {
+  position: absolute;
+  bottom: -10px;
+  left: calc(50% - 30px);
+  width: 60px;
+  height: 5px;
+  content: '';
+  border-radius: 3px;
+  background: #3498db;
+}
+
+.article-content-html .conversation {
+  margin: 0px auto;
+}
+
+.article-content-html .chat-box {
+  margin-top: 20px;
+}
+
+.article-content-html .chat-message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.article-content-html .chat-message.right {
+  flex-direction: row-reverse;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.article-content-html .chat-message.left {
+  flex-direction: row;
+}
+
+.article-content-html .avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.article-content-html .avatar {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.article-content-html .name {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 5px;
+  text-align: center;
+  color: #555;
+}
+
+.article-content-html .bubble {
+  max-width: 70%;
+  padding: 10px 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  line-height: 1.8rem;
+  letter-spacing: 1px;
+  border: 3px solid #3498db;
+}
+
+.article-content-html .chat-message.left .bubble {
+  background-color: #E6F0FA;
+}
+
+.article-content-html .chat-message.right .bubble {
+  background-color: #F2F2F2;
+}
+
+.article-content-html .yellow-underline {
+  background: linear-gradient(to bottom, transparent 60%, #ffeb3b 60%);
+  font-weight: bold;
+}
+
+.article-content-html .section-title {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  border-left: 5px solid #8e44ad;
+  padding-left: 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+.article-content-html .header {
+  background-color: #8e44ad;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.article-content-html p {
+  @apply text-base text-gray-800 leading-relaxed mb-4;
+}
+
+.article-content-html img {
+  @apply w-full h-auto rounded-lg shadow-sm mb-6;
+}
+
+/* HTML入力用のレスポンシブ対応 */
+@media (max-width: 576px) {
+  .article-content-html h2 {
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .article-content-html .bubble {
+    max-width: 100%;
+  }
+  
+  .article-content-html .avatar {
+    width: 40px;
+  }
+  
+  .article-content-html .name {
+    font-size: 0.8rem;
+  }
+  
+  .article-content-html .chat-message {
+    flex-wrap: wrap;
+  }
+  
+  .article-content-html .chat-box {
+    margin-top: 10px;
+  }
+}

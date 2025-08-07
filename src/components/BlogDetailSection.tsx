@@ -68,7 +68,7 @@ export default function BlogDetailSection({ blog }: BlogDetailSectionProps) {
       <div className="max-w-none">
         {blog.html ? (
           <div 
-            className="article-content text-gray-900"
+            className="article-content-html text-gray-900"
             dangerouslySetInnerHTML={{ __html: blog.html }}
           />
         ) : blog.content ? (
