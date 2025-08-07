@@ -1,19 +1,19 @@
 import React from 'react';
+import Link from 'next/link';
 import { Blog } from '@/types/microcms';
 import { fetchBlogsWithFallback } from '@/lib/blogHelpers';
 import { CATEGORY_IDS } from '@/constants/categories';
 
 const imgSection2CompanyInterview = "/figma/company-interview-bg.png";
 const imgHeading021 = "/figma/heading-02.png";
+const imgDsgf1 = "/figma/50s-man.png";
 const fallbackImage = "/figma/news-card-image-82.png";
-const fallbackIcon = "/figma/company-icon-bg.png";
-const img50SMan = "/figma/50s-man.png";
-const imgGroup3 = "/figma/arrow-group3.svg";
+const imgButtonIcon = "/figma/arrow-group3.svg";
 
 /**
- * 企業インタビュー記事カード（大サイズ）
+ * 企業インタビュー記事カード
  */
-function LargeInterviewCard({ blog }: { blog: Blog }) {
+function InterviewCard({ blog }: { blog: Blog }) {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("ja-JP", {
@@ -23,193 +23,77 @@ function LargeInterviewCard({ blog }: { blog: Blog }) {
     });
   };
 
+  // タイトルを20文字で省略
+  const truncateTitle = (title: string, maxLength: number = 20) => {
+    if (title.length <= maxLength) return title;
+    return title.substring(0, maxLength) + '...';
+  };
+
+  // ブログのスラッグまたはIDでリンクを生成
+  const blogLink = blog.slug ? `/blog/${blog.slug}` : `/blog/${blog.id}`;
+
   return (
-    <div className="flex-1 bg-white rounded-[20px] border-[#333333] border-[1.2px] p-4">
-      <div className="flex flex-col gap-[17px] w-full">
+    <Link href={blogLink} className="block group">
+      <div className="bg-[#ffffff] box-border content-stretch flex flex-row gap-4 h-[413px] md:h-[380px] lg:h-[520px] items-start justify-start p-[16px] md:p-[16px] lg:p-[20px] relative rounded-[20px] shrink-0 w-full max-w-[349px] md:max-w-[349px] lg:max-w-[460px] hover:shadow-lg transition-shadow duration-200 cursor-pointer">
         <div
-          className="bg-center bg-cover bg-no-repeat h-[235px] rounded-[10px] w-full"
-          style={{ backgroundImage: `url('${blog.eyecatch?.url || fallbackImage}')` }}
+          aria-hidden="true"
+          className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px] group-hover:border-[#2204db] transition-colors duration-200"
         />
-        <div className="flex flex-col gap-4 w-full">
-          <div className="flex flex-row items-center justify-between w-full">
-            <div className="bg-[#2204db] flex items-center justify-center px-3 py-[3px] rounded-[32px]">
-              <span
-                className="text-white font-medium text-center text-nowrap"
-                style={{
-                  fontSize: '12px',
-                  lineHeight: '16px',
-                  fontFamily: 'Noto Sans JP, sans-serif'
-                }}
-              >
-                {blog.category?.name || '企業取材'}
-              </span>
+        <div className="box-border content-stretch flex flex-col gap-[17px] lg:gap-[20px] h-full items-start justify-start p-0 relative shrink-0 w-full">
+          <div
+            className="bg-center bg-cover bg-no-repeat h-[235px] md:h-[200px] lg:h-[240px] rounded-[10px] shrink-0 w-full"
+            style={{ backgroundImage: `url('${blog.eyecatch?.url || fallbackImage}')` }}
+          />
+          <div className="box-border content-stretch flex flex-col gap-4 lg:gap-6 items-start justify-start p-0 relative shrink-0 w-full">
+            <div className="box-border content-stretch flex flex-row items-center justify-between p-0 relative shrink-0 w-full">
+              <div className="bg-[#2204db] box-border content-stretch flex flex-row items-center justify-center overflow-clip px-3 py-[3px] lg:px-5 lg:py-[5px] relative rounded-[32px] shrink-0">
+                <div className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[12px] lg:text-[14px] text-center text-neutral-50 text-nowrap">
+                  <p className="block leading-[16px] lg:leading-[20px] whitespace-pre">
+                    {blog.category?.name || '企業取材'}
+                  </p>
+                </div>
+              </div>
+              <div className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0">
+                <div className="flex flex-col font-['Noto_Sans_JP:DemiLight',_sans-serif] font-[350] justify-center leading-[0] relative shrink-0 text-[#6a7282] text-[11.438px] lg:text-[13px] text-left text-nowrap">
+                  <p className="block leading-[16px] lg:leading-[20px] whitespace-pre">
+                    {formatDate(blog.publishedAt)}
+                  </p>
+                </div>
+              </div>
             </div>
-            <span
-              className="text-[#6a7282] font-[350] text-left text-nowrap"
-              style={{
-                fontSize: '11.438px',
-                lineHeight: '16px',
-                fontFamily: 'Noto Sans JP, sans-serif'
-              }}
-            >
-              {formatDate(blog.publishedAt)}
-            </span>
-          </div>
-          <div className="flex flex-col gap-2 w-full">
-            <h3
-              className="text-[#101828] font-bold text-left w-full"
-              style={{
-                fontSize: '18px',
-                lineHeight: '20px',
-                fontFamily: 'Noto Sans JP, sans-serif'
-              }}
-            >
-              {blog.title}
-            </h3>
-            <p
-              className="text-[#4a5565] font-normal text-justify w-full line-clamp-4"
-              style={{
-                fontSize: '14px',
-                lineHeight: '1.5',
-                fontFamily: 'Noto Sans JP, sans-serif'
-              }}
-            >
-              {blog.content || 'インタビュー記事の詳細をご覧ください。'}
-            </p>
-          </div>
-          <div className="flex flex-row gap-2 items-center">
-            <div className="relative rounded-[40px] size-[50px] overflow-clip">
-              <div
-                className="absolute bg-center bg-cover bg-no-repeat left-0.5 size-[46px] top-0.5"
-                style={{ backgroundImage: `url('${fallbackIcon}')` }}
-              />
-              <div className="absolute border border-[#b1b1b1] border-solid inset-0 rounded-[40px]" />
+            <div className="box-border content-stretch flex flex-col gap-2 lg:gap-3 items-start justify-start leading-[0] p-0 relative shrink-0 w-full">
+              <div className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center relative shrink-0 text-[#101828] text-[18px] md:text-[16px] lg:text-[20px] text-left w-full">
+                <p className="block leading-[20px] lg:leading-[24px] group-hover:text-[#2204db] transition-colors duration-200">
+                  {truncateTitle(blog.title)}
+                </p>
+              </div>
+              <div className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center relative shrink-0 text-[#4a5565] text-[14px] md:text-[13px] lg:text-[16px] text-justify w-full">
+                <p className="block leading-[1.5] line-clamp-3 lg:line-clamp-4">
+                  {blog.content?.replace(/<[^>]*>/g, '').substring(0, 100) || 'インタビュー記事の詳細をご覧ください。'}...
+                </p>
+              </div>
             </div>
-            <span
-              className="text-[#101828] font-bold text-left text-nowrap"
-              style={{
-                fontSize: '14px',
-                lineHeight: '24px',
-                fontFamily: 'Noto Sans JP, sans-serif'
-              }}
-            >
-              企業インタビュー
-            </span>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
-/**
- * 企業インタビュー記事カード（小サイズ）
- */
-function SmallInterviewCard({ blog }: { blog: Blog }) {
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("ja-JP", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-    });
-  };
-
-  return (
-    <div className="flex-1 bg-white rounded-[20px] border-[#333333] border-[1.2px] p-4">
-      <div className="flex flex-col gap-[17px] w-full">
-        <div className="flex flex-col gap-4 w-full">
-          <div className="flex flex-row items-center justify-between w-full">
-            <div className="bg-[#2204db] flex items-center justify-center px-3 py-[3px] rounded-[32px]">
-              <span
-                className="text-white font-medium text-center text-nowrap"
-                style={{
-                  fontSize: '12px',
-                  lineHeight: '16px',
-                  fontFamily: 'Noto Sans JP, sans-serif'
-                }}
-              >
-                {blog.category?.name || '企業取材'}
-              </span>
-            </div>
-            <span
-              className="text-[#6a7282] font-[350] text-left text-nowrap"
-              style={{
-                fontSize: '11.438px',
-                lineHeight: '16px',
-                fontFamily: 'Noto Sans JP, sans-serif'
-              }}
-            >
-              {formatDate(blog.publishedAt)}
-            </span>
-          </div>
-          <div className="flex flex-col gap-2 w-full">
-            <h3
-              className="text-[#101828] font-bold text-left w-full"
-              style={{
-                fontSize: '16px',
-                lineHeight: '20px',
-                fontFamily: 'Noto Sans JP, sans-serif'
-              }}
-            >
-              {blog.title}
-            </h3>
-            <p
-              className="text-[#4a5565] font-normal text-justify w-full line-clamp-3"
-              style={{
-                fontSize: '14px',
-                lineHeight: '1.5',
-                fontFamily: 'Noto Sans JP, sans-serif'
-              }}
-            >
-              {blog.content || 'インタビュー記事の詳細をご覧ください。'}
-            </p>
-          </div>
-          <div className="flex flex-row gap-2 items-center w-full">
-            <div className="relative rounded-[40px] size-[50px] overflow-clip">
-              <div
-                className="absolute bg-center bg-cover bg-no-repeat size-12 top-px left-[2px]"
-                style={{ backgroundImage: `url('${fallbackIcon}')` }}
-              />
-              <div className="absolute border border-[#b1b1b1] border-solid inset-0 rounded-[40px]" />
-            </div>
-            <span
-              className="text-[#101828] font-bold text-left flex-1"
-              style={{
-                fontSize: '12px',
-                lineHeight: '20px',
-                fontFamily: 'Noto Sans JP, sans-serif'
-              }}
-            >
-              企業インタビュー
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 /**
  * データがない場合のプレースホルダー
  */
-function EmptyState() {
+function EmptyCard() {
   return (
-    <div className="flex flex-col gap-6 items-start justify-start w-full">
-      <div className="flex flex-row gap-6 items-start justify-start w-full">
-        {Array.from({ length: 2 }).map((_, index) => (
-          <div key={index} className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-50">
-            <div className="h-[235px] bg-gray-200 rounded-[10px] mb-4"></div>
-            <div className="text-center text-gray-500">記事を準備中...</div>
-          </div>
-        ))}
-      </div>
-      <div className="flex flex-row gap-6 items-start justify-start w-full">
-        {Array.from({ length: 4 }).map((_, index) => (
-          <div key={index} className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-30">
-            <div className="text-center text-gray-500 text-sm">記事を準備中...</div>
-          </div>
-        ))}
+    <div className="bg-[#ffffff] box-border content-stretch flex flex-row gap-4 h-[413px] md:h-[380px] lg:h-[520px] items-start justify-start p-[16px] md:p-[16px] lg:p-[20px] relative rounded-[20px] shrink-0 w-full max-w-[349px] md:max-w-[349px] lg:max-w-[460px] opacity-50">
+      <div
+        aria-hidden="true"
+        className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px]"
+      />
+      <div className="box-border content-stretch flex flex-col gap-[17px] h-full items-center justify-center p-0 relative shrink-0 w-full">
+        <div className="bg-gray-200 h-[235px] md:h-[200px] lg:h-[240px] rounded-[10px] shrink-0 w-full" />
+        <div className="text-center text-gray-500 text-sm lg:text-base">記事を準備中...</div>
       </div>
     </div>
   );
@@ -219,111 +103,67 @@ function EmptyState() {
  * 企業インタビューセクション - 企業取材記事を動的表示
  */
 export default async function CompanyInterviewSection() {
-  const blogs = await fetchBlogsWithFallback(CATEGORY_IDS.COMPANY_INTERVIEW, 6);
-  
-  const largeCardBlogs = blogs.slice(0, 2);
-  const smallCardBlogs = blogs.slice(2, 6);
+  const blogs = await fetchBlogsWithFallback(CATEGORY_IDS.COMPANY_INTERVIEW, 4);
 
   return (
     <div
-      className="bg-center bg-cover bg-no-repeat relative w-full min-h-screen"
+      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col items-center justify-center pb-12 md:pb-16 lg:pb-24 pt-16 md:pt-24 lg:pt-[140px] px-4 md:px-8 lg:px-[170px] relative w-full min-h-screen"
       style={{ backgroundImage: `url('${imgSection2CompanyInterview}')` }}
     >
-      <div className="flex flex-row items-center justify-center relative w-full min-h-screen">
-        <div className="box-border flex flex-col lg:flex-row items-center justify-center pb-24 pt-[140px] px-4 md:px-8 lg:px-[170px] relative w-full">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-center lg:items-start justify-center w-full relative">
-            {/* セクションタイトル */}
-            <div className="flex flex-col items-center lg:items-start">
-              <div
-                className="bg-center bg-cover bg-no-repeat h-[200px] md:h-[292px] shrink-0 w-[200px] md:w-[284px]"
-                style={{ backgroundImage: `url('${imgHeading021}')` }}
-              />
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-10 items-center lg:items-start justify-center w-full">
+          
+          {/* Title and Character Section */}
+          <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 items-center lg:items-start justify-start shrink-0">
+            <div
+              className="bg-center bg-contain bg-no-repeat h-[200px] md:h-[180px] lg:h-[220px] shrink-0 w-[320px] md:w-[300px] lg:w-[300px]"
+              style={{ backgroundImage: `url('${imgHeading021}')` }}
+            />
+            <div
+              className="bg-center bg-cover bg-no-repeat h-[300px] md:h-[400px] lg:h-[557px] shrink-0 w-[170px] md:w-[220px] lg:w-[312px] hidden md:block"
+              style={{ backgroundImage: `url('${imgDsgf1}')` }}
+            />
+          </div>
+          
+          {/* Cards Section */}
+          <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 items-center justify-center w-full lg:flex-1">
+            {/* Desktop: 2x2 Grid, Mobile: Single Column (3 items) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-6 w-full max-w-none md:max-w-[750px] lg:max-w-[960px] justify-items-center">
+              {blogs.length >= 1 && <InterviewCard blog={blogs[0]} />}
+              {blogs.length >= 2 ? <InterviewCard blog={blogs[1]} /> : <EmptyCard />}
+              {blogs.length >= 3 ? <InterviewCard blog={blogs[2]} /> : <EmptyCard />}
+              <div className="hidden md:block">
+                {blogs.length >= 4 ? <InterviewCard blog={blogs[3]} /> : <EmptyCard />}
+              </div>
             </div>
             
-            {/* 記事カード一覧 */}
-            <div className="flex flex-col gap-6 lg:gap-10 items-center lg:items-end justify-center lg:justify-end flex-1 w-full">
-              {blogs.length === 0 ? (
-                <EmptyState />
-              ) : (
-                <div className="flex flex-col gap-6 items-start justify-start w-full">
-                  {/* 上段 - 大カード2枚 → モバイルでは縦並び */}
-                  <div className="flex flex-col md:flex-row gap-6 items-start justify-start w-full">
-                    {largeCardBlogs.map((blog) => (
-                      <LargeInterviewCard key={blog.id} blog={blog} />
-                    ))}
-                    {largeCardBlogs.length === 1 && (
-                      <div className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-50 hidden md:block">
-                        <div className="h-[235px] bg-gray-200 rounded-[10px] mb-4"></div>
-                        <div className="text-center text-gray-500">記事を準備中...</div>
-                      </div>
-                    )}
+            {/* Button */}
+            <div className="flex flex-col items-center justify-center mt-4 md:mt-6 lg:mt-8">
+              <Link href="/blog" className="block">
+                <div className="bg-[#04acdb] box-border content-stretch flex flex-row gap-4 items-center justify-center pl-6 pr-4 py-4 relative rounded-[58px] shrink-0 cursor-pointer shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)] hover:shadow-[2px_2px_0px_0px_rgba(19,19,19,0.3)] transition-shadow">
+                  <div
+                    aria-hidden="true"
+                    className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[58px]"
+                  />
+                  <div className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#ffffff] text-[16px] md:text-[18px] text-center text-nowrap tracking-[0.36px]">
+                    <p className="adjustLetterSpacing block leading-[normal] whitespace-pre">
+                      企業取材をもっと見る
+                    </p>
                   </div>
-
-                  {/* 下段 - 小カード4枚 → モバイルでは2×2グリッド */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row gap-6 items-start justify-start w-full">
-                    {smallCardBlogs.map((blog) => (
-                      <SmallInterviewCard key={blog.id} blog={blog} />
-                    ))}
-                    {Array.from({ length: Math.max(0, 4 - smallCardBlogs.length) }).map((_, index) => (
-                      <div key={`placeholder-${index}`} className="flex-1 bg-gray-100 rounded-[20px] border-[#333333] border-[1.2px] p-4 opacity-30 hidden lg:block">
-                        <div className="text-center text-gray-500 text-sm">記事を準備中...</div>
+                  <div className="flex h-[31.984px] items-center justify-center relative shrink-0 w-[32px]">
+                    <div className="flex-none rotate-[270deg]">
+                      <div className="relative size-8">
+                        <img
+                          alt=""
+                          className="block max-w-none size-full"
+                          loading="lazy"
+                          src={imgButtonIcon}
+                        />
                       </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* もっと見るボタン */}
-              <div className="flex flex-col gap-12 items-center justify-center">
-                <div className="bg-[#04acdb] flex flex-row gap-4 items-center justify-center pl-4 md:pl-6 pr-3 md:pr-4 py-3 md:py-4 rounded-[58px] border-[#333333] shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)] border-[1.5px] cursor-pointer hover:shadow-[2px_2px_0px_0px_rgba(19,19,19,0.3)] transition-shadow">
-                  <span
-                    className="text-white font-medium text-center text-nowrap tracking-[0.36px]"
-                    style={{
-                      fontSize: '16px',
-                      fontFamily: 'Noto Sans JP, sans-serif'
-                    }}
-                  >
-                    企業取材をもっと見る
-                  </span>
-                  <div className="flex h-[31.984px] items-center justify-center w-8">
-                    <div className="rotate-[270deg]">
-                      <img
-                        alt=""
-                        className="block max-w-none size-8"
-                        src={imgGroup3}
-                      />
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* キャラクターと吹き出し - モバイルでは非表示 */}
-            <div className="absolute hidden lg:flex h-[500px] items-center justify-center left-[-48px] top-[514px] w-[338px]">
-              <div className="rotate-[180deg] scale-y-[-100%]">
-                <div
-                  className="h-[500px] w-[338px] bg-no-repeat"
-                  style={{ 
-                    backgroundImage: `url('${img50SMan}')`,
-                    backgroundSize: '149.3% 179.43%',
-                    backgroundPosition: '86.9% -0.08%'
-                  }}
-                />
-              </div>
-            </div>
-            
-            <div className="absolute hidden lg:block left-[-38px] top-[358px]">
-              <div className="flex h-[180.083px] items-center justify-center w-[257.109px]">
-                <div className="rotate-[350.794deg]">
-                  <div className="relative">
-                    <img
-                      src="/figma/hukidasi.png"
-                      alt="働くイメージガンガン見せる！"
-                      className="block max-w-none"
-                    />
-                  </div>
-                </div>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

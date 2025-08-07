@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Link from 'next/link';
 
 interface BreadcrumbsProps {
   pageName?: string;
@@ -10,38 +10,20 @@ export default function Breadcrumbs({ pageName = "メディアトップページ
     <div className="bg-white w-full">
       <div className="px-4 sm:px-10 py-2">
         <div className="flex items-center">
-          <div className="flex items-center justify-center w-5 h-4 pr-1">
-            <div className="relative w-4 h-4">
-              <Image
-                src="/figma/home-icon.svg"
-                alt="Home icon"
-                width={16}
-                height={16}
-                className="absolute bottom-[12.5%] left-[37.5%] right-[37.5%] top-1/2 w-1 h-2"
-              />
-              <Image
-                src="/figma/home-icon-detail.svg"
-                alt="Home icon detail"
-                width={16}
-                height={16}
-                className="absolute bottom-[12.498%] left-[12.5%] right-[12.5%] top-[8.337%] w-3 h-[10.5px]"
-              />
-            </div>
-          </div>
+          <Link href="/" className="flex items-center text-[#4b5563] hover:text-[#155dfc] transition-colors">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+              <polyline points="9,22 9,12 15,12 15,22"/>
+            </svg>
+          </Link>
           
-          <div className="flex items-center justify-center w-6 h-4 px-1">
-            <Image
-              src="/figma/arrow-right.svg"
-              alt="Separator"
-              width={16}
-              height={16}
-              className="w-1 h-2"
-            />
-          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#9ca3af] mx-2">
+            <polyline points="9,18 15,12 9,6"/>
+          </svg>
           
-          <div className="text-[#4b5563] text-sm font-normal leading-5">
+          <span className="text-[#4b5563] text-sm font-normal leading-5">
             {pageName}
-          </div>
+          </span>
         </div>
       </div>
     </div>

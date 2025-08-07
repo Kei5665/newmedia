@@ -16,6 +16,14 @@ export default function PickupArticles({ articles }: PickupArticlesProps) {
     });
   };
 
+  // タイトルが20文字を超える場合は省略記号を追加
+  const truncateTitle = (title: string, maxLength: number = 20) => {
+    if (title.length > maxLength) {
+      return title.substring(0, maxLength) + "…";
+    }
+    return title;
+  };
+
   return (
     <div className="bg-white rounded-[12px] p-4 shadow-sm">
       <h3 className="text-[#333333] font-bold text-lg mb-4">ピックアップ記事</h3>
@@ -43,7 +51,7 @@ export default function PickupArticles({ articles }: PickupArticlesProps) {
               {/* 記事情報 */}
               <div className="flex-1 min-w-0">
                 <h4 className="text-[#333333] text-sm font-medium line-clamp-2 leading-tight mb-1">
-                  {article.title}
+                  {truncateTitle(article.title)}
                 </h4>
                 <span className="text-[#666666] text-xs">
                   {formatDate(article.publishedAt)}
