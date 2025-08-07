@@ -11,7 +11,6 @@ const imgImage111 = "/figma/video-thumbnail-1.png";
 const imgImage112 = "/figma/video-thumbnail-2.png";
 const imgImage113 = "/figma/video-thumbnail-3.png";
 const imgHeading051 = "/figma/troubled-you-heading.png";
-const imgGroup171 = "/figma/window-icon.svg";
 const imgGroup3 = "/figma/arrow-icon.svg";
 
 export default async function NewInterviewSection() {

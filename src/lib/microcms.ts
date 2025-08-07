@@ -1,4 +1,4 @@
-import { BlogsResponse, MembersResponse, JobsResponse, Category } from "@/types/microcms";
+import { BlogsResponse, MembersResponse, JobsResponse, Category, Blog } from "@/types/microcms";
 
 // 環境変数の確認とフォールバック
 const getEnvVar = (key: string, fallback?: string): string => {

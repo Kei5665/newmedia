@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Category } from '@/types/microcms';
 
 interface CategoryFilterProps {

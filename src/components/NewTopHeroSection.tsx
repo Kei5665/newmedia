@@ -4,11 +4,8 @@ import { fetchBlogsWithFallback } from "@/lib/blogHelpers";
 import { CATEGORY_IDS } from "@/constants/categories";
 
 const imgHero = "/figma/hero-bg.png";
-const imgTopH11 = "/figma/title-logo.png";
-const imgGroup1911 = "/figma/center-illustration.png";
 const imgCombinedLogo = "/figma/center-illustration+title-logo.png";
 const imgMobileLogo = "/figma/charamobile.png";
-const imgCardBoxTopMain = "/figma/pickup-card-bg.png";
 const fallbackThumb = "/figma/article-thumb.png";
 const imgTopMainImgA2 = "/figma/main-person.png";
 const imgPickupTitle = "/figma/ピックアップ.png";

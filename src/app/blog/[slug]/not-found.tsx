@@ -9,10 +9,6 @@ export default function NotFound() {
       <Header />
       <Breadcrumbs 
         pageName="記事が見つかりません" 
-        customBreadcrumbs={[
-          { label: 'ブログ一覧', href: '/blog' },
-          { label: '記事が見つかりません', href: '' }
-        ]}
       />
       
       {/* メインコンテンツ - 背景画像付きセクション */}

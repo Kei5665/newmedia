@@ -5,7 +5,6 @@ import { Member } from '@/types/microcms';
 
 const imgGroup2091 = "/figma/interview-staff-photos.png"; // フォールバック用
 const imgGroup2071 = "/figma/interview-featured-staff.png";
-const imgGroup4 = "/figma/interview-arrow-icon.svg";
 
 interface MemberInteractiveSectionProps {
   members: Member[];

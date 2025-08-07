@@ -32,7 +32,7 @@ export async function fetchBlogsWithFallback(
     const latestResponse = await getLatestBlogs(limit);
     return latestResponse.contents || [];
     
-  } catch (error) {
+  } catch {
     // エラー時は最新記事を返す
     try {
       const latestResponse = await getLatestBlogs(limit);

@@ -11,14 +11,15 @@ import { getBlogBySlug, getBlogById, getAllCategories, getBlogsByCategory } from
 import { CATEGORY_IDS } from '@/constants/categories';
 
 interface BlogDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // メタデータ生成
 export async function generateMetadata({ params }: BlogDetailPageProps): Promise<Metadata> {
-  const blog = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
   
   if (!blog) {
     return {
@@ -39,6 +40,8 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
 }
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
+  const { slug } = await params;
+  
   // 並行してデータを取得
   let blog: Blog | null = null;
   let categories: Category[] = [];
@@ -47,11 +50,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   try {
     // メインの記事を取得（スラッグまたはIDで）
-    blog = await getBlogBySlug(params.slug);
+    blog = await getBlogBySlug(slug);
     
     // スラッグで見つからない場合、IDで検索を試行
     if (!blog) {
-      blog = await getBlogById(params.slug);
+      blog = await getBlogById(slug);
     }
     
     if (!blog) {
@@ -106,10 +109,6 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       <Header />
       <Breadcrumbs 
         pageName={blog.title} 
-        customBreadcrumbs={[
-          { label: 'ブログ一覧', href: '/blog' },
-          { label: blog.title, href: `/blog/${params.slug}` }
-        ]}
       />
       
       {/* メインコンテンツ - 背景画像付きセクション */}
