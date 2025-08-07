@@ -51,7 +51,14 @@ function JobCard({ job }: { job: Job }) {
 
   return (
     <div className="flex-1 min-w-0">
-      <div className="bg-[#ffffff] border-[#333333] border-[1.2px] border-solid rounded-[20px] p-4 h-full flex flex-col">
+      <a 
+        href={`https://ridejob.jp/job/${job.id}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${jobTitle} - ${companyName}の求人詳細を見る`}
+        className="block no-underline text-inherit hover:opacity-80 transition-opacity duration-200 cursor-pointer"
+      >
+        <div className="bg-[#ffffff] border-[#333333] border-[1.2px] border-solid rounded-[20px] p-4 h-full flex flex-col hover:shadow-lg transition-shadow duration-200">
         <div
           className="bg-center bg-cover bg-no-repeat h-[193px] rounded-[10px] shrink-0 w-full mb-4"
           style={{ backgroundImage: `url('${jobImage}')` }}
@@ -112,6 +119,7 @@ function JobCard({ job }: { job: Job }) {
           </div>
         </div>
       </div>
+      </a>
     </div>
   );
 }
@@ -157,7 +165,14 @@ export default async function NewJobSection() {
         >
           {jobs.length > 0 ? (
             <div className="w-full max-w-7xl">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+              {/* モバイル(sm未満)では3件表示 */}
+              <div className="sm:hidden grid grid-cols-1 gap-6 w-full">
+                {jobs.slice(0, 3).map((job) => (
+                  <JobCard key={job.id} job={job} />
+                ))}
+              </div>
+              {/* タブレット以上では4件表示 */}
+              <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
                 {jobs.slice(0, 4).map((job) => (
                   <JobCard key={job.id} job={job} />
                 ))}
@@ -176,33 +191,41 @@ export default async function NewJobSection() {
           data-name="btn"
           id="node-2161_306"
         >
-          <div
-            className="shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)] bg-[#04acdb] box-border content-stretch flex flex-row gap-4 items-center justify-center pl-4 md:pl-6 pr-3 md:pr-4 py-3 md:py-4 relative rounded-[58px] shrink-0"
-            data-name="Button"
-            id="node-2161_307"
+          <a
+            href="https://ridejob.jp/search"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="求人検索ページを開く"
+            className="block no-underline"
           >
-            <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[58px]" />
             <div
-              className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#ffffff] text-[16px] md:text-[18px] text-center text-nowrap tracking-[0.36px]"
-              id="node-2161_308"
+              className="shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)] bg-[#04acdb] box-border content-stretch flex flex-row gap-4 items-center justify-center pl-4 md:pl-6 pr-3 md:pr-4 py-3 md:py-4 relative rounded-[58px] shrink-0 hover:opacity-90 transition-opacity duration-200 cursor-pointer"
+              data-name="Button"
+              id="node-2161_307"
             >
-              <p className="adjustLetterSpacing block leading-[normal] whitespace-pre">
-                求人をもっと見る
-              </p>
-            </div>
-            <div className="flex h-[31.984px] items-center justify-center relative shrink-0 w-[32px]">
-              <div className="flex-none rotate-[270deg]">
-                <div className="relative size-8" id="node-2161_309">
-                  <img
-                    alt="Arrow icon"
-                    className="block max-w-none size-full"
-                    loading="lazy"
-                    src={imgFrame3}
-                  />
+              <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[58px]" />
+              <div
+                className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#ffffff] text-[16px] md:text-[18px] text-center text-nowrap tracking-[0.36px]"
+                id="node-2161_308"
+              >
+                <p className="adjustLetterSpacing block leading-[normal] whitespace-pre">
+                  求人をもっと見る
+                </p>
+              </div>
+              <div className="flex h-[31.984px] items-center justify-center relative shrink-0 w-[32px]">
+                <div className="flex-none rotate-[270deg]">
+                  <div className="relative size-8" id="node-2161_309">
+                    <img
+                      alt="Arrow icon"
+                      className="block max-w-none size-full"
+                      loading="lazy"
+                      src={imgFrame3}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
