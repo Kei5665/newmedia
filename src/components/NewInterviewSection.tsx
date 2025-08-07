@@ -26,13 +26,13 @@ export default async function NewInterviewSection() {
 
   return (
     <div
-      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-9 py-[29px] relative size-full"
+      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start md:px-9 py-[29px] relative size-full"
       data-name="面談セクション"
       id="node-2163_546"
       style={{ backgroundImage: `url('${img}')` }}
     >
       <div
-        className="box-border content-stretch flex flex-col gap-2.5 items-center justify-center px-4 md:px-8 lg:px-[432px] py-0 relative rounded-tl-[80px] shrink-0 w-full"
+        className="box-border content-stretch flex flex-col gap-2.5 items-center justify-center md:px-8 lg:px-[432px] py-0 relative rounded-tl-[80px] shrink-0 w-full"
         data-name="icon bg_pc"
         id="node-2163_847"
       >
@@ -162,8 +162,8 @@ export default async function NewInterviewSection() {
                     id="node-2163_524"
                   >
                     <p className="leading-none">
-                      <span className="text-[24px] md:text-[34px]">{`RIDE JOB `}</span>
-                      <span className="text-[22px] md:text-[32px]">チャンネル</span>
+                      <span className="text-[24px] md:text-[24px]">{`RIDE JOB `}</span>
+                      <span className="text-[22px] md:text-[24px]">チャンネルへ</span>
                     </p>
                   </div>
                   <div

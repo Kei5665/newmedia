@@ -57,12 +57,7 @@ function MemberDetail({ member }: { member: Member }) {
       <div className="box-border content-stretch flex flex-col gap-3 items-center justify-start p-0 relative shrink-0 w-full max-w-full">
         {/* 名前部分 */}
         <div className="box-border content-stretch flex flex-col items-center justify-start leading-[0] p-0 relative shrink-0 text-center w-full">
-          <div className="flex flex-col font-['Dela_Gothic_One:Regular',_sans-serif] justify-center not-italic relative shrink-0 text-[#101828] text-[20px] md:text-[24px]">
-            <p className="block leading-[normal] break-words">
-              {member.name || 'Unknown Member'}
-            </p>
-          </div>
-          <div className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center relative shrink-0 text-[#2204db] text-[16px] md:text-[18px]">
+          <div className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center relative shrink-0 text-[#2204db] text-[20px] md:text-[18px]">
             <p className="block leading-[normal] break-words">
               {member.name || '名前未設定'}
             </p>
@@ -71,34 +66,13 @@ function MemberDetail({ member }: { member: Member }) {
         
         {/* テキスト部分 */}
         <div className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0 w-full max-w-full">
-          <div className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-start leading-[1.6] relative shrink-0 text-[12px] md:text-[14px] text-left text-neutral-950 w-full max-w-full px-2">
+          <div className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-bold justify-start leading-[1.6] relative shrink-0 text-[16px] md:text-[14px] text-left text-neutral-950 w-full max-w-full px-2">
             <p className="block break-words">
               {member.text || 'メンバーの説明文が設定されていません。'}
             </p>
           </div>
         </div>
         
-        {/* ボタン部分 */}
-        <div className="bg-[#06bef1] box-border content-stretch flex flex-row gap-2 items-center justify-center pl-4 pr-2 py-2 relative rounded-[40px] shrink-0 cursor-pointer hover:bg-[#05a5d6] transition-colors">
-          <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[40px] shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)]" />
-          <div className="flex flex-col font-['Noto_Sans_JP:Medium',_sans-serif] font-medium justify-center leading-[0] relative shrink-0 text-[#ffffff] text-[14px] text-center text-nowrap">
-            <p className="block leading-[normal] whitespace-pre">
-              記事を読む
-            </p>
-          </div>
-          <div className="flex h-[28px] items-center justify-center relative shrink-0 w-[28px]">
-            <div className="flex-none rotate-[270deg]">
-              <div className="relative size-6">
-                <img
-                  alt="Arrow icon"
-                  className="block max-w-none size-full"
-                  loading="lazy"
-                  src={imgGroup4}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
