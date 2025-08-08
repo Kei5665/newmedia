@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  basePath: '/media',
   images: {
     remotePatterns: [
       {
@@ -8,6 +9,16 @@ const nextConfig: NextConfig = {
         hostname: 'images.microcms-assets.io',
       },
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/media',
+        permanent: false,
+        basePath: false,
+      },
+    ];
   },
 };
 

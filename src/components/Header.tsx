@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Category } from '@/types/microcms';
+import { withBasePath } from '@/lib/basePath';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-20">
             <Link href="/" className="flex flex-col items-center hover:opacity-80 transition-opacity">
               <Image
-                src="/logo-ridejob.png"
+                src={withBasePath('/logo-ridejob.png')}
                 alt="RIDE JOB Logo"
                 width={120}
                 height={39}

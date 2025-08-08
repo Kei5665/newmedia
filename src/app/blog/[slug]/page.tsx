@@ -9,6 +9,7 @@ import BlogCTASection from '@/components/BlogCTASection';
 import { Blog, Category } from '@/types/microcms';
 import { getBlogBySlug, getBlogById, getAllCategories, getBlogsByCategory } from '@/lib/microcms';
 import { CATEGORY_IDS } from '@/constants/categories';
+import { withBasePath } from '@/lib/basePath';
 
 interface BlogDetailPageProps {
   params: Promise<{
@@ -114,7 +115,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       {/* メインコンテンツ - 背景画像付きセクション */}
       <main 
         className="min-h-screen bg-repeat"
-        style={{ backgroundImage: "url('/figma/blue-bg.png')" }}
+        style={{ backgroundImage: `url('${withBasePath('/figma/blue-bg.png')}')` }}
       >
         {/* 白い背景のコンテナ */}
         <div className="container mx-auto px-4 py-8">

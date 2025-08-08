@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Blog } from "@/types/microcms";
 import { fetchBlogsWithFallback } from "@/lib/blogHelpers";
 import { CATEGORY_IDS } from "@/constants/categories";
+import { withBasePath } from "@/lib/basePath";
 
 const imgHero = "/figma/hero-bg.png";
 const imgCombinedLogo = "/figma/center-illustration+title-logo.png";
@@ -147,7 +148,7 @@ export default async function NewTopHeroSection() {
       <div className="lg:hidden">
         <div
           className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-9 py-[29px] relative w-full min-h-screen"
-          style={{ backgroundImage: `url('${imgHero}')` }}
+          style={{ backgroundImage: `url('${withBasePath(imgHero)}')` }}
         >
           <div className="flex flex-col gap-5 items-start justify-start w-full">
             {/* タイトルロゴとイラスト */}
@@ -156,14 +157,14 @@ export default async function NewTopHeroSection() {
               <div className="block md:hidden">
                 <div
                   className="bg-center bg-contain bg-no-repeat w-full aspect-[202/329]"
-                  style={{ backgroundImage: `url('${imgMobileLogo}')` }}
+                  style={{ backgroundImage: `url('${withBasePath(imgMobileLogo)}')` }}
                 />
               </div>
               {/* タブレット以上で統合画像 */}
               <div className="hidden md:block">
                 <div
                   className="bg-center bg-contain bg-no-repeat w-full aspect-[665/266]"
-                  style={{ backgroundImage: `url('${imgCombinedLogo}')` }}
+                  style={{ backgroundImage: `url('${withBasePath(imgCombinedLogo)}')` }}
                 />
               </div>
             </div>
@@ -174,7 +175,7 @@ export default async function NewTopHeroSection() {
               <div className="flex justify-center">
                 <div
                   className="bg-center bg-contain bg-no-repeat h-[60px] w-[240px]"
-                  style={{ backgroundImage: `url('${imgPickupTitle}')` }}
+                  style={{ backgroundImage: `url('${withBasePath(imgPickupTitle)}')` }}
                 />
               </div>
               
@@ -196,7 +197,7 @@ export default async function NewTopHeroSection() {
       <div className="hidden lg:block">
         <div
           className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-9 py-[29px] relative w-full"
-          style={{ backgroundImage: `url('${imgHero}')` }}
+          style={{ backgroundImage: `url('${withBasePath(imgHero)}')` }}
         >
           <div className="flex flex-row gap-5 items-start justify-start w-full">
             <div className="flex-1 max-w-[50%]">
@@ -204,7 +205,7 @@ export default async function NewTopHeroSection() {
               <div className="w-full mb-5">
                 <div
                   className="bg-center bg-contain bg-no-repeat w-full aspect-[665/266]"
-                  style={{ backgroundImage: `url('${imgCombinedLogo}')` }}
+                  style={{ backgroundImage: `url('${withBasePath(imgCombinedLogo)}')` }}
                 />
               </div>
 
@@ -214,7 +215,7 @@ export default async function NewTopHeroSection() {
                 <div className="flex justify-center w-full mb-4">
                   <div
                     className="bg-center bg-contain bg-no-repeat h-[80px] w-[320px]"
-                    style={{ backgroundImage: `url('${imgPickupTitle}')` }}
+                    style={{ backgroundImage: `url('${withBasePath(imgPickupTitle)}')` }}
                   />
                 </div>
                 
@@ -247,7 +248,7 @@ export default async function NewTopHeroSection() {
             <div className="flex-1 max-w-[50%] self-stretch">
               <div
                 className="w-full h-full bg-center bg-contain bg-no-repeat rounded-lg"
-                style={{ backgroundImage: `url('${imgTopMainImgA2}')` }}
+                style={{ backgroundImage: `url('${withBasePath(imgTopMainImgA2)}')` }}
               />
             </div>
           </div>

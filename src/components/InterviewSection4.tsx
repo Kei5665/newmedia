@@ -1,3 +1,5 @@
+import { withBasePath } from '@/lib/basePath';
+
 export default function InterviewSection4() {
   return (
     <div
@@ -5,7 +7,7 @@ export default function InterviewSection4() {
       data-name="section4 interview"
       id="node-2117_20760"
       style={{ 
-        backgroundImage: `url('/figma/blue-bg.png')`,
+        backgroundImage: `url('${withBasePath('/figma/blue-bg.png')}')`,
         backgroundSize: 'auto 100%'
       }}
     >
@@ -39,7 +41,7 @@ export default function InterviewSection4() {
                     className="bg-center bg-cover bg-no-repeat h-[308px] shrink-0 w-[408px]"
                     data-name="Frame 224 1"
                     id="node-2117_20802"
-                    style={{ backgroundImage: `url('/figma/frame-224-1.png')` }}
+                    style={{ backgroundImage: `url('${withBasePath('/figma/frame-224-1.png')}')` }}
                   />
                 </div>
                 <div
@@ -69,7 +71,7 @@ export default function InterviewSection4() {
                             data-name="Frame 215 1"
                             id="node-2117_20808"
                             style={{
-                              backgroundImage: `url('/figma/frame-215-1.png')`,
+                              backgroundImage: `url('${withBasePath('/figma/frame-215-1.png')}')`,
                             }}
                           />
                           <div
@@ -95,16 +97,16 @@ export default function InterviewSection4() {
                                     <img
                                       alt=""
                                       className="block max-w-none size-full"
-                                      src="/figma/ellipse-7.svg"
+                                      src={withBasePath('/figma/ellipse-7.svg')}
                                     />
                                   </div>
                                   <div
                                     className="[background-size:100%_100%] [grid-area:1_/_1] bg-no-repeat bg-top-left ml-0 mt-0 rounded-[175px] size-[88px]"
                                     data-name="image 60"
                                     id="node-2117_20814"
-                                    style={{
-                                      backgroundImage: `url('/figma/image-60.png')`,
-                                    }}
+                                      style={{
+                                        backgroundImage: `url('${withBasePath('/figma/image-60.png')}')`,
+                                      }}
                                   />
                                 </div>
                               </div>
@@ -128,16 +130,16 @@ export default function InterviewSection4() {
                                     <img
                                       alt=""
                                       className="block max-w-none size-full"
-                                      src="/figma/ellipse-7.svg"
+                                      src={withBasePath('/figma/ellipse-7.svg')}
                                     />
                                   </div>
                                   <div
                                     className="[background-size:100%_100%] [grid-area:1_/_1] bg-no-repeat bg-top-left ml-0 mt-0 rounded-[175px] size-[88px]"
                                     data-name="image 60"
                                     id="node-2117_20819"
-                                    style={{
-                                      backgroundImage: `url('/figma/image-60.png')`,
-                                    }}
+                                      style={{
+                                        backgroundImage: `url('${withBasePath('/figma/image-60.png')}')`,
+                                      }}
                                   />
                                 </div>
                               </div>
@@ -161,16 +163,16 @@ export default function InterviewSection4() {
                                     <img
                                       alt=""
                                       className="block max-w-none size-full"
-                                      src="/figma/ellipse-7.svg"
+                                      src={withBasePath('/figma/ellipse-7.svg')}
                                     />
                                   </div>
                                   <div
                                     className="[background-size:100%_100%] [grid-area:1_/_1] bg-no-repeat bg-top-left ml-0 mt-0 rounded-[175px] size-[88px]"
                                     data-name="image 60"
                                     id="node-2117_20824"
-                                    style={{
-                                      backgroundImage: `url('/figma/image-60.png')`,
-                                    }}
+                                      style={{
+                                        backgroundImage: `url('${withBasePath('/figma/image-60.png')}')`,
+                                      }}
                                   />
                                 </div>
                               </div>
@@ -194,16 +196,16 @@ export default function InterviewSection4() {
                                     <img
                                       alt=""
                                       className="block max-w-none size-full"
-                                      src="/figma/ellipse-7.svg"
+                                      src={withBasePath('/figma/ellipse-7.svg')}
                                     />
                                   </div>
                                   <div
                                     className="[background-size:100%_100%] [grid-area:1_/_1] bg-no-repeat bg-top-left ml-0 mt-0 rounded-[175px] size-[88px]"
                                     data-name="image 60"
                                     id="node-2117_20829"
-                                    style={{
-                                      backgroundImage: `url('/figma/image-60.png')`,
-                                    }}
+                                      style={{
+                                        backgroundImage: `url('${withBasePath('/figma/image-60.png')}')`,
+                                      }}
                                   />
                                 </div>
                               </div>
@@ -299,19 +301,19 @@ export default function InterviewSection4() {
                                     className="[grid-area:1_/_1] ml-0 mt-0 relative size-[185px]"
                                     id="node-2117_20843"
                                   >
-                                    <img
-                                      alt=""
-                                      className="block max-w-none size-full"
-                                      loading="lazy"
-                                      src="/figma/ellipse-8.svg"
-                                    />
+                          <img
+                            alt=""
+                            className="block max-w-none size-full"
+                            loading="lazy"
+                            src={withBasePath('/figma/ellipse-8.svg')}
+                          />
                                   </div>
                                   <div
                                     className="[background-size:102.16%_102.16%] [grid-area:1_/_1] bg-[50%_-250%] bg-no-repeat ml-0 mt-0 rounded-[175px] size-[185px]"
                                     data-name="image 60"
                                     id="node-2117_20844"
                                     style={{
-                                      backgroundImage: `url('/figma/image-60.png')`,
+                                      backgroundImage: `url('${withBasePath('/figma/image-60.png')}')`,
                                     }}
                                   />
                                 </div>
@@ -394,12 +396,12 @@ export default function InterviewSection4() {
                                         className="relative size-8"
                                         id="node-2117_20856"
                                       >
-                                        <img
-                                          alt=""
-                                          className="block max-w-none size-full"
-                                          loading="lazy"
-                                          src="/figma/group-4.svg"
-                                        />
+                                          <img
+                                            alt=""
+                                            className="block max-w-none size-full"
+                                            loading="lazy"
+                                            src={withBasePath('/figma/group-4.svg')}
+                                          />
                                       </div>
                                     </div>
                                   </div>
@@ -443,7 +445,7 @@ export default function InterviewSection4() {
                             alt=""
                             className="block max-w-none size-full"
                             loading="lazy"
-                            src="/figma/vector-2.svg"
+                            src={withBasePath('/figma/vector-2.svg')}
                           />
                         </div>
                       </div>
@@ -479,16 +481,16 @@ export default function InterviewSection4() {
                           className="bg-center bg-cover bg-no-repeat shrink-0"
                           data-name="Frame 214"
                           id="node-2052_89638"
-                          style={{ 
-                            backgroundImage: `url('/figma/Frame-214.png')`,
-                            width: 'auto',
-                            height: 'auto'
-                          }}
+                            style={{ 
+                              backgroundImage: `url('${withBasePath('/figma/Frame-214.png')}')`,
+                              width: 'auto',
+                              height: 'auto'
+                            }}
                         >
                           <img
                             alt="面談者の素顔"
                             className="block max-w-none"
-                            src="/figma/Frame-214.png"
+                            src={withBasePath('/figma/Frame-214.png')}
                           />
                         </div>
                       </div>
@@ -526,7 +528,7 @@ export default function InterviewSection4() {
                             className="aspect-[405/720] basis-0 bg-center bg-cover bg-no-repeat grow min-h-px min-w-px relative rounded-[10px] shrink-0"
                             data-name="image 111"
                             id="node-2052_89645"
-                            style={{ backgroundImage: `url('/figma/image-111.png')` }}
+                            style={{ backgroundImage: `url('${withBasePath('/figma/image-111.png')}')` }}
                           >
                             <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[10px]" />
                           </div>
@@ -534,7 +536,7 @@ export default function InterviewSection4() {
                             className="aspect-[405/720] basis-0 bg-center bg-cover bg-no-repeat grow min-h-px min-w-px relative rounded-[10px] shrink-0"
                             data-name="image 112"
                             id="node-2052_89646"
-                            style={{ backgroundImage: `url('/figma/image-112.png')` }}
+                            style={{ backgroundImage: `url('${withBasePath('/figma/image-112.png')}')` }}
                           >
                             <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[10px]" />
                           </div>
@@ -542,7 +544,7 @@ export default function InterviewSection4() {
                             className="aspect-[405/720] basis-0 bg-center bg-cover bg-no-repeat grow min-h-px min-w-px relative rounded-[10px] shrink-0"
                             data-name="image 113"
                             id="node-2052_89647"
-                            style={{ backgroundImage: `url('/figma/image-113.png')` }}
+                            style={{ backgroundImage: `url('${withBasePath('/figma/image-113.png')}')` }}
                           >
                             <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[10px]" />
                           </div>
@@ -584,11 +586,11 @@ export default function InterviewSection4() {
                                   className="absolute bottom-0 left-0 right-[-0.031%] top-0"
                                   id="node-2052_89654"
                                 >
-                                  <img
-                                    alt=""
-                                    className="block max-w-none size-full"
-                                    src="/figma/group-171.svg"
-                                  />
+                                    <img
+                                      alt=""
+                                      className="block max-w-none size-full"
+                                      src={withBasePath('/figma/group-171.svg')}
+                                    />
                                 </div>
                               </div>
                             </div>
@@ -610,7 +612,7 @@ export default function InterviewSection4() {
                   className="bg-center bg-cover bg-no-repeat h-[187px] shrink-0 w-[346px]"
                   data-name="heading05 1"
                   id="node-2117_20382"
-                  style={{ backgroundImage: `url('/figma/heading05-1.png')` }}
+                  style={{ backgroundImage: `url('${withBasePath('/figma/heading05-1.png')}')` }}
                 />
                 <div
                   className="box-border content-stretch flex flex-col gap-8 items-center justify-start p-0 relative shrink-0 w-full"
@@ -699,7 +701,7 @@ export default function InterviewSection4() {
                                     <img
                                       alt=""
                                       className="block max-w-none size-full"
-                                      src="/figma/group-3.svg"
+                                      src={withBasePath('/figma/group-3.svg')}
                                     />
                                   </div>
                                 </div>
@@ -791,7 +793,7 @@ export default function InterviewSection4() {
                                       alt=""
                                       className="block max-w-none size-full"
                                       loading="lazy"
-                                      src="/figma/group-3.svg"
+                                      src={withBasePath('/figma/group-3.svg')}
                                     />
                                   </div>
                                 </div>

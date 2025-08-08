@@ -1,4 +1,5 @@
 import { getLatestJobs } from "@/lib/microcms";
+import { withBasePath } from "@/lib/basePath";
 import { Job } from "@/types/microcms";
 
 const imgSection4Job = "/figma/section4-job-bg.png";
@@ -61,7 +62,7 @@ function JobCard({ job }: { job: Job }) {
         <div className="bg-[#ffffff] border-[#333333] border-[1.2px] border-solid rounded-[20px] p-4 h-full flex flex-col hover:shadow-lg transition-shadow duration-200">
         <div
           className="bg-center bg-cover bg-no-repeat h-[193px] rounded-[10px] shrink-0 w-full mb-4"
-          style={{ backgroundImage: `url('${jobImage}')` }}
+          style={{ backgroundImage: `url('${withBasePath(jobImage)}')` }}
         />
         <div className="flex flex-col gap-2 flex-1">
           <div className="font-['Noto_Sans_JP:Bold',_sans-serif] font-bold text-[#101828] text-[16px] leading-[1.5] break-words">
@@ -75,7 +76,7 @@ function JobCard({ job }: { job: Job }) {
               <img
                 alt="Map icon"
                 className="block max-w-none size-full"
-                src={imgBxsMap}
+                src={withBasePath(imgBxsMap)}
               />
             </div>
             <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-neutral-500 text-[14px] leading-normal break-words flex-1 min-w-0">
@@ -88,7 +89,7 @@ function JobCard({ job }: { job: Job }) {
                 alt="Yen icon"
                 className="block max-w-none size-full"
                 loading="lazy"
-                src={imgLucideJapaneseYen}
+                src={withBasePath(imgLucideJapaneseYen)}
               />
             </div>
             <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-neutral-500 text-[14px] leading-normal break-words flex-1 min-w-0">
@@ -101,7 +102,7 @@ function JobCard({ job }: { job: Job }) {
                 alt="Work icon"
                 className="block max-w-none size-full"
                 loading="lazy"
-                src={imgMaterialSymbolsWork}
+                src={withBasePath(imgMaterialSymbolsWork)}
               />
             </div>
             <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-neutral-500 text-[14px] leading-normal break-words flex-1 min-w-0">
@@ -140,7 +141,7 @@ export default async function NewJobSection() {
       className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-0 py-20 relative size-full"
       data-name="section4 job"
       id="node-2161_192"
-      style={{ backgroundImage: `url('${imgSection4Job}')` }}
+      style={{ backgroundImage: `url('${withBasePath(imgSection4Job)}')` }}
     >
       <div
         className="box-border content-stretch flex flex-col gap-14 items-center justify-start p-0 relative shrink-0 w-full"
@@ -155,7 +156,7 @@ export default async function NewJobSection() {
             className="bg-center bg-cover bg-no-repeat h-[120px] md:h-[162px] shrink-0 w-[280px] md:w-[383px]"
             data-name="heading04 2"
             id="node-2161_347"
-            style={{ backgroundImage: `url('${imgHeading042}')` }}
+            style={{ backgroundImage: `url('${withBasePath(imgHeading042)}')` }}
           />
         </div>
         <div
@@ -219,7 +220,7 @@ export default async function NewJobSection() {
                       alt="Arrow icon"
                       className="block max-w-none size-full"
                       loading="lazy"
-                      src={imgFrame3}
+                      src={withBasePath(imgFrame3)}
                     />
                   </div>
                 </div>

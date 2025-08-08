@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { withBasePath } from '@/lib/basePath';
 import { Category } from '@/types/microcms';
 
 interface NewCategorySectionProps {
@@ -24,7 +25,7 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
       className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col lg:flex-row gap-8 lg:gap-16 items-center justify-center pb-8 lg:pb-0 px-4 md:px-8 lg:pl-[150px] lg:pr-[72px] pt-16 lg:pt-20 relative w-full min-h-screen"
       data-name="section3 Category"
       id="node-2151_193"
-      style={{ backgroundImage: `url('${imgSection3Category}')` }}
+      style={{ backgroundImage: `url('${withBasePath(imgSection3Category)}')` }}
     >
       <div
         className="box-border content-stretch flex flex-col lg:flex-row gap-8 lg:gap-10 items-center lg:items-start justify-center lg:justify-start p-0 relative shrink-0 w-full lg:w-auto"
@@ -47,7 +48,7 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
                 className="bg-center bg-contain bg-no-repeat h-[180px] md:h-[240px] lg:h-[273px] shrink-0 w-[280px] md:w-[320px] lg:w-[376px]"
                 data-name="Frame 68 3"
                 id="node-2152_192"
-                style={{ backgroundImage: `url('${imgFrame683}')` }}
+                style={{ backgroundImage: `url('${withBasePath(imgFrame683)}')` }}
               />
             </div>
           </div>
@@ -59,7 +60,7 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
               className="bg-center bg-contain bg-no-repeat h-[400px] md:h-[500px] lg:h-[595px] shrink-0 w-[280px] md:w-[320px] lg:w-[367.5px]"
               data-name="Group 206 (1) 1"
               id="node-2151_1161"
-              style={{ backgroundImage: `url('${imgGroup20611}')` }}
+              style={{ backgroundImage: `url('${withBasePath(imgGroup20611)}')` }}
             />
           </div>
         </div>
@@ -76,7 +77,7 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
             className="bg-center bg-contain bg-no-repeat min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 cursor-pointer"
             data-name="Frame 47 1"
             id="node-2151_1192"
-            style={{ backgroundImage: `url('${imgFrame471}')` }}
+            style={{ backgroundImage: `url('${withBasePath(imgFrame471)}')` }}
           />
         </Link>
         <Link
@@ -87,7 +88,7 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
             className="bg-center bg-contain bg-no-repeat min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 cursor-pointer"
             data-name="Frame 48 1"
             id="node-2151_1207"
-            style={{ backgroundImage: `url('${imgFrame481}')` }}
+            style={{ backgroundImage: `url('${withBasePath(imgFrame481)}')` }}
           />
         </Link>
         <Link
@@ -98,7 +99,7 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
             className="bg-center bg-contain bg-no-repeat min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 cursor-pointer"
             data-name="Frame 46 1"
             id="node-2151_1177"
-            style={{ backgroundImage: `url('${imgFrame461}')` }}
+            style={{ backgroundImage: `url('${withBasePath(imgFrame461)}')` }}
           />
         </Link>
         <Link
@@ -109,7 +110,7 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
             className="bg-center bg-contain bg-no-repeat min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 cursor-pointer"
             data-name="Frame 49 1"
             id="node-2151_1222"
-            style={{ backgroundImage: `url('${imgFrame491}')` }}
+            style={{ backgroundImage: `url('${withBasePath(imgFrame491)}')` }}
           />
         </Link>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withBasePath } from '@/lib/basePath';
 import Link from 'next/link';
 import { Blog } from '@/types/microcms';
 import { fetchBlogsWithFallback } from '@/lib/blogHelpers';
@@ -35,14 +36,14 @@ function InterviewCard({ blog }: { blog: Blog }) {
   return (
     <Link href={blogLink} className="block group">
       <div className="bg-[#ffffff] box-border content-stretch flex flex-row gap-4 h-[413px] md:h-[380px] lg:h-[520px] items-start justify-start p-[16px] md:p-[16px] lg:p-[20px] relative rounded-[20px] shrink-0 w-full max-w-[349px] md:max-w-[349px] lg:max-w-[460px] hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-        <div
+          <div
           aria-hidden="true"
           className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px] group-hover:border-[#2204db] transition-colors duration-200"
         />
         <div className="box-border content-stretch flex flex-col gap-[17px] lg:gap-[20px] h-full items-start justify-start p-0 relative shrink-0 w-full">
           <div
             className="bg-center bg-cover bg-no-repeat h-[235px] md:h-[200px] lg:h-[240px] rounded-[10px] shrink-0 w-full"
-            style={{ backgroundImage: `url('${blog.eyecatch?.url || fallbackImage}')` }}
+            style={{ backgroundImage: `url('${withBasePath(blog.eyecatch?.url || fallbackImage)}')` }}
           />
           <div className="box-border content-stretch flex flex-col gap-4 lg:gap-6 items-start justify-start p-0 relative shrink-0 w-full">
             <div className="box-border content-stretch flex flex-row items-center justify-between p-0 relative shrink-0 w-full">
@@ -108,7 +109,7 @@ export default async function CompanyInterviewSection() {
   return (
     <div
       className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col items-center justify-center pb-12 md:pb-16 lg:pb-24 pt-16 md:pt-24 lg:pt-[140px] px-4 md:px-8 lg:px-[170px] relative w-full min-h-screen"
-      style={{ backgroundImage: `url('${imgSection2CompanyInterview}')` }}
+      style={{ backgroundImage: `url('${withBasePath(imgSection2CompanyInterview)}')` }}
     >
       <div className="w-full max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 md:gap-10 items-center lg:items-start justify-center w-full">
@@ -117,11 +118,11 @@ export default async function CompanyInterviewSection() {
           <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 items-center lg:items-start justify-start shrink-0">
             <div
               className="bg-center bg-contain bg-no-repeat h-[200px] md:h-[180px] lg:h-[220px] shrink-0 w-[320px] md:w-[300px] lg:w-[300px]"
-              style={{ backgroundImage: `url('${imgHeading021}')` }}
+            style={{ backgroundImage: `url('${withBasePath(imgHeading021)}')` }}
             />
             <div
               className="bg-center bg-cover bg-no-repeat h-[300px] md:h-[400px] lg:h-[557px] shrink-0 w-[170px] md:w-[220px] lg:w-[312px] hidden md:block"
-              style={{ backgroundImage: `url('${imgDsgf1}')` }}
+            style={{ backgroundImage: `url('${withBasePath(imgDsgf1)}')` }}
             />
           </div>
           
@@ -157,7 +158,7 @@ export default async function CompanyInterviewSection() {
                           alt=""
                           className="block max-w-none size-full"
                           loading="lazy"
-                          src={imgButtonIcon}
+                          src={withBasePath(imgButtonIcon)}
                         />
                       </div>
                     </div>

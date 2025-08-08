@@ -1,13 +1,14 @@
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 
 export default function JobSection() {
   return (
     <div className="relative w-full h-[800px] bg-center bg-cover bg-no-repeat" 
-         style={{ backgroundImage: `url('/figma/section4-job-1.png')` }}>
+         style={{ backgroundImage: `url('${withBasePath('/figma/section4-job-1.png')}')` }}>
       
       {/* Section Title */}
       <div className="absolute left-1/2 top-20 translate-x-[-50%] w-[383px] h-[162px]">
-        <img src="/figma/heading04.png" alt="最新求人" className="w-full h-full object-contain" />
+        <Image src="/figma/heading04.png" alt="最新求人" width={383} height={162} className="object-contain w-full h-full" />
       </div>
       
       {/* Job Cards Grid */}
@@ -23,7 +24,7 @@ export default function JobSection() {
                 <div className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px]" />
                 
                 <div className="bg-center bg-cover bg-no-repeat h-[193px] rounded-[10px] shrink-0 w-full" 
-                     style={{ backgroundImage: `url('/figma/company-interview-bg.png')` }} />
+                     style={{ backgroundImage: `url('${withBasePath('/figma/company-interview-bg.png')}')` }} />
                 
                 <div className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full">
                   <div className="flex flex-col font-bold justify-center leading-[0] min-w-full relative shrink-0 text-[#101828] text-[16px] text-left" 
@@ -40,7 +41,7 @@ export default function JobSection() {
                   <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                     <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
                     <div className="relative shrink-0 size-4">
-                      <Image src="/figma/category-mask-shape1.svg" alt="location" width={16} height={16} />
+                      <Image src={withBasePath('/figma/category-mask-shape1.svg')} alt="location" width={16} height={16} />
                     </div>
                     <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                       <p className="block leading-[normal] whitespace-pre">門真市 大阪府</p>
@@ -50,7 +51,7 @@ export default function JobSection() {
                   <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                     <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
                     <div className="relative shrink-0 size-4">
-                      <Image src="/figma/category-frame.png" alt="salary" width={16} height={16} />
+                      <Image src={withBasePath('/figma/category-frame.png')} alt="salary" width={16} height={16} />
                     </div>
                     <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                       <p className="block leading-[normal] whitespace-pre">月給 350,000〜800,000円</p>
@@ -59,7 +60,7 @@ export default function JobSection() {
                   
                   <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                     <div className="relative shrink-0 size-4">
-                      <Image src="/figma/category-character.png" alt="work type" width={16} height={16} />
+                      <Image src={withBasePath('/figma/category-character.png')} alt="work type" width={16} height={16} />
                     </div>
                     <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                       <p className="block leading-[normal] whitespace-pre">正社員</p>
@@ -110,7 +111,7 @@ export default function JobSection() {
                 <div className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px]" />
                 
                 <div className="bg-center bg-cover bg-no-repeat h-[189px] rounded-[10px] shrink-0 w-full" 
-                     style={{ backgroundImage: `url('/figma/category-company-interview.png')` }} />
+                     style={{ backgroundImage: `url('${withBasePath('/figma/category-company-interview.png')}')` }} />
                 
                 <div className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full">
                   <div className="flex flex-col font-bold justify-center leading-[0] min-w-full relative shrink-0 text-[#101828] text-[16px] text-left" 
@@ -127,7 +128,7 @@ export default function JobSection() {
                   <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                     <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
                     <div className="relative shrink-0 size-4">
-                      <Image src="/figma/category-mask-shape1.svg" alt="location" width={16} height={16} />
+                      <Image src={withBasePath('/figma/category-mask-shape1.svg')} alt="location" width={16} height={16} />
                     </div>
                     <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                       <p className="block leading-[normal] whitespace-pre">足立区 東京都</p>
@@ -137,7 +138,7 @@ export default function JobSection() {
                   <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                     <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
                     <div className="relative shrink-0 size-4">
-                      <Image src="/figma/category-frame.png" alt="salary" width={16} height={16} />
+                      <Image src={withBasePath('/figma/category-frame.png')} alt="salary" width={16} height={16} />
                     </div>
                     <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                       <p className="block leading-[normal] whitespace-pre">月給 270,000円 ~ 500,000円</p>
@@ -146,7 +147,7 @@ export default function JobSection() {
                   
                   <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                     <div className="relative shrink-0 size-4">
-                      <Image src="/figma/category-character.png" alt="work type" width={16} height={16} />
+                      <Image src={withBasePath('/figma/category-character.png')} alt="work type" width={16} height={16} />
                     </div>
                     <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                       <p className="block leading-[normal] whitespace-pre">正社員</p>
@@ -196,7 +197,7 @@ export default function JobSection() {
               <div className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px]" />
               
               <div className="bg-center bg-cover bg-no-repeat h-[189px] rounded-[10px] shrink-0 w-full" 
-                   style={{ backgroundImage: `url('/figma/interview-image-83.png')` }} />
+                   style={{ backgroundImage: `url('${withBasePath('/figma/interview-image-83.png')}')` }} />
               
               <div className="absolute bg-red-500 box-border content-stretch flex flex-row items-center justify-center left-[24.5px] overflow-clip px-2 py-1.5 rounded-md top-6">
                 <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[12px] text-center text-neutral-50 text-nowrap">
@@ -220,7 +221,7 @@ export default function JobSection() {
                 <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                   <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
                   <div className="relative shrink-0 size-4">
-                    <Image src="/figma/category-mask-shape1.svg" alt="location" width={16} height={16} />
+                    <Image src={withBasePath('/figma/category-mask-shape1.svg')} alt="location" width={16} height={16} />
                   </div>
                   <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                     <p className="block leading-[normal] whitespace-pre">堺市西区 大阪府</p>
@@ -230,7 +231,7 @@ export default function JobSection() {
                 <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                   <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
                   <div className="relative shrink-0 size-4">
-                    <Image src="/figma/category-frame.png" alt="salary" width={16} height={16} />
+                    <Image src={withBasePath('/figma/category-frame.png')} alt="salary" width={16} height={16} />
                   </div>
                   <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                     <p className="block leading-[normal] whitespace-pre">月給 400,000円 ~ 800,000円</p>
@@ -239,7 +240,7 @@ export default function JobSection() {
                 
                 <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                   <div className="relative shrink-0 size-4">
-                    <Image src="/figma/category-character.png" alt="work type" width={16} height={16} />
+                    <Image src={withBasePath('/figma/category-character.png')} alt="work type" width={16} height={16} />
                   </div>
                   <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                     <p className="block leading-[normal] whitespace-pre">正社員</p>
@@ -285,7 +286,7 @@ export default function JobSection() {
                 <div className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px]" />
                 
                 <div className="bg-center bg-cover bg-no-repeat h-[189px] rounded-[10px] shrink-0 w-full" 
-                     style={{ backgroundImage: `url('/figma/company-interview-bg.png')` }} />
+                     style={{ backgroundImage: `url('${withBasePath('/figma/company-interview-bg.png')}')` }} />
                 
                 <div className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full">
                   <div className="flex flex-col font-bold justify-center leading-[0] min-w-full relative shrink-0 text-[#101828] text-[16px] text-left" 
@@ -302,7 +303,7 @@ export default function JobSection() {
                   <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                     <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
                     <div className="relative shrink-0 size-4">
-                      <Image src="/figma/category-mask-shape1.svg" alt="location" width={16} height={16} />
+                      <Image src={withBasePath('/figma/category-mask-shape1.svg')} alt="location" width={16} height={16} />
                     </div>
                     <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                       <p className="block leading-[normal] whitespace-pre">常陸太田市 茨城県</p>
@@ -312,7 +313,7 @@ export default function JobSection() {
                   <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                     <div className="absolute border-[#cccccc] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
                     <div className="relative shrink-0 size-4">
-                      <Image src="/figma/category-frame.png" alt="salary" width={16} height={16} />
+                      <Image src={withBasePath('/figma/category-frame.png')} alt="salary" width={16} height={16} />
                     </div>
                     <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                       <p className="block leading-[normal] whitespace-pre">月給 200,000円 ~ 600,000円</p>
@@ -321,7 +322,7 @@ export default function JobSection() {
                   
                   <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start pb-1 pt-0 px-0 relative shrink-0 w-full">
                     <div className="relative shrink-0 size-4">
-                      <Image src="/figma/category-character.png" alt="work type" width={16} height={16} />
+                      <Image src={withBasePath('/figma/category-character.png')} alt="work type" width={16} height={16} />
                     </div>
                     <div className="flex flex-col font-medium justify-center leading-[0] relative shrink-0 text-[14px] text-left text-neutral-500 text-nowrap">
                       <p className="block leading-[normal] whitespace-pre">正社員</p>
@@ -368,7 +369,7 @@ export default function JobSection() {
             <div className="flex h-[31.984px] items-center justify-center relative shrink-0 w-[32px]">
               <div className="flex-none rotate-[270deg]">
                 <div className="relative size-8">
-                  <Image src="/figma/arrow-group3.svg" alt="arrow" width={32} height={32} />
+                  <Image src={withBasePath('/figma/arrow-group3.svg')} alt="arrow" width={32} height={32} />
                 </div>
               </div>
             </div>

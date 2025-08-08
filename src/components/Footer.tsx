@@ -1,3 +1,5 @@
+import { withBasePath } from '@/lib/basePath';
+
 export default function Footer() {
   return (
     <div
@@ -39,7 +41,7 @@ export default function Footer() {
                     className="bg-center bg-cover bg-no-repeat h-[33px] shrink-0 w-[101px]"
                     data-name="RIDE JOB"
                     id="node-2064_20"
-                    style={{ backgroundImage: `url('/figma/ride-job-logo.png')` }}
+                    style={{ backgroundImage: `url('${withBasePath('/figma/ride-job-logo.png')}')` }}
                   />
                   <div
                     className="box-border content-stretch flex flex-col h-[18px] items-center justify-start p-0 relative shrink-0 w-[101px]"

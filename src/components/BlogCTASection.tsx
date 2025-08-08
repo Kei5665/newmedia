@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { withBasePath } from '@/lib/basePath';
 
 export default function BlogCTASection() {
   return (
@@ -8,7 +9,7 @@ export default function BlogCTASection() {
         {/* 見出し画像 */}
         <div className="text-center mb-8 sm:mb-12">
           <Image
-            src="/figma/heading-cta.png"
+            src={withBasePath('/figma/heading-cta.png')}
             alt="興味をもったあなたへ"
             width={400}
             height={100}

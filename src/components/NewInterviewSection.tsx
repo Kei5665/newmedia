@@ -1,4 +1,5 @@
 import { getAllMembers } from "@/lib/microcms";
+import { withBasePath } from "@/lib/basePath";
 import { Member } from "@/types/microcms";
 import MemberInteractiveSection from "./MemberInteractiveSection";
 
@@ -28,7 +29,7 @@ export default async function NewInterviewSection() {
       className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start md:px-9 py-[29px] relative size-full"
       data-name="面談セクション"
       id="node-2163_546"
-      style={{ backgroundImage: `url('${img}')` }}
+      style={{ backgroundImage: `url('${withBasePath(img)}')` }}
     >
       <div
         className="box-border content-stretch flex flex-col gap-2.5 items-center justify-center md:px-8 lg:px-[432px] py-0 relative rounded-tl-[80px] shrink-0 w-full"
@@ -49,7 +50,7 @@ export default async function NewInterviewSection() {
               className="bg-center bg-cover bg-no-repeat h-[200px] md:h-[308px] shrink-0 w-[280px] md:w-[408px]"
               data-name="Frame 224 1"
               id="node-2163_888"
-              style={{ backgroundImage: `url('${imgFrame2241}')` }}
+                style={{ backgroundImage: `url('${withBasePath(imgFrame2241)}')` }}
             />
           </div>
           <div
@@ -69,7 +70,7 @@ export default async function NewInterviewSection() {
                   className="bg-center bg-cover bg-no-repeat h-[35px] md:h-[45px] shrink-0 w-[150px] md:w-[197px]"
                   data-name="Frame 215 1"
                   id="node-2163_894"
-                  style={{ backgroundImage: `url('${imgFrame2151}')` }}
+                   style={{ backgroundImage: `url('${withBasePath(imgFrame2151)}')` }}
                 />
                 <div className="w-full">
                   <MemberInteractiveSection members={members} />
@@ -98,7 +99,7 @@ export default async function NewInterviewSection() {
                 className="bg-center bg-cover bg-no-repeat h-8 md:h-11 shrink-0 w-[180px] md:w-[229px]"
                 data-name="Frame 214 1"
                 id="node-2163_513"
-                style={{ backgroundImage: `url('${imgFrame2141}')` }}
+                style={{ backgroundImage: `url('${withBasePath(imgFrame2141)}')` }}
               />
               <div
                 className="box-border content-stretch flex flex-col gap-4 items-center justify-start p-0 relative shrink-0"
@@ -125,7 +126,7 @@ export default async function NewInterviewSection() {
                   className="flex-1 bg-center bg-cover bg-no-repeat h-full relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]"
                   data-name="image 111"
                   id="node-2163_519"
-                  style={{ backgroundImage: `url('${imgImage111}')` }}
+                   style={{ backgroundImage: `url('${withBasePath(imgImage111)}')` }}
                 >
                   <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[8px] md:rounded-[10px]" />
                 </div>
@@ -133,7 +134,7 @@ export default async function NewInterviewSection() {
                   className="flex-1 bg-center bg-cover bg-no-repeat h-full relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]"
                   data-name="image 112"
                   id="node-2163_520"
-                  style={{ backgroundImage: `url('${imgImage112}')` }}
+                   style={{ backgroundImage: `url('${withBasePath(imgImage112)}')` }}
                 >
                   <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[8px] md:rounded-[10px]" />
                 </div>
@@ -141,7 +142,7 @@ export default async function NewInterviewSection() {
                   className="flex-1 bg-center bg-cover bg-no-repeat h-full relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]"
                   data-name="image 113"
                   id="node-2163_521"
-                  style={{ backgroundImage: `url('${imgImage113}')` }}
+                   style={{ backgroundImage: `url('${withBasePath(imgImage113)}')` }}
                 >
                   <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[8px] md:rounded-[10px]" />
                 </div>
@@ -185,7 +186,7 @@ export default async function NewInterviewSection() {
             className="bg-center bg-cover bg-no-repeat h-[140px] md:h-[187px] shrink-0 w-[260px] md:w-[346px]"
             data-name="heading05 1"
             id="node-2163_412"
-            style={{ backgroundImage: `url('${imgHeading051}')` }}
+            style={{ backgroundImage: `url('${withBasePath(imgHeading051)}')` }}
           />
           <div
             className="bg-[#ffffff] relative rounded-2xl shrink-0 w-full"
@@ -263,7 +264,7 @@ export default async function NewInterviewSection() {
                           alt="Arrow icon"
                           className="block max-w-none size-full"
                           loading="lazy"
-                          src={imgGroup3}
+                          src={withBasePath(imgGroup3)}
                         />
                       </div>
                     </div>
@@ -350,7 +351,7 @@ export default async function NewInterviewSection() {
                           alt="Arrow icon"
                           className="block max-w-none size-full"
                           loading="lazy"
-                          src={imgGroup3}
+                          src={withBasePath(imgGroup3)}
                         />
                       </div>
                     </div>
