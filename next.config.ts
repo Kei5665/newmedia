@@ -18,6 +18,12 @@ const nextConfig: NextConfig = {
         permanent: false,
         basePath: false,
       },
+      {
+        source: '/contact',
+        destination: '/media/contact',
+        permanent: false,
+        basePath: false,
+      },
     ];
   },
 };

@@ -125,6 +125,22 @@ export default function Footer() {
               <div
                 className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
                 data-name="Link"
+                id="node-2064_36-contact"
+              >
+                <div
+                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
+                  id="node-2064_37-contact"
+                >
+                  <p className="block">
+                    <Link href="/contact" className="no-underline hover:underline">
+                      お問い合わせ
+                    </Link>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
+                data-name="Link"
                 id="node-2064_38"
               >
                 <div
