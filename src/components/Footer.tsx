@@ -132,7 +132,14 @@ export default function Footer() {
                   id="node-2064_39"
                 >
                   <p className="block">
-                    運営会社情報
+                    <a
+                      href="https://pmagent.jp/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="no-underline hover:underline"
+                    >
+                      運営会社情報
+                    </a>
                   </p>
                 </div>
               </div>
