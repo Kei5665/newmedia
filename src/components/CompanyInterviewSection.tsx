@@ -30,6 +30,14 @@ function InterviewCard({ blog }: { blog: Blog }) {
     return title.substring(0, maxLength) + '...';
   };
 
+  // 本文からプレーンテキストの抜粋を生成（content > html の優先順）
+  const getExcerpt = (maxLength: number = 100) => {
+    const source = blog.content || blog.html || '';
+    const text = source.replace(/<[^>]*>/g, '');
+    if (text.length === 0) return '';
+    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+  };
+
   // ブログのスラッグまたはIDでリンクを生成
   const blogLink = blog.slug ? `/blog/${blog.slug}` : `/blog/${blog.id}`;
 
@@ -69,8 +77,13 @@ function InterviewCard({ blog }: { blog: Blog }) {
                 </p>
               </div>
               <div className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center relative shrink-0 text-[#4a5565] text-[14px] md:text-[13px] lg:text-[16px] text-justify w-full">
-                <p className="block leading-[1.5] line-clamp-3 lg:line-clamp-4">
-                  {blog.content?.replace(/<[^>]*>/g, '').substring(0, 100) || 'インタビュー記事の詳細をご覧ください。'}...
+                {/* Mobile: 20文字に省略 */}
+                <p className="block md:hidden leading-[1.5]">
+                  {getExcerpt(20)}
+                </p>
+                {/* Tablet and up: 100文字相当 + 行数制限 */}
+                <p className="hidden md:block leading-[1.5] line-clamp-3 lg:line-clamp-4">
+                  {getExcerpt(100)}
                 </p>
               </div>
             </div>
@@ -140,7 +153,7 @@ export default async function CompanyInterviewSection() {
             
             {/* Button */}
             <div className="flex flex-col items-center justify-center mt-4 md:mt-6 lg:mt-8">
-              <Link href="/blog" className="block">
+              <Link href={`/blog?category=${CATEGORY_IDS.COMPANY_INTERVIEW}`} className="block">
                 <div className="bg-[#04acdb] box-border content-stretch flex flex-row gap-4 items-center justify-center pl-6 pr-4 py-4 relative rounded-[58px] shrink-0 cursor-pointer shadow-[4px_4px_0px_0px_rgba(19,19,19,0.3)] hover:shadow-[2px_2px_0px_0px_rgba(19,19,19,0.3)] transition-shadow">
                   <div
                     aria-hidden="true"
