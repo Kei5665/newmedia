@@ -1,4 +1,5 @@
 import { withBasePath } from '@/lib/basePath';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -114,7 +115,11 @@ export default function Footer() {
                   className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
                   id="node-2064_37"
                 >
-                  <p className="block">プライバシーポリシー</p>
+                  <p className="block">
+                    <Link href="/privacy" className="no-underline hover:underline">
+                      プライバシーポリシー
+                    </Link>
+                  </p>
                 </div>
               </div>
               <div
