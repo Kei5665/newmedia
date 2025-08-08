@@ -27,7 +27,7 @@ function ClickableMemberIcon({
 }) {
   return (
     <div
-      className={`bg-center bg-cover bg-no-repeat h-[70px] md:h-[90px] flex-1 max-w-[70px] md:max-w-[90px] rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ${
+      className={`bg-center bg-cover bg-no-repeat h-[70px] w-[70px] md:h-[90px] md:w-[90px] rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ${
         isSelected ? 'ring-4 ring-blue-500 scale-105' : 'hover:scale-105 hover:ring-2 hover:ring-blue-300'
       }`}
       style={{
@@ -82,8 +82,8 @@ function MemberDetail({ member }: { member: Member }) {
  * メンバーインタラクティブセクション
  */
 export default function MemberInteractiveSection({ members }: MemberInteractiveSectionProps) {
-  // 最大4人のメンバーを表示（足りない場合はフォールバック）
-  const displayMembers = [...members].slice(0, 4);
+  // 表示メンバー（5つ以上ある場合は下に折り返し）。最低4つまではフォールバックで補完
+  const displayMembers = [...members];
   while (displayMembers.length < 4) {
     displayMembers.push({
       id: `fallback-${displayMembers.length}`,
@@ -106,7 +106,7 @@ export default function MemberInteractiveSection({ members }: MemberInteractiveS
   return (
     <div className="w-full">
       {/* メンバーアイコン一覧 */}
-      <div className="box-border content-stretch flex flex-row gap-2 md:gap-4 items-start justify-center p-0 relative shrink-0 mb-6 md:mb-8 w-full">
+      <div className="box-border content-stretch flex flex-row flex-wrap gap-2 md:gap-4 items-start justify-center p-0 relative shrink-0 mb-6 md:mb-8 w-full">
         {displayMembers.map((member, index) => (
           <ClickableMemberIcon 
             key={member.id} 
