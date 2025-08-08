@@ -39,7 +39,40 @@ export default function Header() {
               </div>
             </Link>
             
-            {/* Desktop Menu */}
+            {/* Desktop Menu: Centered categories */}
+            <div className="hidden md:flex items-center flex-1 min-w-0 mx-6 justify-center">
+              <nav className="flex items-center gap-6">
+                {categories.map((category) => (
+                  <Link
+                    key={category.id}
+                    href={`/blog?category=${category.id}`}
+                    className="text-[#555555] font-bold hover:opacity-80 transition-opacity whitespace-nowrap"
+                    aria-label={`${category.name}カテゴリへ`}
+                  >
+                    {category.name}
+                  </Link>
+                ))}
+                {/* Additional Links */}
+                <Link
+                  href="/contact"
+                  className="text-[#555555] font-bold hover:opacity-80 transition-opacity whitespace-nowrap"
+                  aria-label="お問い合わせページへ"
+                >
+                  お問い合わせ
+                </Link>
+                <a
+                  href="https://orchid547589.studio.site/about"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#555555] font-bold hover:opacity-80 transition-opacity whitespace-nowrap"
+                  aria-label="ライドジョブについて（外部サイト）"
+                >
+                  ライドジョブについて
+                </a>
+              </nav>
+            </div>
+
+            {/* Desktop CTAs (right side) */}
             <div className="hidden md:flex items-center space-x-4">
               <a
                 href="https://ridejob.pmagent.jp/"
@@ -74,7 +107,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+            {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 bg-[#d5fbfe] z-50 md:hidden">
           {/* Close Button */}
@@ -91,8 +124,8 @@ export default function Header() {
 
           {/* Menu Content */}
           <div className="flex flex-col items-center justify-center h-full gap-8 px-4">
-            {/* Category Menu Items */}
-            <div className="flex flex-col gap-4 items-center">
+              {/* Category & Additional Menu Items */}
+              <div className="flex flex-col gap-4 items-center">
               {categories.map((category) => (
                 <Link
                   key={category.id}
@@ -105,6 +138,27 @@ export default function Header() {
                   </span>
                 </Link>
               ))}
+                {/* お問い合わせ */}
+                <Link
+                  href="/contact"
+                  onClick={closeMenu}
+                  className="bg-white border border-black rounded-[10px] px-4 py-2 w-[200px] text-center"
+                >
+                  <span className="text-[#2204db] text-[24px] font-bold" style={{ fontFamily: 'Dela Gothic One, sans-serif' }}>
+                    お問い合わせ
+                  </span>
+                </Link>
+                {/* ライドジョブについて（外部） */}
+                <a
+                  href="https://orchid547589.studio.site/about"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white border border-black rounded-[10px] px-4 py-2 w-[200px] text-center"
+                >
+                  <span className="text-[#2204db] text-[24px] font-bold" style={{ fontFamily: 'Dela Gothic One, sans-serif' }}>
+                    ライドジョブについて
+                  </span>
+                </a>
             </div>
 
             {/* Social Media Icons */}

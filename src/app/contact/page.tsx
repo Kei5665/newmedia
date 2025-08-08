@@ -15,6 +15,7 @@ export default function ContactPage() {
   const [serverMessage, setServerMessage] = useState<string | null>(null);
   const [serverError, setServerError] = useState<string | null>(null);
   const [honeypot, setHoneypot] = useState("");
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   const isValidEmail = (value: string) => {
     // RFC5322に完全準拠ではないが、実用的な簡易バリデーション
@@ -61,7 +62,7 @@ export default function ContactPage() {
         setEmail("");
         setMessage("");
       }
-    } catch (error) {
+    } catch {
       setServerError("ネットワークエラーが発生しました。接続状況をご確認ください。");
     } finally {
       setIsSubmitting(false);
@@ -85,7 +86,7 @@ export default function ContactPage() {
               採用や掲載、その他ご質問につきましては、以下のフォームよりお気軽にお問い合わせください。
             </p>
 
-            {clientErrors.length > 0 && (
+            {hasInteracted && clientErrors.length > 0 && (
               <div className="mb-4 rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
                 <ul className="list-disc list-inside space-y-1">
                   {clientErrors.map((err, idx) => (
@@ -123,7 +124,7 @@ export default function ContactPage() {
                 <input
                   type="text"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => { setHasInteracted(true); setName(e.target.value); }}
                   className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder:text-gray-600 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
                   placeholder="山田 太郎"
                   required
@@ -135,7 +136,7 @@ export default function ContactPage() {
                 <input
                   type="text"
                   value={company}
-                  onChange={(e) => setCompany(e.target.value)}
+                  onChange={(e) => { setHasInteracted(true); setCompany(e.target.value); }}
                   className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder:text-gray-600 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
                   placeholder="株式会社PM Agent"
                 />
@@ -148,7 +149,7 @@ export default function ContactPage() {
                 <input
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => { setHasInteracted(true); setEmail(e.target.value); }}
                   className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder:text-gray-600 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
                   placeholder="taro@example.com"
                   required
@@ -161,7 +162,7 @@ export default function ContactPage() {
                 </label>
                 <textarea
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  onChange={(e) => { setHasInteracted(true); setMessage(e.target.value); }}
                   className="w-full rounded-md border border-gray-300 px-3 py-2 h-40 resize-y text-gray-900 placeholder:text-gray-600 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
                   placeholder="お問い合わせ内容をご記入ください"
                   required

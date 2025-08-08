@@ -26,7 +26,7 @@ export default async function NewInterviewSection() {
 
   return (
     <div
-      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start md:px-9 py-[29px] relative size-full"
+      className="bg-center bg-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start md:px-9 py-[29px] relative size-full"
       data-name="面談セクション"
       id="node-2163_546"
       style={{ backgroundImage: `url('${withBasePath(img)}')` }}
