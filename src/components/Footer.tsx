@@ -108,42 +108,6 @@ export default function Footer() {
               <div
                 className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
                 data-name="Link"
-                id="node-2064_30"
-              >
-                <div
-                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
-                  id="node-2064_31"
-                >
-                  <p className="block">ご利用規約</p>
-                </div>
-              </div>
-              <div
-                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
-                data-name="Link"
-                id="node-2064_32"
-              >
-                <div
-                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
-                  id="node-2064_33"
-                >
-                  <p className="block">ミッション</p>
-                </div>
-              </div>
-              <div
-                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
-                data-name="Link"
-                id="node-2064_34"
-              >
-                <div
-                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
-                  id="node-2064_35"
-                >
-                  <p className="block">転職体験談</p>
-                </div>
-              </div>
-              <div
-                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
-                data-name="Link"
                 id="node-2064_36"
               >
                 <div
@@ -167,20 +131,6 @@ export default function Footer() {
                   </p>
                 </div>
               </div>
-              <div
-                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
-                data-name="Link"
-                id="node-2064_40"
-              >
-                <div
-                  className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
-                  id="node-2064_41"
-                >
-                  <p className="block">
-                    お問い合わせ
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
           <div
@@ -192,75 +142,13 @@ export default function Footer() {
               className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0 w-full"
               id="node-2064_43"
             >
-              <div
-                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
-                data-name="Heading 3"
-                id="node-2064_44"
-              >
-                <div
-                  className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-semibold justify-center leading-[24px] relative shrink-0 text-[16px] text-gray-800 text-left w-full"
-                  id="node-2064_45"
-                >
-                  <p className="block">採用担当者様へ</p>
-                </div>
-              </div>
-              <div
-                className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full"
-                data-name="Container"
-                id="node-2064_46"
-              >
-                <div
-                  className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
-                  data-name="Link"
-                  id="node-2064_47"
-                >
-                  <div
-                    className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
-                    id="node-2064_48"
-                  >
-                    <p className="block">
-                      求人掲載をお考えの企業様
-                    </p>
-                  </div>
-                </div>
-              </div>
+              {/* 採用担当者様へ セクションを削除 */}
             </div>
             <div
               className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0 w-full"
               id="node-2064_49"
             >
-              <div
-                className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
-                data-name="Heading 4"
-                id="node-2064_50"
-              >
-                <div
-                  className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-semibold justify-center leading-[24px] relative shrink-0 text-[16px] text-gray-800 text-left w-full"
-                  id="node-2064_51"
-                >
-                  <p className="block">運営メディア</p>
-                </div>
-              </div>
-              <div
-                className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full"
-                data-name="Container"
-                id="node-2064_52"
-              >
-                <div
-                  className="box-border content-stretch flex flex-col items-start justify-start p-0 relative shrink-0 w-full"
-                  data-name="Link"
-                  id="node-2064_53"
-                >
-                  <div
-                    className="flex flex-col font-['Noto_Sans_JP:Regular',_sans-serif] font-normal justify-center leading-[20px] relative shrink-0 text-[#130278] text-[14px] text-left w-full"
-                    id="node-2064_54"
-                  >
-                    <p className="block">
-                      ライドジョブ
-                    </p>
-                  </div>
-                </div>
-              </div>
+              {/* 運営メディア セクションを削除 */}
             </div>
           </div>
           <div

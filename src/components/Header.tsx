@@ -41,12 +41,24 @@ export default function Header() {
             
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-4">
-              <button className="bg-[#04acdb] text-white px-6 py-2 rounded-[10px] font-bold text-base shadow-sm hover:bg-[#0398c0] transition-colors">
+              <a
+                href="https://ridejob.pmagent.jp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#04acdb] text-white px-6 py-2 rounded-[10px] font-bold text-base shadow-sm hover:bg-[#0398c0] transition-colors"
+                aria-label="まずお話を聞く（外部サイト）"
+              >
                 まずお話を聞く
-              </button>
-              <button className="bg-[#2204db] text-white px-6 py-2 rounded-[10px] font-bold text-base shadow-sm hover:bg-[#1b03b8] transition-colors">
+              </a>
+              <a
+                href="https://ridejob.jp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#2204db] text-white px-6 py-2 rounded-[10px] font-bold text-base shadow-sm hover:bg-[#1b03b8] transition-colors"
+                aria-label="求人情報を見る（外部サイト）"
+              >
                 求人情報を見る
-              </button>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}

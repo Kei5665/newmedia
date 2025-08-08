@@ -193,7 +193,7 @@ export default async function NewJobSection() {
           id="node-2161_306"
         >
           <a
-            href="https://ridejob.jp/search"
+            href="https://ridejob.jp/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="求人検索ページを開く"

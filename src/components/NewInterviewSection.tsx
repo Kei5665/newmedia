@@ -147,32 +147,40 @@ export default async function NewInterviewSection() {
                   <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[8px] md:rounded-[10px]" />
                 </div>
               </div>
-              <div
-                className="bg-[#19bbfb] box-border content-stretch flex flex-col gap-3.5 items-center justify-center pb-6 md:pb-10 pt-6 md:pt-8 px-4 md:px-8 relative rounded-[20px] shrink-0 w-full"
-                data-name="Button"
-                id="node-2163_522"
+              <a
+                href="https://www.tiktok.com/@ride.job"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="RIDE JOB チャンネルへ（TikTok）"
+                className="block no-underline w-full"
               >
-                <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[20px]" />
                 <div
-                  className="box-border content-stretch flex flex-row gap-3.5 items-center justify-center p-0 relative shrink-0"
-                  id="node-2163_523"
+                  className="bg-[#19bbfb] box-border content-stretch flex flex-col gap-3.5 items-center justify-center pb-6 md:pb-10 pt-6 md:pt-8 px-4 md:px-8 relative rounded-[20px] shrink-0 w-full hover:opacity-90 transition-opacity duration-200"
+                  data-name="Button"
+                  id="node-2163_522"
                 >
+                  <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-[20px]" />
                   <div
-                    className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[0px] text-center"
-                    id="node-2163_524"
+                    className="box-border content-stretch flex flex-row gap-3.5 items-center justify-center p-0 relative shrink-0"
+                    id="node-2163_523"
                   >
-                    <p className="leading-none">
-                      <span className="text-[24px] md:text-[24px]">{`RIDE JOB `}</span>
-                      <span className="text-[22px] md:text-[24px]">チャンネルへ</span>
-                    </p>
-                  </div>
-                  <div
-                    className="box-border content-stretch flex flex-row gap-4 items-center justify-center p-0 relative shrink-0"
-                    id="node-2163_525"
-                  >
+                    <div
+                      className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[0px] text-center"
+                      id="node-2163_524"
+                    >
+                      <p className="leading-none">
+                        <span className="text-[24px] md:text-[24px]">{`RIDE JOB `}</span>
+                        <span className="text-[22px] md:text-[24px]">チャンネルへ</span>
+                      </p>
+                    </div>
+                    <div
+                      className="box-border content-stretch flex flex-row gap-4 items-center justify-center p-0 relative shrink-0"
+                      id="node-2163_525"
+                    >
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -239,38 +247,46 @@ export default async function NewInterviewSection() {
                   </div>
                 </div>
               </div>
-              <div
-                className="bg-[#19bbfb] box-border content-stretch flex flex-col gap-3.5 items-center justify-center order-1 pb-6 md:pb-[30px] pt-4 md:pt-6 px-6 md:px-12 relative rounded-2xl shrink-0 w-full"
-                data-name="Button"
-                id="node-2163_424"
+              <a
+                href="https://ridejob.pmagent.jp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="相談する（外部サイト）"
+                className="block no-underline w-full"
               >
-                <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-2xl" />
                 <div
-                  className="box-border content-stretch flex flex-row gap-4 items-center justify-center p-0 relative shrink-0"
-                  id="node-2163_425"
+                  className="bg-[#19bbfb] box-border content-stretch flex flex-col gap-3.5 items-center justify-center order-1 pb-6 md:pb-[30px] pt-4 md:pt-6 px-6 md:px-12 relative rounded-2xl shrink-0 w-full hover:opacity-90 transition-opacity duration-200"
+                  data-name="Button"
+                  id="node-2163_424"
                 >
+                  <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-2xl" />
                   <div
-                    className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[24px] md:text-[32px] text-center text-nowrap"
-                    id="node-2163_426"
+                    className="box-border content-stretch flex flex-row gap-4 items-center justify-center p-0 relative shrink-0"
+                    id="node-2163_425"
                   >
-                    <p className="block leading-none whitespace-pre">
-                      相談する
-                    </p>
-                  </div>
-                  <div className="flex h-[35.984px] items-center justify-center relative shrink-0 w-[36px]">
-                    <div className="flex-none rotate-[270deg]">
-                      <div className="relative size-9" id="node-2163_427">
-                        <img
-                          alt="Arrow icon"
-                          className="block max-w-none size-full"
-                          loading="lazy"
-                          src={withBasePath(imgGroup3)}
-                        />
+                    <div
+                      className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[24px] md:text-[32px] text-center text-nowrap"
+                      id="node-2163_426"
+                    >
+                      <p className="block leading-none whitespace-pre">
+                        相談する
+                      </p>
+                    </div>
+                    <div className="flex h-[35.984px] items-center justify-center relative shrink-0 w-[36px]">
+                      <div className="flex-none rotate-[270deg]">
+                        <div className="relative size-9" id="node-2163_427">
+                          <img
+                            alt="Arrow icon"
+                            className="block max-w-none size-full"
+                            loading="lazy"
+                            src={withBasePath(imgGroup3)}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
             <div className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-2xl shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)]" />
           </div>
@@ -326,38 +342,46 @@ export default async function NewInterviewSection() {
                   </div>
                 </div>
               </div>
-              <div
-                className="bg-[#2204db] box-border content-stretch flex flex-col gap-3.5 items-center justify-center order-1 pb-6 md:pb-[30px] pt-4 md:pt-6 px-6 md:px-12 relative rounded-2xl shrink-0 w-full"
-                data-name="Button"
-                id="node-2163_439"
+              <a
+                href="https://ridejob.jp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="求人を探す（外部サイト）"
+                className="block no-underline w-full"
               >
-                <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-2xl" />
                 <div
-                  className="box-border content-stretch flex flex-row gap-4 items-center justify-center p-0 relative shrink-0"
-                  id="node-2163_440"
+                  className="bg-[#2204db] box-border content-stretch flex flex-col gap-3.5 items-center justify-center order-1 pb-6 md:pb-[30px] pt-4 md:pt-6 px-6 md:px-12 relative rounded-2xl shrink-0 w-full hover:opacity-90 transition-opacity duration-200"
+                  data-name="Button"
+                  id="node-2163_439"
                 >
+                  <div className="absolute border-[#333333] border-[1.5px] border-solid inset-0 pointer-events-none rounded-2xl" />
                   <div
-                    className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[24px] md:text-[32px] text-center text-nowrap"
-                    id="node-2163_441"
+                    className="box-border content-stretch flex flex-row gap-4 items-center justify-center p-0 relative shrink-0"
+                    id="node-2163_440"
                   >
-                    <p className="block leading-none whitespace-pre">
-                      求人を探す
-                    </p>
-                  </div>
-                  <div className="flex h-[35.984px] items-center justify-center relative shrink-0 w-[36px]">
-                    <div className="flex-none rotate-[270deg]">
-                      <div className="relative size-9" id="node-2163_442">
-                        <img
-                          alt="Arrow icon"
-                          className="block max-w-none size-full"
-                          loading="lazy"
-                          src={withBasePath(imgGroup3)}
-                        />
+                    <div
+                      className="flex flex-col font-['Noto_Sans_JP:ExtraBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[24px] md:text-[32px] text-center text-nowrap"
+                      id="node-2163_441"
+                    >
+                      <p className="block leading-none whitespace-pre">
+                        求人を探す
+                      </p>
+                    </div>
+                    <div className="flex h-[35.984px] items-center justify-center relative shrink-0 w-[36px]">
+                      <div className="flex-none rotate-[270deg]">
+                        <div className="relative size-9" id="node-2163_442">
+                          <img
+                            alt="Arrow icon"
+                            className="block max-w-none size-full"
+                            loading="lazy"
+                            src={withBasePath(imgGroup3)}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
             <div className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-2xl shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)]" />
           </div>
