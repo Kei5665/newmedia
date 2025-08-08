@@ -1,0 +1,131 @@
+
+  h2 {
+    position: relative;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 80px;
+  }
+  
+  h2:before {
+    position: absolute;
+    bottom: -10px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 5px;
+    content: '';
+    border-radius: 3px;
+    background: #3498db;
+  }
+  
+  .conversation {
+    margin: 0px auto;
+  }
+  
+  .chat-box {
+    margin-top: 20px;
+  }
+  
+  .chat-message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .chat-message.right {
+    flex-direction: row-reverse;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .chat-message.left {
+    flex-direction: row;
+  }
+  
+  .avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+  }
+  
+  .avatar {
+    width: 50px;
+    border-radius: 50%;
+  }
+  
+  .name {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+    color: #555;
+  }
+  
+  .bubble {
+    max-width: 70%;
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    line-height: 1.8rem;
+    letter-spacing: 1px;
+    border: 3px solid #3498db;
+  }
+  
+  .chat-message.left .bubble {
+    background-color: #E6F0FA;
+  }
+  
+  .chat-message.right .bubble {
+    background-color: #F2F2F2;
+  }
+  
+  .yellow-underline {
+    background: linear-gradient(to bottom, transparent 60%, #ffeb3b 60%);
+    font-weight: bold;
+  }
+  
+  .section-title {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-left: 5px solid #8e44ad;
+    padding-left: 10px;
+    color: #333;
+  }
+  
+  .header {
+    background-color: #8e44ad;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  @media (max-width: 576px) {
+    h2 {
+      font-size: 1.5rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .bubble {
+      max-width: 100%;
+    }
+    
+    .avatar {
+      width: 40px;
+    }
+    
+    .name {
+      font-size: 0.8rem;
+    }
+    
+    .chat-message {
+      flex-wrap: wrap;
+    }
+    
+    .chat-box {
+      margin-top: 10px;
+    }
+  }
