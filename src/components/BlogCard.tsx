@@ -54,14 +54,6 @@ export default function BlogCard({ blog }: BlogCardProps) {
             </div>
           )}
           
-          {/* カテゴリタグ */}
-          {blog.category && (
-            <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
-              <span className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-bold ${getCategoryStyle(blog.category.name)}`}>
-                {blog.category.name}
-              </span>
-            </div>
-          )}
         </div>
 
         {/* 記事情報 */}
@@ -79,8 +71,12 @@ export default function BlogCard({ blog }: BlogCardProps) {
             
             {/* 会社情報（将来的に追加する場合） */}
             <div className="flex items-center">
-              <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gray-200 rounded-full mr-1 sm:mr-2"></div>
-              <span className="text-[#666666] text-xs hidden sm:inline">企業名</span>
+          {/* カテゴリタグ */}
+            {blog.category && (
+              <span className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-bold ${getCategoryStyle(blog.category.name)}`}>
+                {blog.category.name}
+              </span>
+            )}
             </div>
           </div>
         </div>
