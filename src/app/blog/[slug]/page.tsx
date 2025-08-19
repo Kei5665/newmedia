@@ -118,7 +118,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         style={{ backgroundImage: `url('${withBasePath('/figma/blue-bg.png')}')` }}
       >
         {/* 白い背景のコンテナ */}
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto md:px-4 py-8">
           <div className="bg-white rounded-2xl shadow-lg px-2 py-4 sm:p-8">
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
               {/* メインコンテンツエリア */}
