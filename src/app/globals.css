@@ -251,9 +251,9 @@ body {
   }
 
   .article-content-html .bubble p {
-    line-height: 2rem;
+    line-height: 2.1rem;
     font-size: large;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.05rem;
     font-weight: 500;
     padding: 0;
   }
