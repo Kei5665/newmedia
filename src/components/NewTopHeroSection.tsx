@@ -3,6 +3,7 @@ import { Blog } from "@/types/microcms";
 import { fetchBlogsWithFallback } from "@/lib/blogHelpers";
 import { CATEGORY_IDS } from "@/constants/categories";
 import { withBasePath } from "@/lib/basePath";
+import HeroEyecatchSlider from "@/components/HeroEyecatchSlider";
 
 const imgHero = "/figma/hero-bg.png";
 const imgCombinedLogo = "/figma/center-illustration+title-logo.png";
@@ -137,6 +138,11 @@ function EmptyPlaceholder() {
  */
 export default async function NewTopHeroSection() {
   const blogs = await fetchBlogsWithFallback(CATEGORY_IDS.PICKUP, 6);
+  const rightBlogs = await fetchBlogsWithFallback(CATEGORY_IDS.COMPANY_INTERVIEW, 5);
+  const rightImages = rightBlogs.map((b) => ({
+    src: b.eyecatch?.url || withBasePath(fallbackThumb),
+    alt: b.title,
+  }));
   
   const leftColumn = blogs.slice(0, 3);
   const rightColumn = blogs.slice(3, 6);
@@ -244,12 +250,18 @@ export default async function NewTopHeroSection() {
               </div>
             </div>
 
-            {/* 右側のメイン画像 */}
+            {/* 右側のメイン画像（スライダー） */}
             <div className="flex-1 max-w-[50%] self-stretch">
-              <div
-                className="w-full h-full bg-center bg-contain bg-no-repeat rounded-lg"
-                style={{ backgroundImage: `url('${withBasePath(imgTopMainImgA2)}')` }}
-              />
+              {rightImages.length > 0 ? (
+                // クライアントコンポーネントを動的に読み込む必要はない（サーバー側でデータを整形）
+                // ヒーロー右側をアイキャッチスライダーに置き換え
+                <HeroEyecatchSlider images={rightImages} intervalMs={3000} />
+              ) : (
+                <div
+                  className="w-full h-full bg-center bg-contain bg-no-repeat rounded-lg"
+                  style={{ backgroundImage: `url('${withBasePath(imgTopMainImgA2)}')` }}
+                />
+              )}
             </div>
           </div>
         </div>
