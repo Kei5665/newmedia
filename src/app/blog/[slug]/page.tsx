@@ -119,7 +119,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       >
         {/* 白い背景のコンテナ */}
         <div className="container mx-auto px-4 py-8">
-          <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+          <div className="bg-white rounded-2xl shadow-lg px-2 py-4 sm:p-8">
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
               {/* メインコンテンツエリア */}
               <div className="flex-1 lg:order-first">

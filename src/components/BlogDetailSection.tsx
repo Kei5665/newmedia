@@ -52,7 +52,7 @@ export default function BlogDetailSection({ blog }: BlogDetailSectionProps) {
               alt={blog.title}
               width={blog.eyecatch.width || 800}
               height={blog.eyecatch.height || 400}
-              className="w-full h-auto rounded-lg shadow-sm"
+              className="w-full h-auto shadow-sm"
               priority
             />
           </div>

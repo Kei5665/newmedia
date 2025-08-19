@@ -115,7 +115,7 @@ body {
   position: relative;
   padding: 1.5rem;
   text-align: center;
-  font-size: 40px;
+  font-size: 32px;
   margin-bottom: 80px;
   font-weight: bold;
   color: #333;
@@ -178,22 +178,17 @@ body {
 
 .article-content-html .bubble {
   max-width: 70%;
-  padding: 10px 30px;
+  padding: 30px 30px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  font-size: 18px;
-  line-height: 1.8rem;
-  letter-spacing: 1px;
-  border: 3px solid #3498db;
+  border: 2px solid #999;
 }
 
 .article-content-html .chat-message.left .bubble {
-  background-color: #E6F0FA;
+  background-color: #D7F4FF;
+  border-color: #9AE1FD;
 }
 
-.article-content-html .chat-message.right .bubble {
-  background-color: #F2F2F2;
-}
 
 .article-content-html .yellow-underline {
   background: linear-gradient(to bottom, transparent 60%, #ffeb3b 60%);
@@ -219,6 +214,11 @@ body {
 
 .article-content-html p {
   @apply text-base text-gray-800 leading-relaxed mb-4;
+  line-height: 2rem;
+  letter-spacing: 0.15rem;
+  font-weight: 500;
+  font-size: 1.25rem;
+  padding: 15px 10px;
 }
 
 .article-content-html img {
@@ -232,13 +232,35 @@ body {
     padding: 1rem;
     margin-bottom: 1.5rem;
   }
-  
-  .article-content-html .bubble {
-    max-width: 100%;
+  .article-content-html p {
+    @apply text-base text-gray-800 leading-relaxed mb-4;
+    line-height: 2rem;
+    letter-spacing: 0.15rem;
+    font-weight: 500;
+    font-size: large;
+    padding: 10px 15px;
   }
-  
+  .article-content-html .bubble {
+    max-width: 70%;
+    padding: 15px 15px;
+    border: 1px solid #999;
+  }
+
+  .article-content-html .bubble p {
+    line-height: 2rem;
+    font-size: large;
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+    padding: 0;
+  }
+  .article-content-html .chat-message.right {
+    padding: 0;
+  }
+  .article-content-html img {
+    border-radius: 0;
+  }
   .article-content-html .avatar {
-    width: 40px;
+    width: 60px;
   }
   
   .article-content-html .name {
@@ -246,7 +268,7 @@ body {
   }
   
   .article-content-html .chat-message {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
   
   .article-content-html .chat-box {
