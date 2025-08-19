@@ -381,7 +381,7 @@ export async function getAllCategories(): Promise<Category[]> {
     return [
       { id: '2', name: '企業取材', slug: 'company-interview', createdAt: '', updatedAt: '', publishedAt: '', revisedAt: '' },
       { id: 'rqk2lr41z', name: 'ピックアップ', slug: 'pickup', createdAt: '', updatedAt: '', publishedAt: '', revisedAt: '' },
-      { id: '3', name: 'インタビュー', slug: 'interview', createdAt: '', updatedAt: '', publishedAt: '', revisedAt: '' },
+      { id: '5', name: 'インタビュー', slug: 'interview', createdAt: '', updatedAt: '', publishedAt: '', revisedAt: '' },
       { id: '4', name: 'お役立ち情報', slug: 'helpful-info', createdAt: '', updatedAt: '', publishedAt: '', revisedAt: '' }
     ];
   } catch (error) {
@@ -390,7 +390,7 @@ export async function getAllCategories(): Promise<Category[]> {
     return [
       { id: '2', name: '企業取材', slug: 'company-interview', createdAt: '', updatedAt: '', publishedAt: '', revisedAt: '' },
       { id: 'rqk2lr41z', name: 'ピックアップ', slug: 'pickup', createdAt: '', updatedAt: '', publishedAt: '', revisedAt: '' },
-      { id: '3', name: 'インタビュー', slug: 'interview', createdAt: '', updatedAt: '', publishedAt: '', revisedAt: '' },
+      { id: '5', name: 'インタビュー', slug: 'interview', createdAt: '', updatedAt: '', publishedAt: '', revisedAt: '' },
       { id: '4', name: 'お役立ち情報', slug: 'helpful-info', createdAt: '', updatedAt: '', publishedAt: '', revisedAt: '' }
     ];
   }
