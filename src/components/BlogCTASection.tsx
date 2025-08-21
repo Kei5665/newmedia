@@ -28,12 +28,12 @@ export default function BlogCTASection() {
               未経験でも安心、面接対策や<br />
               働き方の相談まで丁寧に対応します。
             </p>
-            <button className="w-full bg-[#04acdb] hover:bg-[#0398c0] text-white font-bold py-4 px-6 rounded-xl transition-colors duration-300 flex items-center justify-center gap-2 text-lg">
+            <a href="https://ridejob.pmagent.jp/" target="_blank" rel="noopener noreferrer" className="w-full bg-[#04acdb] hover:bg-[#0398c0] text-white font-bold py-4 px-6 rounded-xl transition-colors duration-300 flex items-center justify-center gap-2 text-lg">
               相談する
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
               </svg>
-            </button>
+            </a>
           </div>
 
           {/* 右側カード - 求人探し */}
@@ -45,12 +45,12 @@ export default function BlogCTASection() {
               希望条件に合う求人情報を掲載。<br />
               気になる仕事を見つけて応募できます。
             </p>
-            <button className="w-full bg-[#2204db] hover:bg-[#1b03b8] text-white font-bold py-4 px-6 rounded-xl transition-colors duration-300 flex items-center justify-center gap-2 text-lg">
+            <a href="https://ridejob.jp/" target="_blank" rel="noopener noreferrer" className="w-full bg-[#2204db] hover:bg-[#1b03b8] text-white font-bold py-4 px-6 rounded-xl transition-colors duration-300 flex items-center justify-center gap-2 text-lg">
               求人を探す
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
               </svg>
-            </button>
+            </a>
           </div>
         </div>
       </div>
