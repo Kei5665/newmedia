@@ -60,15 +60,13 @@ export default function Header() {
                 >
                   お問い合わせ
                 </Link>
-                <a
-                  href="https://orchid547589.studio.site/about"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/about"
                   className="text-[#555555] font-bold hover:opacity-80 transition-opacity whitespace-nowrap"
-                  aria-label="ライドジョブについて（外部サイト）"
+                  aria-label="ライドジョブについて"
                 >
                   ライドジョブについて
-                </a>
+                </Link>
               </nav>
             </div>
 
@@ -149,16 +147,15 @@ export default function Header() {
                   </span>
                 </Link>
                 {/* ライドジョブについて（外部） */}
-                <a
-                  href="https://orchid547589.studio.site/about"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/about"
+                  onClick={closeMenu}
                   className="bg-white border border-black rounded-[10px] px-4 py-2 w-[200px] text-center"
                 >
                   <span className="text-[#2204db] text-[24px] font-bold" style={{ fontFamily: 'Dela Gothic One, sans-serif' }}>
                     ライドジョブについて
                   </span>
-                </a>
+                </Link>
             </div>
 
             {/* Social Media Icons */}
