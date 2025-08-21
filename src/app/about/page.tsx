@@ -1,6 +1,5 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import AboutHero from '../../components/about/AboutHero';
 import CeoMessage from '@/components/about/CeoMessage';
 import BusinessOverview from '@/components/about/BusinessOverview';
 import Achievements from '@/components/about/Achievements';
@@ -19,9 +18,8 @@ export default function AboutPage() {
   return (
     <div className="font-sans min-h-screen bg-white">
       <Header />
-      <AboutHero />
-      <CeoMessage />
       <BusinessOverview />
+      <CeoMessage />
       <Achievements />
       <OurInitiatives />
       <MediaCoverage />

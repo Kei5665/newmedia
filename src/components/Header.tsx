@@ -32,11 +32,8 @@ export default function Header() {
                 alt="RIDE JOB Logo"
                 width={120}
                 height={39}
-                className="h-[39px] w-[120px]"
+                className="h-[39px] w-[120px] object-contain"
               />
-              <div className="text-[#155dfc] text-xs font-bold text-center">
-                ライドジョブ
-              </div>
             </Link>
             
             {/* Desktop Menu: Centered categories */}

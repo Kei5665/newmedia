@@ -39,25 +39,11 @@ export default function Footer() {
                   id="node-2064_19"
                 >
                   <div
-                    className="bg-center bg-cover bg-no-repeat h-[33px] shrink-0 w-[101px]"
+                    className="bg-center bg-cover bg-no-repeat h-[33px] shrink-0 w-[101px] object-contain"
                     data-name="RIDE JOB"
                     id="node-2064_20"
-                    style={{ backgroundImage: `url('${withBasePath('/figma/ride-job-logo.png')}')` }}
+                    style={{ backgroundImage: `url('${withBasePath('/logo-ridejob.png')}')` }}
                   />
-                  <div
-                    className="box-border content-stretch flex flex-col h-[18px] items-center justify-start p-0 relative shrink-0 w-[101px]"
-                    data-name="Container"
-                    id="node-2064_21"
-                  >
-                    <div
-                      className="flex flex-col font-['Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#155dfc] text-[12px] text-center w-full"
-                      id="node-2064_22"
-                    >
-                      <p className="block leading-[16px]">
-                        ライドジョブ
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
