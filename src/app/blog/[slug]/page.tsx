@@ -7,8 +7,7 @@ import BlogDetailSection from '@/components/BlogDetailSection';
 import BlogDetailSidebar from '@/components/BlogDetailSidebar';
 import BlogCTASection from '@/components/BlogCTASection';
 import { Blog, Category } from '@/types/microcms';
-import { getBlogBySlug, getBlogById, getAllCategories, getBlogsByCategory } from '@/lib/microcms';
-import { CATEGORY_IDS } from '@/constants/categories';
+import { getBlogBySlug, getBlogById, getAllCategories, getLatestBlogs } from '@/lib/microcms';
 import { withBasePath } from '@/lib/basePath';
 
 interface BlogDetailPageProps {
@@ -63,9 +62,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     }
 
     // サイドバー用のデータを並行取得
-    const [categoriesResponse, pickupResponse] = await Promise.allSettled([
+    const [categoriesResponse, pickupLatestResponse] = await Promise.allSettled([
       getAllCategories(),
-      getBlogsByCategory(CATEGORY_IDS.PICKUP, 3)
+      getLatestBlogs(3)
     ]);
 
     if (categoriesResponse.status === 'fulfilled') {
@@ -74,10 +73,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       console.error('カテゴリの取得に失敗しました:', categoriesResponse.reason);
     }
 
-    if (pickupResponse.status === 'fulfilled') {
-      pickupArticles = pickupResponse.value.contents || [];
+    // 最新記事3件をピックアップとして表示
+    if (pickupLatestResponse.status === 'fulfilled') {
+      pickupArticles = pickupLatestResponse.value.contents || [];
     } else {
-      console.error('ピックアップ記事の取得に失敗しました:', pickupResponse.reason);
+      console.error('ピックアップ記事（最新3件）の取得に失敗しました:', pickupLatestResponse.reason);
     }
 
   } catch (err) {

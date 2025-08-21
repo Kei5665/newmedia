@@ -6,8 +6,7 @@ import Footer from '@/components/Footer';
 import BlogClientPage from '@/components/BlogClientPage';
 import BlogCTASection from '@/components/BlogCTASection';
 import { Blog, Category } from '@/types/microcms';
-import { getLatestBlogs, getAllCategories, getBlogsByCategory } from '@/lib/microcms';
-import { CATEGORY_IDS } from '@/constants/categories';
+import { getLatestBlogs, getAllCategories } from '@/lib/microcms';
 
 export default async function BlogPage() {
   // サーバーサイドでデータ取得
@@ -34,13 +33,13 @@ export default async function BlogPage() {
       console.error('カテゴリの取得に失敗しました:', categoryError);
     }
 
-    // ピックアップ記事を取得
+    // ピックアップ記事: 最新記事3件を取得
     try {
-      const pickupResponse = await getBlogsByCategory(CATEGORY_IDS.PICKUP, 3);
+      const pickupResponse = await getLatestBlogs(3);
       pickupArticles = pickupResponse.contents || [];
-      console.log('Pickup articles loaded successfully:', pickupArticles.length);
+      console.log('Pickup (latest) articles loaded successfully:', pickupArticles.length);
     } catch (pickupError) {
-      console.error('ピックアップ記事の取得に失敗しました:', pickupError);
+      console.error('ピックアップ記事（最新3件）の取得に失敗しました:', pickupError);
     }
   } catch (err) {
     console.error('データの取得に失敗しました:', err);

@@ -3,6 +3,8 @@
 import { Category, Blog } from '@/types/microcms';
 import CategoryFilter from './CategoryFilter';
 import PickupArticles from './PickupArticles';
+import { withBasePath } from '@/lib/basePath';
+import Image from 'next/image';
 
 interface BlogSidebarProps {
   categories: Category[];
@@ -48,25 +50,24 @@ export default function BlogSidebar({
       {/* ピックアップ記事 */}
       <PickupArticles articles={pickupArticles} />
 
-      {/* バナー広告エリア */}
+      {/* バナーセクション */}
       <div className="bg-white rounded-[12px] p-3 sm:p-4 shadow-sm">
-        <div className="bg-gradient-to-r from-[#0066ff] to-[#04acdb] rounded-[8px] p-4 sm:p-6 text-center text-white">
-          <h4 className="font-bold text-base sm:text-lg mb-1 sm:mb-2">求人情報をチェック！</h4>
-          <p className="text-xs sm:text-sm mb-3 sm:mb-4">あなたにぴったりの仕事を見つけよう</p>
-          <button className="bg-white text-[#0066ff] px-3 sm:px-4 py-1.5 sm:py-2 rounded-[6px] font-bold text-xs sm:text-sm hover:bg-gray-100 transition-colors">
-            求人を見る
-          </button>
-        </div>
-      </div>
-
-      {/* 追加バナー */}
-      <div className="bg-white rounded-[12px] p-3 sm:p-4 shadow-sm">
-        <div className="bg-[#ff6600] rounded-[8px] p-4 sm:p-6 text-center text-white">
-          <h4 className="font-bold text-base sm:text-lg mb-1 sm:mb-2">面談のご相談</h4>
-          <p className="text-xs sm:text-sm mb-3 sm:mb-4">まずはお気軽にお話を聞かせてください</p>
-          <button className="bg-white text-[#ff6600] px-3 sm:px-4 py-1.5 sm:py-2 rounded-[6px] font-bold text-xs sm:text-sm hover:bg-gray-100 transition-colors">
-            相談する
-          </button>
+        <div className="space-y-3">
+          <a href="https://ridejob.jp/ssw/ja" target="_blank" rel="noopener noreferrer" aria-label="RIDE JOB FOR SSW">
+            <div className="relative w-full h-24 sm:h-28 rounded-[8px] overflow-hidden">
+              <Image src={withBasePath('/ssw.png')} alt="LINEで相談" fill className="object-contain" unoptimized />
+            </div>
+          </a>
+          <a href="https://www.tiktok.com/@ride.job" target="_blank" rel="noopener noreferrer" aria-label="RIDE JOB TikTok">
+            <div className="relative w-full h-24 sm:h-28 rounded-[8px] overflow-hidden">
+              <Image src={withBasePath('/Tiltok.png')} alt="RIDE JOB TikTok" fill className="object-contain" unoptimized />
+            </div>
+          </a>
+          <a href="https://www.youtube.com/@RIDEJOB%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB" target="_blank" rel="noopener noreferrer" aria-label="RIDE JOB YouTube">
+            <div className="relative w-full h-24 sm:h-28 rounded-[8px] overflow-hidden">
+              <Image src={withBasePath('/youtube.png')} alt="RIDE JOB YouTube" fill className="object-contain" unoptimized />
+            </div>
+          </a>
         </div>
       </div>
     </div>
