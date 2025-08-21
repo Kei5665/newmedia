@@ -4,6 +4,7 @@ import { fetchBlogsWithFallback } from "@/lib/blogHelpers";
 import { CATEGORY_IDS } from "@/constants/categories";
 import { withBasePath } from "@/lib/basePath";
 import HeroEyecatchSlider from "@/components/HeroEyecatchSlider";
+import LogoMarquee from "@/components/LogoMarquee";
 
 const imgHero = "/figma/hero-bg.png";
 const imgCombinedLogo = "/figma/center-illustration+title-logo.png";
@@ -266,6 +267,9 @@ export default async function NewTopHeroSection() {
           </div>
         </div>
       </div>
+
+      {/* 企業ロゴ マルキー */}
+      <LogoMarquee />
     </>
   );
 }

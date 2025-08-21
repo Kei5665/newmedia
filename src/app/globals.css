@@ -25,6 +25,21 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* ロゴマルキー */
+.logo-marquee {
+  position: relative;
+}
+
+.logo-marquee__track {
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* ブログ記事本文のスタイル */
 .article-content {
   line-height: 1.6;

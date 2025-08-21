@@ -72,6 +72,33 @@ export interface MembersResponse {
 }
 
 /**
+ * microCMS 企業ロゴの型定義
+ */
+export interface Logo {
+  id: string;
+  logo?: {
+    url: string;
+    height?: number;
+    width?: number;
+  };
+  company?: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+}
+
+/**
+ * microCMS ロゴ一覧APIのレスポンス型
+ */
+export interface LogosResponse {
+  contents: Logo[];
+  totalCount: number;
+  offset: number;
+  limit: number;
+}
+
+/**
  * microCMS 都道府県の型定義
  */
 export interface Prefecture {

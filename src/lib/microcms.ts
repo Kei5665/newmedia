@@ -1,4 +1,4 @@
-import { BlogsResponse, MembersResponse, JobsResponse, Category, Blog } from "@/types/microcms";
+import { BlogsResponse, MembersResponse, JobsResponse, Category, Blog, LogosResponse } from "@/types/microcms";
 
 // 環境変数の確認とフォールバック
 const getEnvVar = (key: string, fallback?: string): string => {
@@ -222,6 +222,50 @@ export async function getAllBlogs(
   } catch (error) {
     console.error('getAllBlogs failed:', error);
     // フォールバック: 空のレスポンスを返す
+    return {
+      contents: [],
+      totalCount: 0,
+      offset: 0,
+      limit: limit
+    };
+  }
+}
+
+/**
+ * ロゴ一覧を取得
+ * @param limit 取得件数（デフォルト: 20）
+ * @returns LogosResponse
+ */
+export async function getLogos(limit: number = 20): Promise<LogosResponse> {
+  // 環境変数の検証
+  if (!API_KEY || !SERVICE_DOMAIN) {
+    console.error('MicroCMS environment variables are not properly configured');
+    return {
+      contents: [],
+      totalCount: 0,
+      offset: 0,
+      limit: limit
+    };
+  }
+
+  try {
+    const url = `${BASE_URL}/logo?limit=${limit}&orders=-publishedAt`;
+    const res = await fetch(url, {
+      headers: {
+        "X-MICROCMS-API-KEY": API_KEY,
+      },
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error('Logos API Error Response:', errorText);
+      throw new Error(`Failed to fetch logos: ${res.status} - ${errorText}`);
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error('Logos Network or parsing error:', error);
     return {
       contents: [],
       totalCount: 0,
