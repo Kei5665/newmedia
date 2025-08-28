@@ -68,9 +68,14 @@ export default async function BlogPage() {
       <Breadcrumbs pageName="ブログ一覧" />
       
       {/* メインコンテンツ - 背景画像付きセクション */}
-      <main 
-        className="min-h-screen bg-repeat"
-        style={{ backgroundImage: `url('${withBasePath('/figma/blue-bg.png')}')` }}
+      <main
+        className="min-h-screen"
+        style={{
+          backgroundImage: `url('${withBasePath('/figma/blue-bg.png')}')`,
+          backgroundSize: 'auto',
+          backgroundRepeat: 'repeat',
+          backgroundPosition: 'top left',
+        }}
       >
         {/* 白い背景のコンテナ */}
         <div className="container mx-auto px-4 py-8">
