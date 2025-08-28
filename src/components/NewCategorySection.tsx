@@ -23,14 +23,15 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
   };
   return (
     <div className="box-border content-stretch flex flex-col lg:flex-row gap-8 lg:gap-16 items-center justify-center pb-8 lg:pb-0 px-4 md:px-8 lg:pl-[150px] lg:pr-[72px] pt-16 lg:pt-20 relative w-full min-h-screen">
-      {/* 背景画像をImageで最適化 */}
-      <Image
-        src={withBasePath(imgSection3Category)}
-        alt="カテゴリー背景"
-        fill
-        className="object-cover -z-10"
-        loading="lazy"
-        sizes="100vw"
+      {/* 背景画像 */}
+      <div
+        className="-z-10 absolute inset-0"
+        style={{
+          backgroundImage: `url(${withBasePath(imgSection3Category)})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
       />
 
       <div

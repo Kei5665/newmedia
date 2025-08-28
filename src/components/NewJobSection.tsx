@@ -155,14 +155,15 @@ export default async function NewJobSection() {
 
   return (
     <div className="box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-0 py-20 relative size-full">
-      {/* 背景画像をImageで最適化 */}
-      <Image
-        src={withBasePath(imgSection4Job)}
-        alt="求人背景"
-        fill
-        className="object-cover -z-10"
-        loading="lazy"
-        sizes="100vw"
+      {/* 背景画像 */}
+      <div
+        className="-z-10 absolute inset-0"
+        style={{
+          backgroundImage: `url(${withBasePath(imgSection4Job)})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
       />
 
       <div

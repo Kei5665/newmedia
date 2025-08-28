@@ -128,14 +128,15 @@ export default async function CompanyInterviewSection() {
 
   return (
     <div className="box-border content-stretch flex flex-col items-center justify-center pb-12 md:pb-16 lg:pb-24 pt-16 md:pt-24 lg:pt-[140px] px-4 md:px-8 lg:px-[170px] relative w-full min-h-screen">
-      {/* 背景画像をImageで最適化 */}
-      <Image
-        src={withBasePath(imgSection2CompanyInterview)}
-        alt="企業インタビュー背景"
-        fill
-        className="object-cover -z-10"
-        loading="lazy"
-        sizes="100vw"
+      {/* 背景画像 */}
+      <div
+        className="-z-10 absolute inset-0"
+        style={{
+          backgroundImage: `url(${withBasePath(imgSection2CompanyInterview)})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
       />
 
       <div className="w-full max-w-7xl mx-auto relative z-10">

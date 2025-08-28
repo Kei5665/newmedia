@@ -158,14 +158,15 @@ export default async function NewTopHeroSection() {
       {/* モバイル・タブレット専用レイアウト */}
       <div className="lg:hidden">
         <div className="box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-9 py-[29px] relative w-full min-h-screen">
-          {/* 背景画像をImageで最適化 */}
-          <Image
-            src={withBasePath(imgHero)}
-            alt="ヒーロー背景"
-            fill
-            className="object-cover -z-10"
-            priority
-            sizes="100vw"
+          {/* 背景画像 */}
+          <div
+            className="-z-10 absolute inset-0"
+            style={{
+              backgroundImage: `url(${withBasePath(imgHero)})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
           />
 
           <div className="flex flex-col gap-5 items-start justify-start w-full relative z-10">
@@ -229,14 +230,15 @@ export default async function NewTopHeroSection() {
       {/* PC専用レイアウト */}
       <div className="hidden lg:block">
         <div className="box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-9 py-[29px] relative w-full">
-          {/* 背景画像をImageで最適化 */}
-          <Image
-            src={withBasePath(imgHero)}
-            alt="ヒーロー背景"
-            fill
-            className="object-cover -z-10"
-            priority
-            sizes="100vw"
+          {/* 背景画像 */}
+          <div
+            className="-z-10 absolute inset-0"
+            style={{
+              backgroundImage: `url(${withBasePath(imgHero)})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
           />
 
           <div className="flex flex-row gap-5 items-start justify-start w-full relative z-10">

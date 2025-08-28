@@ -27,14 +27,14 @@ export default async function NewInterviewSection() {
 
   return (
     <div className="box-border content-stretch flex flex-col gap-2.5 items-start justify-start md:px-9 py-[29px] relative size-full">
-      {/* 背景画像をImageで最適化 */}
-      <Image
-        src={withBasePath(img)}
-        alt="面談セクション背景"
-        fill
-        className="object-center object-repeat -z-10"
-        loading="lazy"
-        sizes="100vw"
+      {/* 背景画像 */}
+      <div
+        className="-z-10 absolute inset-0"
+        style={{
+          backgroundImage: `url(${withBasePath(img)})`,
+          backgroundSize: 'auto',
+          backgroundRepeat: 'repeat',
+        }}
       />
 
       <div
