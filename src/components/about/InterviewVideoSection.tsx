@@ -39,7 +39,7 @@ export function InterviewVideoSection() {
             alt="ビデオタイトル"
             width={180}
             height={32}
-            className="w-[180px] md:w-[229px] h-8 md:h-11 object-cover"
+            className="w-[180px] md:w-[229px] h-auto object-contain"
             loading="lazy"
             sizes="(max-width: 768px) 180px, 229px"
           />
