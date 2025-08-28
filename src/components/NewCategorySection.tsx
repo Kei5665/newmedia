@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { withBasePath } from '@/lib/basePath';
 import { Category } from '@/types/microcms';
 
@@ -21,14 +22,19 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
     return category?.id;
   };
   return (
-    <div
-      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col lg:flex-row gap-8 lg:gap-16 items-center justify-center pb-8 lg:pb-0 px-4 md:px-8 lg:pl-[150px] lg:pr-[72px] pt-16 lg:pt-20 relative w-full min-h-screen"
-      data-name="section3 Category"
-      id="node-2151_193"
-      style={{ backgroundImage: `url('${withBasePath(imgSection3Category)}')` }}
-    >
+    <div className="box-border content-stretch flex flex-col lg:flex-row gap-8 lg:gap-16 items-center justify-center pb-8 lg:pb-0 px-4 md:px-8 lg:pl-[150px] lg:pr-[72px] pt-16 lg:pt-20 relative w-full min-h-screen">
+      {/* 背景画像をImageで最適化 */}
+      <Image
+        src={withBasePath(imgSection3Category)}
+        alt="カテゴリー背景"
+        fill
+        className="object-cover -z-10"
+        loading="lazy"
+        sizes="100vw"
+      />
+
       <div
-        className="box-border content-stretch flex flex-col lg:flex-row gap-8 lg:gap-10 items-center lg:items-start justify-center lg:justify-start p-0 relative shrink-0 w-full lg:w-auto"
+        className="box-border content-stretch flex flex-col lg:flex-row gap-8 lg:gap-10 items-center lg:items-start justify-center lg:justify-start p-0 relative shrink-0 w-full lg:w-auto relative z-10"
         id="node-2151_195"
       >
         <div
@@ -44,11 +50,15 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
               data-name="heading03"
               id="node-2151_200"
             >
-              <div
-                className="bg-center bg-contain bg-no-repeat h-[180px] md:h-[240px] lg:h-[273px] shrink-0 w-[280px] md:w-[320px] lg:w-[376px]"
-                data-name="Frame 68 3"
-                id="node-2152_192"
-                style={{ backgroundImage: `url('${withBasePath(imgFrame683)}')` }}
+              {/* 見出し画像をImageで最適化 */}
+              <Image
+                src={withBasePath(imgFrame683)}
+                alt="カテゴリー見出し"
+                width={280}
+                height={180}
+                className="w-[280px] md:w-[320px] lg:w-[376px] h-[180px] md:h-[240px] lg:h-[273px] object-contain"
+                loading="lazy"
+                sizes="(max-width: 768px) 280px, (max-width: 1024px) 320px, 376px"
               />
             </div>
           </div>
@@ -56,11 +66,15 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
             className="box-border content-stretch flex flex-col gap-4 items-center lg:items-start justify-start p-0 relative shrink-0"
             id="node-2151_418"
           >
-            <div
-              className="bg-center bg-contain bg-no-repeat h-[400px] md:h-[500px] lg:h-[595px] shrink-0 w-[280px] md:w-[320px] lg:w-[367.5px]"
-              data-name="Group 206 (1) 1"
-              id="node-2151_1161"
-              style={{ backgroundImage: `url('${withBasePath(imgGroup20611)}')` }}
+            {/* キャラクター画像をImageで最適化 */}
+            <Image
+              src={withBasePath(imgGroup20611)}
+              alt="キャラクター"
+              width={280}
+              height={400}
+              className="w-[280px] md:w-[320px] lg:w-[367.5px] h-[400px] md:h-[500px] lg:h-[595px] object-contain"
+              loading="lazy"
+              sizes="(max-width: 768px) 280px, (max-width: 1024px) 320px, 367.5px"
             />
           </div>
         </div>
@@ -73,44 +87,57 @@ export default function NewCategorySection({ categories }: NewCategorySectionPro
           href={`/blog?category=${getCategoryId('ご利用者様の声') || ''}`}
           className="block hover:opacity-80 transition-opacity"
         >
-          <div
-            className="bg-center bg-contain bg-no-repeat min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 cursor-pointer"
-            data-name="Frame 47 1"
-            id="node-2151_1192"
-            style={{ backgroundImage: `url('${withBasePath(imgFrame471)}')` }}
+          {/* カテゴリカードをImageで最適化 */}
+          <Image
+            src={withBasePath(imgFrame471)}
+            alt="ご利用者様の声"
+            width={680}
+            height={222}
+            className="min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 object-contain cursor-pointer"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 680px"
           />
         </Link>
         <Link
           href={`/blog?category=${getCategoryId('お役立ち情報') || ''}`}
           className="block hover:opacity-80 transition-opacity"
         >
-          <div
-            className="bg-center bg-contain bg-no-repeat min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 cursor-pointer"
-            data-name="Frame 48 1"
-            id="node-2151_1207"
-            style={{ backgroundImage: `url('${withBasePath(imgFrame481)}')` }}
+          <Image
+            src={withBasePath(imgFrame481)}
+            alt="お役立ち情報"
+            width={680}
+            height={222}
+            className="min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 object-contain cursor-pointer"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 680px"
           />
         </Link>
         <Link
           href={`/blog?category=${getCategoryId('企業取材') || ''}`}
           className="block hover:opacity-80 transition-opacity"
         >
-          <div
-            className="bg-center bg-contain bg-no-repeat min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 cursor-pointer"
-            data-name="Frame 46 1"
-            id="node-2151_1177"
-            style={{ backgroundImage: `url('${withBasePath(imgFrame461)}')` }}
+          <Image
+            src={withBasePath(imgFrame461)}
+            alt="企業取材"
+            width={680}
+            height={222}
+            className="min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 object-contain cursor-pointer"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 680px"
           />
         </Link>
         <Link
           href={`/blog?category=${getCategoryId('インタビュー') || ''}`}
           className="block hover:opacity-80 transition-opacity"
         >
-          <div
-            className="bg-center bg-contain bg-no-repeat min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 cursor-pointer"
-            data-name="Frame 49 1"
-            id="node-2151_1222"
-            style={{ backgroundImage: `url('${withBasePath(imgFrame491)}')` }}
+          <Image
+            src={withBasePath(imgFrame491)}
+            alt="インタビュー"
+            width={680}
+            height={222}
+            className="min-h-[120px] h-[150px] md:h-[200px] lg:h-[222px] w-full min-w-[380px] max-w-[400px] mx-auto lg:max-w-none lg:w-[680px] lg:mx-0 object-contain cursor-pointer"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 680px"
           />
         </Link>
       </div>

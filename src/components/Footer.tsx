@@ -1,5 +1,6 @@
 import { withBasePath } from '@/lib/basePath';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -38,11 +39,15 @@ export default function Footer() {
                   data-name="Container"
                   id="node-2064_19"
                 >
-                  <div
-                    className="bg-center bg-cover bg-no-repeat h-[33px] shrink-0 w-[101px] object-contain"
-                    data-name="RIDE JOB"
-                    id="node-2064_20"
-                    style={{ backgroundImage: `url('${withBasePath('/logo-ridejob.png')}')` }}
+                  {/* ロゴ画像をImageで最適化 */}
+                  <Image
+                    src={withBasePath('/logo-ridejob.png')}
+                    alt="RIDE JOB Logo"
+                    width={101}
+                    height={33}
+                    className="h-[33px] w-[101px] object-contain"
+                    loading="lazy"
+                    sizes="101px"
                   />
                 </div>
               </div>

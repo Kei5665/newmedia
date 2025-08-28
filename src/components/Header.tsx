@@ -33,6 +33,8 @@ export default function Header() {
                 width={120}
                 height={39}
                 className="h-[39px] w-[120px] object-contain"
+                priority
+                sizes="120px"
               />
             </Link>
             

@@ -1,6 +1,7 @@
 import { getLatestJobs } from "@/lib/microcms";
 import { withBasePath } from "@/lib/basePath";
 import { Job } from "@/types/microcms";
+import Image from "next/image";
 
 const imgSection4Job = "/figma/section4-job-bg.png";
 const imgHeading042 = "/figma/heading04-2.png";
@@ -60,10 +61,16 @@ function JobCard({ job }: { job: Job }) {
         className="block no-underline text-inherit hover:opacity-80 transition-opacity duration-200 cursor-pointer"
       >
         <div className="bg-[#ffffff] border-[#333333] border-[1.2px] border-solid rounded-[20px] p-4 h-full flex flex-col hover:shadow-lg transition-shadow duration-200">
-        <div
-          className="bg-center bg-cover bg-no-repeat h-[193px] rounded-[10px] shrink-0 w-full mb-4"
-          style={{ backgroundImage: `url('${withBasePath(jobImage)}')` }}
-        />
+          {/* 求人画像をImageで最適化 */}
+          <Image
+            src={withBasePath(jobImage)}
+            alt={jobTitle}
+            width={400}
+            height={193}
+            className="h-[193px] rounded-[10px] w-full object-cover mb-4"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          />
         <div className="flex flex-col gap-2 flex-1">
           <div className="font-['Noto_Sans_JP:Bold',_sans-serif] font-bold text-[#101828] text-[16px] leading-[1.5] break-words">
             {jobTitle}
@@ -73,10 +80,14 @@ function JobCard({ job }: { job: Job }) {
           </div>
           <div className="flex items-center gap-2 pb-1 border-b border-[#cccccc]">
             <div className="shrink-0 size-4">
-              <img
-                alt="Map icon"
-                className="block max-w-none size-full"
+              <Image
                 src={withBasePath(imgBxsMap)}
+                alt="地図アイコン"
+                width={16}
+                height={16}
+                className="size-4"
+                loading="lazy"
+                sizes="16px"
               />
             </div>
             <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-neutral-500 text-[14px] leading-normal break-words flex-1 min-w-0">
@@ -85,11 +96,14 @@ function JobCard({ job }: { job: Job }) {
           </div>
           <div className="flex items-center gap-2 pb-1 border-b border-[#cccccc]">
             <div className="shrink-0 size-4">
-              <img
-                alt="Yen icon"
-                className="block max-w-none size-full"
-                loading="lazy"
+              <Image
                 src={withBasePath(imgLucideJapaneseYen)}
+                alt="円アイコン"
+                width={16}
+                height={16}
+                className="size-4"
+                loading="lazy"
+                sizes="16px"
               />
             </div>
             <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-neutral-500 text-[14px] leading-normal break-words flex-1 min-w-0">
@@ -98,11 +112,14 @@ function JobCard({ job }: { job: Job }) {
           </div>
           <div className="flex items-center gap-2 pb-1">
             <div className="shrink-0 size-4">
-              <img
-                alt="Work icon"
-                className="block max-w-none size-full"
-                loading="lazy"
+              <Image
                 src={withBasePath(imgMaterialSymbolsWork)}
+                alt="仕事アイコン"
+                width={16}
+                height={16}
+                className="size-4"
+                loading="lazy"
+                sizes="16px"
               />
             </div>
             <div className="font-['Noto_Sans_JP:Medium',_sans-serif] font-medium text-neutral-500 text-[14px] leading-normal break-words flex-1 min-w-0">
@@ -137,14 +154,19 @@ export default async function NewJobSection() {
   }
 
   return (
-    <div
-      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-0 py-20 relative size-full"
-      data-name="section4 job"
-      id="node-2161_192"
-      style={{ backgroundImage: `url('${withBasePath(imgSection4Job)}')` }}
-    >
+    <div className="box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-0 py-20 relative size-full">
+      {/* 背景画像をImageで最適化 */}
+      <Image
+        src={withBasePath(imgSection4Job)}
+        alt="求人背景"
+        fill
+        className="object-cover -z-10"
+        loading="lazy"
+        sizes="100vw"
+      />
+
       <div
-        className="box-border content-stretch flex flex-col gap-14 items-center justify-start p-0 relative shrink-0 w-full"
+        className="box-border content-stretch flex flex-col gap-14 items-center justify-start p-0 relative shrink-0 w-full relative z-10"
         id="node-2161_343"
       >
         <div
@@ -152,11 +174,15 @@ export default async function NewJobSection() {
           data-name="heading04"
           id="node-2161_312"
         >
-          <div
-            className="bg-center bg-cover bg-no-repeat h-[120px] md:h-[162px] shrink-0 w-[280px] md:w-[383px]"
-            data-name="heading04 2"
-            id="node-2161_347"
-            style={{ backgroundImage: `url('${withBasePath(imgHeading042)}')` }}
+          {/* 見出し画像をImageで最適化 */}
+          <Image
+            src={withBasePath(imgHeading042)}
+            alt="求人見出し"
+            width={280}
+            height={120}
+            className="w-[280px] md:w-[383px] h-[120px] md:h-[162px] object-contain"
+            loading="lazy"
+            sizes="(max-width: 768px) 280px, 383px"
           />
         </div>
         <div
@@ -215,14 +241,15 @@ export default async function NewJobSection() {
               </div>
               <div className="flex h-[31.984px] items-center justify-center relative shrink-0 w-[32px]">
                 <div className="flex-none rotate-[270deg]">
-                  <div className="relative size-8" id="node-2161_309">
-                    <img
-                      alt="Arrow icon"
-                      className="block max-w-none size-full"
-                      loading="lazy"
-                      src={withBasePath(imgFrame3)}
-                    />
-                  </div>
+                  <Image
+                    src={withBasePath(imgFrame3)}
+                    alt="矢印アイコン"
+                    width={32}
+                    height={32}
+                    className="size-8"
+                    loading="lazy"
+                    sizes="32px"
+                  />
                 </div>
               </div>
             </div>

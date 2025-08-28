@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { withBasePath } from '@/lib/basePath';
 import Link from 'next/link';
 import { Blog } from '@/types/microcms';
@@ -48,11 +49,17 @@ function InterviewCard({ blog }: { blog: Blog }) {
           aria-hidden="true"
           className="absolute border-[#333333] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[20px] group-hover:border-[#2204db] transition-colors duration-200"
         />
-        <div className="box-border content-stretch flex flex-col gap-[17px] lg:gap-[20px] h-full items-start justify-start p-0 relative shrink-0 w-full">
-          <div
-            className="bg-center bg-cover bg-no-repeat h-[235px] md:h-[200px] lg:h-[240px] rounded-[10px] shrink-0 w-full"
-            style={{ backgroundImage: `url('${withBasePath(blog.eyecatch?.url || fallbackImage)}')` }}
-          />
+                  <div className="box-border content-stretch flex flex-col gap-[17px] lg:gap-[20px] h-full items-start justify-start p-0 relative shrink-0 w-full">
+            {/* アイキャッチ画像をImageで最適化 */}
+            <Image
+              src={withBasePath(blog.eyecatch?.url || fallbackImage)}
+              alt={blog.title}
+              width={349}
+              height={235}
+              className="h-[235px] md:h-[200px] lg:h-[240px] rounded-[10px] w-full object-cover"
+              loading="lazy"
+              sizes="(max-width: 768px) 349px, (max-width: 1024px) 349px, 460px"
+            />
           <div className="box-border content-stretch flex flex-col gap-4 lg:gap-6 items-start justify-start p-0 relative shrink-0 w-full">
             <div className="box-border content-stretch flex flex-row items-center justify-between p-0 relative shrink-0 w-full">
               <div className="bg-[#2204db] box-border content-stretch flex flex-row items-center justify-center overflow-clip px-3 py-[3px] lg:px-5 lg:py-[5px] relative rounded-[32px] shrink-0">
@@ -120,22 +127,41 @@ export default async function CompanyInterviewSection() {
   const blogs = await fetchBlogsWithFallback(CATEGORY_IDS.COMPANY_INTERVIEW, 4);
 
   return (
-    <div
-      className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col items-center justify-center pb-12 md:pb-16 lg:pb-24 pt-16 md:pt-24 lg:pt-[140px] px-4 md:px-8 lg:px-[170px] relative w-full min-h-screen"
-      style={{ backgroundImage: `url('${withBasePath(imgSection2CompanyInterview)}')` }}
-    >
-      <div className="w-full max-w-7xl mx-auto">
+    <div className="box-border content-stretch flex flex-col items-center justify-center pb-12 md:pb-16 lg:pb-24 pt-16 md:pt-24 lg:pt-[140px] px-4 md:px-8 lg:px-[170px] relative w-full min-h-screen">
+      {/* 背景画像をImageで最適化 */}
+      <Image
+        src={withBasePath(imgSection2CompanyInterview)}
+        alt="企業インタビュー背景"
+        fill
+        className="object-cover -z-10"
+        loading="lazy"
+        sizes="100vw"
+      />
+
+      <div className="w-full max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-8 md:gap-10 items-center lg:items-start justify-center w-full">
           
           {/* Title and Character Section */}
           <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 items-center lg:items-start justify-start shrink-0">
-            <div
-              className="bg-center bg-contain bg-no-repeat h-[200px] md:h-[180px] lg:h-[220px] shrink-0 w-[320px] md:w-[300px] lg:w-[300px]"
-            style={{ backgroundImage: `url('${withBasePath(imgHeading021)}')` }}
+            {/* 見出し画像をImageで最適化 */}
+            <Image
+              src={withBasePath(imgHeading021)}
+              alt="企業取材"
+              width={320}
+              height={200}
+              className="w-[320px] md:w-[300px] lg:w-[300px] h-[200px] md:h-[180px] lg:h-[220px] object-contain"
+              loading="lazy"
+              sizes="(max-width: 768px) 320px, (max-width: 1024px) 300px, 300px"
             />
-            <div
-              className="bg-center bg-cover bg-no-repeat h-[300px] md:h-[400px] lg:h-[557px] shrink-0 w-[170px] md:w-[220px] lg:w-[312px] hidden md:block"
-            style={{ backgroundImage: `url('${withBasePath(imgDsgf1)}')` }}
+            {/* キャラクター画像をImageで最適化 */}
+            <Image
+              src={withBasePath(imgDsgf1)}
+              alt="キャラクター"
+              width={170}
+              height={300}
+              className="w-[170px] md:w-[220px] lg:w-[312px] h-[300px] md:h-[400px] lg:h-[557px] object-cover hidden md:block"
+              loading="lazy"
+              sizes="(max-width: 1024px) 220px, 312px"
             />
           </div>
           
@@ -166,14 +192,15 @@ export default async function CompanyInterviewSection() {
                   </div>
                   <div className="flex h-[31.984px] items-center justify-center relative shrink-0 w-[32px]">
                     <div className="flex-none rotate-[270deg]">
-                      <div className="relative size-8">
-                        <img
-                          alt=""
-                          className="block max-w-none size-full"
-                          loading="lazy"
-                          src={withBasePath(imgButtonIcon)}
-                        />
-                      </div>
+                      <Image
+                        src={withBasePath(imgButtonIcon)}
+                        alt="矢印アイコン"
+                        width={32}
+                        height={32}
+                        className="size-8"
+                        loading="lazy"
+                        sizes="32px"
+                      />
                     </div>
                   </div>
                 </div>

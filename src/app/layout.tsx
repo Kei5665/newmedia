@@ -54,6 +54,27 @@ export const metadata: Metadata = {
     shortcut: "/media/favicon.png",
     apple: "/media/favicon.png",
   },
+  // 重要な画像のプリロード設定
+  other: [
+    {
+      rel: "preload",
+      href: "/media/figma/hero-bg.png",
+      as: "image",
+      type: "image/png",
+    },
+    {
+      rel: "preload",
+      href: "/media/figma/center-illustration+title-logo.png",
+      as: "image",
+      type: "image/png",
+    },
+    {
+      rel: "preload",
+      href: "/media/figma/charamobile.png",
+      as: "image",
+      type: "image/png",
+    },
+  ],
 };
 
 export default function RootLayout({

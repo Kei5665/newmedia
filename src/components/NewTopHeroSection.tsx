@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Blog } from "@/types/microcms";
 import { fetchBlogsWithFallback } from "@/lib/blogHelpers";
 import { CATEGORY_IDS } from "@/constants/categories";
@@ -37,11 +38,8 @@ function BlogCard({ blog }: { blog: Blog }) {
   // スラッグがない場合はIDを使用、どちらもない場合は無効なリンクを防ぐ
   const linkHref = blog.slug ? `/blog/${blog.slug}` : (blog.id ? `/blog/${blog.id}` : '#');
 
-  // デバッグ情報をコンソールに出力
-  console.log('BlogCard - blog.id:', blog.id, 'blog.slug:', blog.slug, 'linkHref:', linkHref);
-
-  // IDもスラッグもない場合は警告を表示
-  if (!blog.id && !blog.slug) {
+  // IDもスラッグもない場合は警告を表示（開発環境のみ）
+  if (process.env.NODE_ENV === 'development' && !blog.id && !blog.slug) {
     console.warn('BlogCard: blog.idとblog.slugの両方が存在しません', blog);
   }
 
@@ -50,11 +48,14 @@ function BlogCard({ blog }: { blog: Blog }) {
     return (
       <div className="box-border content-stretch flex flex-row gap-3 md:gap-4 items-start justify-start p-2 relative shrink-0 w-full opacity-50 cursor-not-allowed rounded-lg">
         <div className="box-border content-stretch flex flex-row gap-2 h-[70px] md:h-[88px] items-start justify-start p-0 relative shrink-0 w-[70px] md:w-[93px]">
-          <div
-            className="bg-center bg-cover bg-no-repeat h-[70px] md:h-[88px] rounded-[10px] shrink-0 w-[70px] md:w-[93px]"
-            style={{
-              backgroundImage: `url('${blog.eyecatch?.url || fallbackThumb}')`,
-            }}
+          <Image
+            src={blog.eyecatch?.url || withBasePath(fallbackThumb)}
+            alt={blog.title}
+            width={70}
+            height={70}
+            className="rounded-[10px] object-cover w-full h-full md:w-[93px] md:h-[88px]"
+            sizes="(max-width: 768px) 70px, 93px"
+            loading="lazy"
           />
         </div>
         <div className="basis-0 box-border content-stretch flex flex-col gap-2 grow items-start justify-start min-h-px min-w-px p-0 relative self-stretch shrink-0">
@@ -88,11 +89,14 @@ function BlogCard({ blog }: { blog: Blog }) {
     <Link href={linkHref} className="block w-full mb-4">
       <div className="box-border content-stretch flex flex-row gap-3 md:gap-4 items-start justify-start p-3 relative shrink-0 w-full cursor-pointer hover:bg-gray-50 transition-colors duration-200 rounded-lg">
       <div className="box-border content-stretch flex flex-row gap-2 h-[70px] md:h-[88px] items-start justify-start p-0 relative shrink-0 w-[70px] md:w-[93px]">
-        <div
-          className="bg-center bg-cover bg-no-repeat h-[70px] md:h-[88px] rounded-[10px] shrink-0 w-[70px] md:w-[93px]"
-          style={{
-            backgroundImage: `url('${blog.eyecatch?.url || fallbackThumb}')`,
-          }}
+        <Image
+          src={blog.eyecatch?.url || withBasePath(fallbackThumb)}
+          alt={blog.title}
+          width={70}
+          height={70}
+          className="rounded-[10px] object-cover w-full h-full md:w-[93px] md:h-[88px]"
+          sizes="(max-width: 768px) 70px, 93px"
+          loading="lazy"
         />
       </div>
       <div className="basis-0 box-border content-stretch flex flex-col gap-2 grow items-start justify-start min-h-px min-w-px p-0 relative self-stretch shrink-0">
@@ -153,25 +157,42 @@ export default async function NewTopHeroSection() {
     <>
       {/* モバイル・タブレット専用レイアウト */}
       <div className="lg:hidden">
-        <div
-          className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-9 py-[29px] relative w-full min-h-screen"
-          style={{ backgroundImage: `url('${withBasePath(imgHero)}')` }}
-        >
-          <div className="flex flex-col gap-5 items-start justify-start w-full">
+        <div className="box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-9 py-[29px] relative w-full min-h-screen">
+          {/* 背景画像をImageで最適化 */}
+          <Image
+            src={withBasePath(imgHero)}
+            alt="ヒーロー背景"
+            fill
+            className="object-cover -z-10"
+            priority
+            sizes="100vw"
+          />
+
+          <div className="flex flex-col gap-5 items-start justify-start w-full relative z-10">
             {/* タイトルロゴとイラスト */}
             <div className="w-full">
               {/* モバイル専用画像 */}
               <div className="block md:hidden">
-                <div
-                  className="bg-center bg-contain bg-no-repeat w-full aspect-[202/329]"
-                  style={{ backgroundImage: `url('${withBasePath(imgMobileLogo)}')` }}
+                <Image
+                  src={withBasePath(imgMobileLogo)}
+                  alt="モバイル用ロゴ"
+                  width={202}
+                  height={329}
+                  className="w-full h-auto"
+                  priority
+                  sizes="(max-width: 768px) 100vw"
                 />
               </div>
               {/* タブレット以上で統合画像 */}
               <div className="hidden md:block">
-                <div
-                  className="bg-center bg-contain bg-no-repeat w-full aspect-[665/266]"
-                  style={{ backgroundImage: `url('${withBasePath(imgCombinedLogo)}')` }}
+                <Image
+                  src={withBasePath(imgCombinedLogo)}
+                  alt="タブレット用ロゴ"
+                  width={665}
+                  height={266}
+                  className="w-full h-auto"
+                  priority
+                  sizes="(max-width: 1024px) 100vw"
                 />
               </div>
             </div>
@@ -180,12 +201,17 @@ export default async function NewTopHeroSection() {
             <div className="flex flex-col gap-4 w-full p-4 bg-white border-2 border-black rounded-3xl max-h-[380px] overflow-y-auto" style={{ pointerEvents: 'auto' }}>
               {/* ピックアップタイトル */}
               <div className="flex justify-center">
-                <div
-                  className="bg-center bg-contain bg-no-repeat h-[60px] w-[240px]"
-                  style={{ backgroundImage: `url('${withBasePath(imgPickupTitle)}')` }}
+                <Image
+                  src={withBasePath(imgPickupTitle)}
+                  alt="ピックアップ"
+                  width={240}
+                  height={60}
+                  className="h-[60px] w-[240px]"
+                  loading="lazy"
+                  sizes="240px"
                 />
               </div>
-              
+
               {mobileBlogs.length === 0 ? (
                 <div className="text-center p-6">
                   <div className="text-gray-500 font-medium">記事を読み込み中...</div>
@@ -202,17 +228,29 @@ export default async function NewTopHeroSection() {
 
       {/* PC専用レイアウト */}
       <div className="hidden lg:block">
-        <div
-          className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-9 py-[29px] relative w-full"
-          style={{ backgroundImage: `url('${withBasePath(imgHero)}')` }}
-        >
-          <div className="flex flex-row gap-5 items-start justify-start w-full">
+        <div className="box-border content-stretch flex flex-col gap-2.5 items-start justify-start px-4 md:px-9 py-[29px] relative w-full">
+          {/* 背景画像をImageで最適化 */}
+          <Image
+            src={withBasePath(imgHero)}
+            alt="ヒーロー背景"
+            fill
+            className="object-cover -z-10"
+            priority
+            sizes="100vw"
+          />
+
+          <div className="flex flex-row gap-5 items-start justify-start w-full relative z-10">
             <div className="flex-1 max-w-[50%]">
               {/* タイトルロゴとイラスト */}
               <div className="w-full mb-5">
-                <div
-                  className="bg-center bg-contain bg-no-repeat w-full aspect-[665/266]"
-                  style={{ backgroundImage: `url('${withBasePath(imgCombinedLogo)}')` }}
+                <Image
+                  src={withBasePath(imgCombinedLogo)}
+                  alt="PC用ロゴ"
+                  width={665}
+                  height={266}
+                  className="w-full h-auto"
+                  priority
+                  sizes="50vw"
                 />
               </div>
 
@@ -220,12 +258,17 @@ export default async function NewTopHeroSection() {
               <div className="w-full bg-white border-2 border-black rounded-3xl p-6">
                 {/* ピックアップタイトル */}
                 <div className="flex justify-center w-full mb-4">
-                  <div
-                    className="bg-center bg-contain bg-no-repeat h-[80px] w-[320px]"
-                    style={{ backgroundImage: `url('${withBasePath(imgPickupTitle)}')` }}
+                  <Image
+                    src={withBasePath(imgPickupTitle)}
+                    alt="ピックアップ"
+                    width={320}
+                    height={80}
+                    className="h-[80px] w-[320px]"
+                    loading="lazy"
+                    sizes="320px"
                   />
                 </div>
-                
+
                 {blogs.length === 0 ? (
                   <EmptyPlaceholder />
                 ) : (
@@ -258,9 +301,13 @@ export default async function NewTopHeroSection() {
                 // ヒーロー右側をアイキャッチスライダーに置き換え
                 <HeroEyecatchSlider images={rightImages} intervalMs={3000} />
               ) : (
-                <div
-                  className="w-full h-full bg-center bg-contain bg-no-repeat rounded-lg"
-                  style={{ backgroundImage: `url('${withBasePath(imgTopMainImgA2)}')` }}
+                <Image
+                  src={withBasePath(imgTopMainImgA2)}
+                  alt="メイン画像"
+                  fill
+                  className="object-contain rounded-lg"
+                  loading="lazy"
+                  sizes="50vw"
                 />
               )}
             </div>

@@ -2,6 +2,7 @@ import { getAllMembers } from "@/lib/microcms";
 import { withBasePath } from "@/lib/basePath";
 import { Member } from "@/types/microcms";
 import MemberInteractiveSection from "./MemberInteractiveSection";
+import Image from "next/image";
 
 const img = "/figma/interview-section-background.png";
 const imgFrame2241 = "/figma/interview-section-heading.png";
@@ -25,14 +26,19 @@ export default async function NewInterviewSection() {
   }
 
   return (
-    <div
-      className="bg-center bg-repeat box-border content-stretch flex flex-col gap-2.5 items-start justify-start md:px-9 py-[29px] relative size-full"
-      data-name="面談セクション"
-      id="node-2163_546"
-      style={{ backgroundImage: `url('${withBasePath(img)}')` }}
-    >
+    <div className="box-border content-stretch flex flex-col gap-2.5 items-start justify-start md:px-9 py-[29px] relative size-full">
+      {/* 背景画像をImageで最適化 */}
+      <Image
+        src={withBasePath(img)}
+        alt="面談セクション背景"
+        fill
+        className="object-center object-repeat -z-10"
+        loading="lazy"
+        sizes="100vw"
+      />
+
       <div
-        className="box-border content-stretch flex flex-col gap-2.5 items-center justify-center md:px-8 lg:px-[432px] py-0 relative rounded-tl-[80px] shrink-0 w-full"
+        className="box-border content-stretch flex flex-col gap-2.5 items-center justify-center md:px-8 lg:px-[432px] py-0 relative rounded-tl-[80px] shrink-0 w-full relative z-10"
         data-name="icon bg_pc"
         id="node-2163_847"
       >
@@ -46,11 +52,15 @@ export default async function NewInterviewSection() {
             data-name="Heading 3"
             id="node-2163_887"
           >
-            <div
-              className="bg-center bg-cover bg-no-repeat h-[200px] md:h-[308px] shrink-0 w-[280px] md:w-[408px]"
-              data-name="Frame 224 1"
-              id="node-2163_888"
-                style={{ backgroundImage: `url('${withBasePath(imgFrame2241)}')` }}
+            {/* 見出し画像をImageで最適化 */}
+            <Image
+              src={withBasePath(imgFrame2241)}
+              alt="面談担当者見出し"
+              width={280}
+              height={200}
+              className="w-[280px] md:w-[408px] h-[200px] md:h-[308px] object-cover"
+              loading="lazy"
+              sizes="(max-width: 768px) 280px, 408px"
             />
           </div>
           <div
@@ -66,11 +76,15 @@ export default async function NewInterviewSection() {
                 className="box-border content-stretch flex flex-col gap-6 md:gap-8 items-center justify-start p-0 relative shrink-0 w-full"
                 id="node-2163_893"
               >
-                <div
-                  className="bg-center bg-cover bg-no-repeat h-[35px] md:h-[45px] shrink-0 w-[150px] md:w-[197px]"
-                  data-name="Frame 215 1"
-                  id="node-2163_894"
-                   style={{ backgroundImage: `url('${withBasePath(imgFrame2151)}')` }}
+                {/* サブタイトル画像をImageで最適化 */}
+                <Image
+                  src={withBasePath(imgFrame2151)}
+                  alt="面談担当者サブタイトル"
+                  width={150}
+                  height={35}
+                  className="w-[150px] md:w-[197px] h-[35px] md:h-[45px] object-cover"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 150px, 197px"
                 />
                 <div className="w-full">
                   <MemberInteractiveSection members={members} />
@@ -95,11 +109,15 @@ export default async function NewInterviewSection() {
               className="box-border content-stretch flex flex-col gap-5 items-center justify-start p-0 relative shrink-0"
               id="node-2166_1000"
             >
-              <div
-                className="bg-center bg-cover bg-no-repeat h-8 md:h-11 shrink-0 w-[180px] md:w-[229px]"
-                data-name="Frame 214 1"
-                id="node-2163_513"
-                style={{ backgroundImage: `url('${withBasePath(imgFrame2141)}')` }}
+              {/* ビデオタイトル画像をImageで最適化 */}
+              <Image
+                src={withBasePath(imgFrame2141)}
+                alt="ビデオタイトル"
+                width={180}
+                height={32}
+                className="w-[180px] md:w-[229px] h-8 md:h-11 object-cover"
+                loading="lazy"
+                sizes="(max-width: 768px) 180px, 229px"
               />
               <div
                 className="box-border content-stretch flex flex-col gap-4 items-center justify-start p-0 relative shrink-0"
@@ -122,28 +140,43 @@ export default async function NewInterviewSection() {
                 className="box-border content-stretch flex flex-row gap-1 md:gap-2 h-32 md:h-64 items-center justify-center p-0 relative shrink-0 w-full"
                 id="node-2163_518"
               >
-                <div
-                  className="flex-1 bg-center bg-cover bg-no-repeat h-full relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]"
-                  data-name="image 111"
-                  id="node-2163_519"
-                   style={{ backgroundImage: `url('${withBasePath(imgImage111)}')` }}
-                >
+                {/* ビデオサムネイル1をImageで最適化 */}
+                <div className="flex-1 relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]">
+                  <Image
+                    src={withBasePath(imgImage111)}
+                    alt="ビデオサムネイル1"
+                    width={100}
+                    height={128}
+                    className="h-full w-full object-cover rounded-[8px] md:rounded-[10px]"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100px, 140px"
+                  />
                   <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[8px] md:rounded-[10px]" />
                 </div>
-                <div
-                  className="flex-1 bg-center bg-cover bg-no-repeat h-full relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]"
-                  data-name="image 112"
-                  id="node-2163_520"
-                   style={{ backgroundImage: `url('${withBasePath(imgImage112)}')` }}
-                >
+                {/* ビデオサムネイル2をImageで最適化 */}
+                <div className="flex-1 relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]">
+                  <Image
+                    src={withBasePath(imgImage112)}
+                    alt="ビデオサムネイル2"
+                    width={100}
+                    height={128}
+                    className="h-full w-full object-cover rounded-[8px] md:rounded-[10px]"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100px, 140px"
+                  />
                   <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[8px] md:rounded-[10px]" />
                 </div>
-                <div
-                  className="flex-1 bg-center bg-cover bg-no-repeat h-full relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]"
-                  data-name="image 113"
-                  id="node-2163_521"
-                   style={{ backgroundImage: `url('${withBasePath(imgImage113)}')` }}
-                >
+                {/* ビデオサムネイル3をImageで最適化 */}
+                <div className="flex-1 relative rounded-[8px] md:rounded-[10px] shrink-0 max-w-[100px] md:max-w-[140px]">
+                  <Image
+                    src={withBasePath(imgImage113)}
+                    alt="ビデオサムネイル3"
+                    width={100}
+                    height={128}
+                    className="h-full w-full object-cover rounded-[8px] md:rounded-[10px]"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100px, 140px"
+                  />
                   <div className="absolute border border-[#333333] border-solid inset-0 pointer-events-none rounded-[8px] md:rounded-[10px]" />
                 </div>
               </div>
@@ -190,11 +223,15 @@ export default async function NewInterviewSection() {
           className="bg-[#fdeab1] box-border content-stretch flex flex-col gap-6 items-center justify-start px-6 md:px-12 py-8 md:py-14 relative rounded-[60px] shrink-0 w-full max-w-[700px]"
           id="node-2166_1042"
         >
-          <div
-            className="bg-center bg-cover bg-no-repeat h-[140px] md:h-[187px] shrink-0 w-[260px] md:w-[346px]"
-            data-name="heading05 1"
-            id="node-2163_412"
-            style={{ backgroundImage: `url('${withBasePath(imgHeading051)}')` }}
+          {/* 見出し画像をImageで最適化 */}
+          <Image
+            src={withBasePath(imgHeading051)}
+            alt="困ったあなたへ見出し"
+            width={260}
+            height={140}
+            className="w-[260px] md:w-[346px] h-[140px] md:h-[187px] object-cover"
+            loading="lazy"
+            sizes="(max-width: 768px) 260px, 346px"
           />
           <div
             className="bg-[#ffffff] relative rounded-2xl shrink-0 w-full"
@@ -274,14 +311,15 @@ export default async function NewInterviewSection() {
                     </div>
                     <div className="flex h-[35.984px] items-center justify-center relative shrink-0 w-[36px]">
                       <div className="flex-none rotate-[270deg]">
-                        <div className="relative size-9" id="node-2163_427">
-                          <img
-                            alt="Arrow icon"
-                            className="block max-w-none size-full"
-                            loading="lazy"
-                            src={withBasePath(imgGroup3)}
-                          />
-                        </div>
+                        <Image
+                          src={withBasePath(imgGroup3)}
+                          alt="矢印アイコン"
+                          width={36}
+                          height={36}
+                          className="size-9"
+                          loading="lazy"
+                          sizes="36px"
+                        />
                       </div>
                     </div>
                   </div>
@@ -369,14 +407,15 @@ export default async function NewInterviewSection() {
                     </div>
                     <div className="flex h-[35.984px] items-center justify-center relative shrink-0 w-[36px]">
                       <div className="flex-none rotate-[270deg]">
-                        <div className="relative size-9" id="node-2163_442">
-                          <img
-                            alt="Arrow icon"
-                            className="block max-w-none size-full"
-                            loading="lazy"
-                            src={withBasePath(imgGroup3)}
-                          />
-                        </div>
+                        <Image
+                          src={withBasePath(imgGroup3)}
+                          alt="矢印アイコン"
+                          width={36}
+                          height={36}
+                          className="size-9"
+                          loading="lazy"
+                          sizes="36px"
+                        />
                       </div>
                     </div>
                   </div>
