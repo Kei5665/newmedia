@@ -351,7 +351,7 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
  * @param id 記事のID
  * @returns Blog | null
  */
-export async function getBlogById(id: string): Promise<Blog | null> {
+export async function getBlogById(id: string, draftKey?: string): Promise<Blog | null> {
   // 環境変数の検証
   if (!API_KEY || !SERVICE_DOMAIN) {
     console.error('MicroCMS environment variables are not properly configured');
@@ -359,7 +359,7 @@ export async function getBlogById(id: string): Promise<Blog | null> {
   }
 
   try {
-    const url = `${BASE_URL}/blogs/${id}`;
+    const url = `${BASE_URL}/blogs/${id}${draftKey ? `?draftKey=${encodeURIComponent(draftKey)}` : ''}`;
     console.log('Fetching blog by ID from URL:', url);
 
     const res = await fetch(url, {
