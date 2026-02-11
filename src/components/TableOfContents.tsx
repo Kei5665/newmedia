@@ -36,7 +36,9 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
     setTocItems(items);
 
     // 実際のDOMの見出しにIDを設定（h2とh3のみ）
-    const realHeadings = document.querySelectorAll('.article-content h2, .article-content h3');
+    const realHeadings = document.querySelectorAll(
+      '.article-content h2, .article-content h3, .article-content-html h2, .article-content-html h3'
+    );
     realHeadings.forEach((heading, index) => {
       heading.id = `heading-${index}`;
     });

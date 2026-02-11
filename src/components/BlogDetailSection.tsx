@@ -9,6 +9,47 @@ interface BlogDetailSectionProps {
 }
 
 export default function BlogDetailSection({ blog }: BlogDetailSectionProps) {
+  const rawBlogStyle: unknown = blog['blog-style'];
+  const normalizedBlogStyle = (() => {
+    if (typeof rawBlogStyle === 'string') {
+      return rawBlogStyle.toLowerCase();
+    }
+
+    if (typeof rawBlogStyle === 'number') {
+      return String(rawBlogStyle).toLowerCase();
+    }
+
+    if (Array.isArray(rawBlogStyle)) {
+      const first = rawBlogStyle[0];
+      if (typeof first === 'string') {
+        return first.toLowerCase();
+      }
+      if (typeof first === 'number') {
+        return String(first).toLowerCase();
+      }
+      if (first && typeof first === 'object') {
+        const value = (first as { value?: unknown; id?: unknown }).value ?? (first as { id?: unknown }).id;
+        if (typeof value === 'string') {
+          return value.toLowerCase();
+        }
+      }
+    }
+
+    if (rawBlogStyle && typeof rawBlogStyle === 'object') {
+      const value = (rawBlogStyle as { value?: unknown; id?: unknown }).value ?? (rawBlogStyle as { id?: unknown }).id;
+      if (typeof value === 'string') {
+        return value.toLowerCase();
+      }
+    }
+
+    return 'chat';
+  })();
+  const blogStyle = normalizedBlogStyle === 'editorial' ? 'editorial' : 'chat';
+  const htmlVariantClass =
+    blogStyle === 'editorial'
+      ? 'article-content-html--editorial'
+      : 'article-content-html--chat';
+
   // 公開日をフォーマット
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -68,7 +109,7 @@ export default function BlogDetailSection({ blog }: BlogDetailSectionProps) {
       <div className="max-w-none">
         {blog.html ? (
           <div 
-            className="article-content-html text-gray-900"
+            className={`article-content-html ${htmlVariantClass} text-gray-900`}
             dangerouslySetInnerHTML={{ __html: blog.html }}
           />
         ) : blog.content ? (

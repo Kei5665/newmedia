@@ -26,7 +26,11 @@ export interface Blog {
   category?: Category;
   slug?: string;
   html?: string;
-  "blog-style"?: string;
+  "blog-style"?:
+    | string
+    | number
+    | { id?: string; value?: string }
+    | Array<string | number | { id?: string; value?: string }>;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
