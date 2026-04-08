@@ -41,4 +41,51 @@ export async function fetchBlogsWithFallback(
       return [];
     }
   }
-} 
+}
+
+/**
+ * 現在の記事に関連する記事を取得する
+ * 優先順位:
+ * 1. 同カテゴリの公開記事
+ * 2. 不足分を最新記事で補完
+ */
+export async function getRelatedBlogs(currentBlog: Blog, limit: number = 3): Promise<Blog[]> {
+  const currentId = currentBlog.id;
+  const currentSlug = currentBlog.slug;
+  const categoryId = currentBlog.category?.id;
+  const relatedBlogs: Blog[] = [];
+  const seenIds = new Set<string>();
+
+  const isSameBlog = (blog: Blog) =>
+    blog.id === currentId || (Boolean(currentSlug) && blog.slug === currentSlug);
+
+  const appendUniqueBlogs = (blogs: Blog[]) => {
+    for (const blog of blogs) {
+      if (relatedBlogs.length >= limit) break;
+      if (isSameBlog(blog)) continue;
+      if (seenIds.has(blog.id)) continue;
+      seenIds.add(blog.id);
+      relatedBlogs.push(blog);
+    }
+  };
+
+  if (categoryId) {
+    try {
+      const categoryResponse = await getBlogsByCategory(categoryId, Math.max(limit + 1, 6));
+      appendUniqueBlogs(categoryResponse.contents || []);
+    } catch {
+      // 同カテゴリ取得失敗時は最新記事補完にフォールバック
+    }
+  }
+
+  if (relatedBlogs.length < limit) {
+    try {
+      const latestResponse = await getLatestBlogs(Math.max(limit + 3, 8));
+      appendUniqueBlogs(latestResponse.contents || []);
+    } catch {
+      return relatedBlogs;
+    }
+  }
+
+  return relatedBlogs;
+}

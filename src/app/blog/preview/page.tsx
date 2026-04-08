@@ -5,8 +5,10 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import BlogDetailSection from '@/components/BlogDetailSection';
 import BlogDetailSidebar from '@/components/BlogDetailSidebar';
 import BlogCTASection from '@/components/BlogCTASection';
+import RelatedArticlesSection from '@/components/RelatedArticlesSection';
 import { getBlogById, getAllCategories, getLatestBlogs } from '@/lib/microcms';
 import { withBasePath } from '@/lib/basePath';
+import { getRelatedBlogs } from '@/lib/blogHelpers';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -51,13 +53,15 @@ export default async function BlogPreviewPage({ searchParams }: PreviewPageProps
     );
   }
 
-  const [categoriesRes, pickupRes] = await Promise.allSettled([
+  const [categoriesRes, pickupRes, relatedRes] = await Promise.allSettled([
     getAllCategories(),
     getLatestBlogs(3),
+    getRelatedBlogs(blog, 3),
   ]);
 
   const categories = categoriesRes.status === 'fulfilled' ? categoriesRes.value : [];
   const pickupArticles = pickupRes.status === 'fulfilled' ? (pickupRes.value.contents || []) : [];
+  const relatedArticles = relatedRes.status === 'fulfilled' ? relatedRes.value : [];
 
   return (
     <div className="font-sans min-h-screen">
@@ -77,6 +81,7 @@ export default async function BlogPreviewPage({ searchParams }: PreviewPageProps
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
               <div className="flex-1 lg:order-first">
                 <BlogDetailSection blog={blog} />
+                <RelatedArticlesSection articles={relatedArticles} />
               </div>
               <aside className="hidden lg:block lg:order-last">
                 <BlogDetailSidebar categories={categories} pickupArticles={pickupArticles} />
@@ -90,5 +95,3 @@ export default async function BlogPreviewPage({ searchParams }: PreviewPageProps
     </div>
   );
 }
-
-

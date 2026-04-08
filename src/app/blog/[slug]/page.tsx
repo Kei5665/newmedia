@@ -6,9 +6,11 @@ import Footer from '@/components/Footer';
 import BlogDetailSection from '@/components/BlogDetailSection';
 import BlogDetailSidebar from '@/components/BlogDetailSidebar';
 import BlogCTASection from '@/components/BlogCTASection';
+import RelatedArticlesSection from '@/components/RelatedArticlesSection';
 import { Blog, Category } from '@/types/microcms';
 import { getBlogBySlug, getBlogById, getAllCategories, getLatestBlogs } from '@/lib/microcms';
 import { withBasePath } from '@/lib/basePath';
+import { getRelatedBlogs } from '@/lib/blogHelpers';
 
 interface BlogDetailPageProps {
   params: Promise<{
@@ -46,6 +48,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   let blog: Blog | null = null;
   let categories: Category[] = [];
   let pickupArticles: Blog[] = [];
+  let relatedArticles: Blog[] = [];
   let error: string | null = null;
 
   try {
@@ -62,9 +65,10 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     }
 
     // サイドバー用のデータを並行取得
-    const [categoriesResponse, pickupLatestResponse] = await Promise.allSettled([
+    const [categoriesResponse, pickupLatestResponse, relatedArticlesResponse] = await Promise.allSettled([
       getAllCategories(),
-      getLatestBlogs(3)
+      getLatestBlogs(3),
+      getRelatedBlogs(blog, 3),
     ]);
 
     if (categoriesResponse.status === 'fulfilled') {
@@ -78,6 +82,12 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       pickupArticles = pickupLatestResponse.value.contents || [];
     } else {
       console.error('ピックアップ記事（最新3件）の取得に失敗しました:', pickupLatestResponse.reason);
+    }
+
+    if (relatedArticlesResponse.status === 'fulfilled') {
+      relatedArticles = relatedArticlesResponse.value;
+    } else {
+      console.error('関連記事の取得に失敗しました:', relatedArticlesResponse.reason);
     }
 
   } catch (err) {
@@ -129,6 +139,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               {/* メインコンテンツエリア */}
               <div className="flex-1 lg:order-first">
                 <BlogDetailSection blog={blog} />
+                <RelatedArticlesSection articles={relatedArticles} />
               </div>
               
               {/* サイドバー（デスクトップのみ表示） */}
