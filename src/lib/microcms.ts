@@ -182,6 +182,37 @@ export async function getLatestJobs(limit: number = 4): Promise<JobsResponse> {
 }
 
 /**
+ * 給与の高い順に求人を取得（給与上限 salaryMax の降順）
+ * @param limit 取得件数（デフォルト: 3）
+ * @param categoryIds 職種カテゴリーID（指定時はいずれかに一致する求人のみ）
+ *   例: タクシードライバー=6 / ハイヤードライバー=4
+ * @returns JobsResponse
+ */
+export async function getTopSalaryJobs(
+  limit: number = 3,
+  categoryIds?: string[],
+): Promise<JobsResponse> {
+  let url = `${JOB_BASE_URL}/jobs?limit=${limit}&orders=-salaryMax`;
+  if (categoryIds && categoryIds.length > 0) {
+    const filter = categoryIds.map((id) => `jobCategory[equals]${id}`).join("[or]");
+    url += `&filters=${encodeURIComponent(filter)}`;
+  }
+
+  const res = await fetch(url, {
+    headers: {
+      "X-MICROCMS-API-KEY": JOB_API_KEY,
+    },
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch jobs: ${res.status}`);
+  }
+
+  return res.json();
+}
+
+/**
  * 全ブログを取得（ページネーション対応）
  * @param limit 取得件数（デフォルト: 10）
  * @param offset 取得開始位置（デフォルト: 0）
