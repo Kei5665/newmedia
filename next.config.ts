@@ -29,6 +29,14 @@ const nextConfig: NextConfig = {
         permanent: false,
         basePath: false,
       },
+      // 2027新卒 鈑金塗装職LP: クリーンURL(/entry/...)を /media 配下の実体へ誘導
+      // ※このアプリは basePath:'/media' のため実体は /media/entry/... に配信される
+      {
+        source: '/entry/gulliver/newgraduate',
+        destination: '/media/entry/gulliver/newgraduate',
+        permanent: false,
+        basePath: false,
+      },
     ];
   },
 };
