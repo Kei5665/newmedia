@@ -6,18 +6,29 @@ import { NextResponse } from "next/server";
 
 const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
+// 入力長の上限（増幅/巨大ペイロード対策）。超過分は切り詰める。
+const cap = (s: string, n: number) => (s.length > n ? s.slice(0, n) : s);
+
 export async function POST(req: Request) {
   try {
     const form = await req.formData();
-    const name = (form.get("name") || "").toString().trim();
-    const email = (form.get("email") || "").toString().trim();
-    const tel = (form.get("tel") || "").toString().trim();
-    const area = (form.get("area") || "").toString().trim();
+
+    // ハニーポット: 通常ユーザーには見えない隠しフィールド。値が入っていれば bot とみなし黙って成功扱いで破棄。
+    const honeypot = (form.get("company_url") || "").toString().trim();
+    if (honeypot) {
+      return NextResponse.json({ ok: true });
+    }
+
+    const name = cap((form.get("name") || "").toString().trim(), 100);
+    const email = cap((form.get("email") || "").toString().trim(), 254);
+    const tel = cap((form.get("tel") || "").toString().trim(), 32);
+    const area = cap((form.get("area") || "").toString().trim(), 100);
 
     const errors: string[] = [];
     if (!name) errors.push("お名前は必須です。");
     if (!email) errors.push("メールアドレスは必須です。");
     else if (!isValidEmail(email)) errors.push("メールアドレスの形式が正しくありません。");
+    if (tel && !/^[0-9\-+() ]{10,}$/.test(tel)) errors.push("電話番号の形式が正しくありません。");
 
     if (errors.length > 0) {
       return NextResponse.json({ error: errors.join(" ") }, { status: 400 });
@@ -42,11 +53,21 @@ export async function POST(req: Request) {
       content: { text: textLines.join("\n") },
     };
 
-    const larkRes = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    let larkRes: Response;
+    try {
+      larkRes = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(5000),
+      });
+    } catch {
+      // タイムアウト/ネットワーク障害
+      return NextResponse.json(
+        { error: "送信に失敗しました。時間をおいて再度お試しください。" },
+        { status: 502 }
+      );
+    }
 
     const larkData = await larkRes.json().catch(() => ({} as { code?: number }));
 
